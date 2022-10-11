@@ -6,6 +6,9 @@
     "start": "node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
   },
+  "engines": {
+    "node": "^18.1.0"
+  },
   "devDependencies": {
     "@types/node": "^18.8.3",
     "prisma": "^4.4.0",
