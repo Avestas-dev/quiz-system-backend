@@ -9,7 +9,6 @@ const port = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL;
 
 app.use(router);
-
 app.listen(port, () => {
   console.log(
     `[server]: Server is running at http://localhost:${port} - ${DATABASE_URL}`

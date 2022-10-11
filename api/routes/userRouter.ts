@@ -9,7 +9,7 @@ userRouter.use(express.urlencoded({ extended: true }));
 
 userRouter.get("/", (req, res) => {
   // #swagger.security = [{"apiKeyAuth": []}]
-  // #swagger.tags = ['Admin']
+  // #swagger.tags = ['User']
   res.status(200).send("Here i am as an router ");
 });
 

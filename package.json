@@ -3,15 +3,17 @@
   "packageManager": "yarn@3.2.2",
   "scripts": {
     "build": "npx tsc",
-    "start": "npx prisma migrate deploy && node dist/index.js",
+    "start": "node dist/index.js",
     "start:staging": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon  -q dist/index.js\""
+    "swagger-autogen": "node ./api/swagger.ts",
+    "dev": "yarn swagger-autogen && concurrently \"npx tsc --watch\" \"nodemon  -q dist/index.js\""
   },
   "engines": {
     "node": "^18.1.0"
   },
   "devDependencies": {
     "@types/node": "^18.8.3",
+    "@types/swagger-ui-express": "^4.1.3",
     "prisma": "^4.4.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
@@ -22,6 +24,8 @@
     "concurrently": "^7.4.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "swagger-autogen": "^2.22.0",
+    "swagger-ui-express": "^4.5.0"
   }
 }
