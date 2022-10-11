@@ -10,8 +10,57 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum QuestionStatus {
+  KNOWN
+  UNKNOWN
+  NOT_ANSWERED
+}
+
+model Question {
+  id               Int                @id @default(autoincrement())
+  question         String
+  answer           String
+  AnsweredQuestion AnsweredQuestion[]
+  training         Training           @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+  trainingId       Int
+}
+
+model Training {
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  visibility      Boolean
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          Int
+  Question        Question[]
+  TrainingSession TrainingSession[]
+}
+
+model TrainingSession {
+  id               Int                @id @default(autoincrement())
+  date             DateTime           @default(now())
+  finished         Boolean
+  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId           Int
+  Training         Training           @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+  trainingId       Int
+  answeredQuestion AnsweredQuestion[]
+
+}
+
+model AnsweredQuestion {
+  id                Int             @id @default(autoincrement())
+  status            QuestionStatus
+  trainingSession   TrainingSession @relation(fields: [trainingSessionId], references: [id], onDelete: Cascade)
+  trainingSessionId Int
+  question          Question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  questionId        Int
+}
+
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id              Int               @id @default(autoincrement())
+  email           String            @unique
+  password        String
+  refreshToken    String?
+  trainings       Training[]
+  TrainingSession TrainingSession[]
 }
