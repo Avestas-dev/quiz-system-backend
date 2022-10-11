@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
-    "description": "Description",
+    "title": "Quiz System Api",
+    "description": "Project made for Internet Application classes.",
     "version": "1.0.0"
   },
   "host": "localhost:8000",
