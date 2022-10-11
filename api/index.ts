@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
+import router from "./routes/router";
 
 dotenv.config();
 
@@ -7,11 +8,7 @@ const app = express();
 const port = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL;
 
-app.get("/", (req, res) => {
-  res.setHeader("Content-Type", "text/html");
-  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
-  res.send("Express + TypeScript Server");
-});
+app.use(router);
 
 app.listen(port, () => {
   console.log(
