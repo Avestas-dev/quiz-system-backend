@@ -3,8 +3,7 @@
   "packageManager": "yarn@3.2.2",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
-    "start:staging": "node dist/index.js",
+    "start": "node ./dist/api/index.js",
     "swagger-autogen": "node ./api/swagger.ts",
     "dev": "yarn swagger-autogen && concurrently \"npx tsc --watch\" \"nodemon  -q dist/index.js\""
   },
