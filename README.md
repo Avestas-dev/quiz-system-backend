@@ -6,7 +6,7 @@ Project made for Internet Application classes.
 
 ---
 
-Create migration:
+Create migration - auto generate prisma client
 
     npx prisma migrate dev --name init
 
@@ -15,3 +15,9 @@ Create migration:
 Generate prisma client
 
     npx prisma generate
+
+---
+
+Open prisma studio
+
+    npx prisma studio

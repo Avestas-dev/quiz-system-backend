@@ -5,6 +5,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
+const DATABASE_URL = process.env.DATABASE_URL;
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "text/html");
@@ -13,5 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+  console.log(
+    `[server]: Server is running at http://localhost:${port} - ${DATABASE_URL}`
+  );
 });
