@@ -17,7 +17,7 @@ export const registerUser = async (
             in: 'body',
             description: 'User login.',
             required: true,
-            schema: { $ref: "#/definitions/Register" }
+            schema: { $ref: "#/definitions/RegisterRequest" }
     } */
 
   const { email, password } = req.body;
@@ -30,6 +30,9 @@ export const registerUser = async (
       password: encryptedPassword,
     },
   });
-
+  /* #swagger.responses[200] = {
+            description: 'User successfully signed up.',
+            schema: { $ref: '#/definitions/RegisterResponse' }
+  } */
   return res.json(user);
 };

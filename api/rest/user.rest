@@ -12,7 +12,7 @@ POST http://localhost:8000/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "kamilporeba2@hotmail.com",
+    "email": "kamilporeba3@hotmail.com",
     "password": "Kamil123!",
     "passwordRepeated": "Kamil123!"
 }

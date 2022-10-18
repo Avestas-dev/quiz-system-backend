@@ -13,14 +13,11 @@ const commonRouter = express.Router();
 commonRouter.use(express.json());
 commonRouter.use(express.urlencoded({ extended: true }));
 
-commonRouter.use("/api-docs", swaggerUi.serve);
-commonRouter.get("/api-docs", swaggerUi.setup(swaggerDocument));
-
-commonRouter.get("/", (req, res) => {
-  // #swagger.security = [{"apiKeyAuth": []}]
-  // #swagger.tags = ['Common']
-  res.status(200).send("Here i am at common");
-});
+commonRouter.use("/api-docs", swaggerUi.serve /* #swagger.ignore = true */);
+commonRouter.get(
+  "/api-docs",
+  swaggerUi.setup(swaggerDocument) /* #swagger.ignore = true */
+);
 
 commonRouter.post("/login", loginValidation, login);
 commonRouter.post("/register", registerValidation, registerUser);

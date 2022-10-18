@@ -11,32 +11,6 @@
     "http"
   ],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/": {
-      "get": {
-        "tags": [
-          "Common"
-        ],
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      }
-    },
     "/login": {
       "post": {
         "tags": [
@@ -50,13 +24,16 @@
             "description": "User login.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Login"
+              "$ref": "#/definitions/LoginRequest"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "User successfully logged in.",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
           }
         }
       }
@@ -74,58 +51,23 @@
             "description": "User login.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Register"
+              "$ref": "#/definitions/RegisterRequest"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "User successfully signed up.",
+            "schema": {
+              "$ref": "#/definitions/RegisterResponse"
+            }
           }
         }
-      }
-    },
-    "/user/": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      }
-    },
-    "/admin/": {
-      "get": {
-        "tags": [
-          "Admin"
-        ],
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
       }
     }
   },
   "definitions": {
-    "Login": {
+    "LoginRequest": {
       "type": "object",
       "properties": {
         "email": {
@@ -138,7 +80,24 @@
         }
       }
     },
-    "Register": {
+    "LoginResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc"
+        },
+        "refreshToken": {
+          "type": "string",
+          "example": "5f3c44c9-eac1-4ffd-a112-ae5a1fe38fed"
+        },
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        }
+      }
+    },
+    "RegisterRequest": {
       "type": "object",
       "properties": {
         "email": {
@@ -153,6 +112,24 @@
           "type": "string",
           "example": "Kamil123!"
         }
+      }
+    },
+    "RegisterResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 6
+        },
+        "email": {
+          "type": "string",
+          "example": "kamilporeba3@hotmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "$2b$10$QGj.YqitWM3o0NMzuB192umX0lHTtSjApAclGXeUF3H96deGimtsi"
+        },
+        "refreshToken": {}
       }
     }
   }
