@@ -14,7 +14,7 @@
     "/login": {
       "post": {
         "tags": [
-          "User"
+          "Auth"
         ],
         "description": "Endpoint to sign in a specific user",
         "parameters": [
@@ -30,10 +30,7 @@
         ],
         "responses": {
           "200": {
-            "description": "User successfully logged in.",
-            "schema": {
-              "$ref": "#/definitions/LoginResponse"
-            }
+            "description": "OK"
           }
         }
       }
@@ -41,7 +38,7 @@
     "/register": {
       "post": {
         "tags": [
-          "User"
+          "Auth"
         ],
         "description": "Endpoint to register user",
         "parameters": [
@@ -57,12 +54,70 @@
         ],
         "responses": {
           "200": {
-            "description": "User successfully signed up.",
-            "schema": {
-              "$ref": "#/definitions/RegisterResponse"
-            }
+            "description": "OK"
           }
         }
+      }
+    },
+    "/refresh": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Get new token using refresh token.",
+        "parameters": [
+          {
+            "name": "refresh",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets refresh token.",
+            "schema": {
+              "$ref": "#/definitions/RefreshTokenResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/profile": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Get user profile from token",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile.",
+            "schema": {
+              "$ref": "#/definitions/ProfileResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     }
   },
@@ -123,13 +178,31 @@
         },
         "email": {
           "type": "string",
-          "example": "kamilporeba3@hotmail.com"
+          "example": "kamilporeba@hotmail.com"
         },
         "password": {
           "type": "string",
           "example": "$2b$10$QGj.YqitWM3o0NMzuB192umX0lHTtSjApAclGXeUF3H96deGimtsi"
         },
         "refreshToken": {}
+      }
+    },
+    "ProfileResponse": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        }
+      }
+    },
+    "RefreshTokenResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc"
+        }
       }
     }
   }

@@ -10,15 +10,19 @@ export const login = async (
   req: LoginRequestModel,
   res: LoginResponseModel
 ) => {
-  /* 	#swagger.tags = ['User']
-        #swagger.description = 'Endpoint to sign in a specific user' */
-
-  /*	#swagger.parameters['obj'] = {
-            in: 'body',
-            description: 'User login.',
-            required: true,
-            schema: { $ref: "#/definitions/LoginRequest" }
-    } */
+  /* 	#swagger.tags = ['Auth']
+      #swagger.description = 'Endpoint to sign in a specific user' 
+  	  #swagger.parameters['obj'] = {
+        in: 'body',
+        description: 'User login.',
+        required: true,
+        schema: { $ref: "#/definitions/LoginRequest" }
+      } 
+      #swagger.responses[200] = {
+        description: 'User successfully logged in.',
+        schema: { $ref: '#/definitions/LoginResponse' 
+      }
+  */
 
   if (process.env.TOKEN_KEY) {
     // generate token
@@ -26,7 +30,7 @@ export const login = async (
       { user_id: res.locals.user.id },
       process.env.TOKEN_KEY,
       {
-        expiresIn: process.env.TOKEN_VALIDATION_TIME,
+        expiresIn: 10,
       }
     );
 
@@ -41,11 +45,6 @@ export const login = async (
       where: { id: res.locals.user.id },
     });
 
-    // return response
-    /* #swagger.responses[200] = {
-            description: 'User successfully logged in.',
-            schema: { $ref: '#/definitions/LoginResponse' }
-  } */
     return res.json({
       token: token,
       refreshToken: refreshToken,

@@ -3,6 +3,26 @@ export const errorType = {
     message: "The user is not authorized!",
     status: 401,
   },
+  TOKEN_NOT_PROVIDED: {
+    message: "Token is not provided!",
+    status: 401,
+  },
+  REFRESH_TOKEN_NOT_PROVIDED: {
+    message: "Refresh token is not provided!",
+    status: 403,
+  },
+  REFRESH_TOKEN_INVALID: {
+    message: "Refresh token is invalid!",
+    status: 403,
+  },
+  TOKEN_INVALID: {
+    message: "Token is invalid!",
+    status: 403,
+  },
+  TOKEN_EXPIRED: {
+    message: "Token expired!",
+    status: 401,
+  },
   WRONG_EMAIL: {
     message: "You have provided incorrect e-mail.",
     status: 400,
@@ -26,7 +46,7 @@ export const errorType = {
   },
   PASSWORD_INCORRECT: {
     message: "Password incorrect.",
-    status: 400,
+    status: 403,
   },
   EMAIL_REQUIRED: {
     message: "Email is required",
@@ -63,10 +83,6 @@ export const errorType = {
   ALL_INPUTS_REQUIRED: {
     message: "All inputs required",
     status: 400,
-  },
-  REFRESH_TOKEN_NOT_MATCH: {
-    message: "Refresh token send is invalid",
-    status: 403,
   },
   ENVIROMENT_VARIABLES_ERROR: {
     message: "Enviroment variables are not set",

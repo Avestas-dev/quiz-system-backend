@@ -1,12 +1,3 @@
-### Login User 
-POST http://localhost:8000/user/calc HTTP/1.1 
-content-type: application/json
-
-{
-    "a": 5, "b": 3
-}
-
-
 ### Register User 
 POST http://localhost:8000/register HTTP/1.1 
 content-type: application/json
@@ -26,3 +17,16 @@ content-type: application/json
     "email": "kamilporeba@hotmail.com",
     "password": "Kamil123!"
 }
+
+
+### Profile User 
+POST http://localhost:8000/profile HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMjU2MjMsImV4cCI6MTc1MjEyNTYyM30.fSI6jXZfZat9sUZxhQ1VIxeTCw6ujFh3gfRhlIDrwpU
+
+
+### Refresh
+POST http://localhost:8000/refresh HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMjU0NTUsImV4cCI6MTY2NjEyNTQ2NX0.MfmJJ399hceSz4LO5dR6z75NNQ0yPka_UYP0HP7TLMI
+Refresh: 51e7c4e2-821b-4126-8eca-6c07b5f08d73

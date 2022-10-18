@@ -3,6 +3,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "../../swagger.json";
 import { login } from "../controllers/commonController/login";
 import { registerUser } from "../controllers/commonController/register";
+import { refreshToken } from "../controllers/userController/refreshToken";
 import { loginValidation } from "../middleware/validation/loginValidation";
 import { registerValidation } from "../middleware/validation/registerValidation";
 
@@ -19,7 +20,10 @@ commonRouter.get(
   swaggerUi.setup(swaggerDocument) /* #swagger.ignore = true */
 );
 
+// unauthorized routes
 commonRouter.post("/login", loginValidation, login);
 commonRouter.post("/register", registerValidation, registerUser);
+// unauthorized routes
+commonRouter.post("/refresh", refreshToken);
 
 export default commonRouter;

@@ -25,9 +25,16 @@ const doc = {
     },
     RegisterResponse: {
       id: 6,
-      email: "kamilporeba3@hotmail.com",
+      email: "kamilporeba@hotmail.com",
       password: "$2b$10$QGj.YqitWM3o0NMzuB192umX0lHTtSjApAclGXeUF3H96deGimtsi",
       refreshToken: null,
+    },
+    ProfileResponse: {
+      email: "kamilporeba@hotmail.com",
+    },
+    RefreshTokenResponse: {
+      token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc",
     },
   },
 };
