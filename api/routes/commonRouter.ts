@@ -1,6 +1,10 @@
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "../../swagger.json";
+import { login } from "../controllers/commonController/login";
+import { registerUser } from "../controllers/commonController/register";
+import { loginValidation } from "../middleware/validation/loginValidation";
+import { registerValidation } from "../middleware/validation/registerValidation";
 
 // Middleware imports here
 // Urlencoded
@@ -17,5 +21,8 @@ commonRouter.get("/", (req, res) => {
   // #swagger.tags = ['Common']
   res.status(200).send("Here i am at common");
 });
+
+commonRouter.post("/login", loginValidation, login);
+commonRouter.post("/register", registerValidation, registerUser);
 
 export default commonRouter;

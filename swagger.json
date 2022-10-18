@@ -37,6 +37,54 @@
         ]
       }
     },
+    "/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to sign in a specific user",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "User login.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to register user",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "User login.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/user/": {
       "get": {
         "tags": [
@@ -73,6 +121,38 @@
             "apiKeyAuth": []
           }
         ]
+      }
+    }
+  },
+  "definitions": {
+    "Login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "Kamil123!"
+        }
+      }
+    },
+    "Register": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "Kamil123!"
+        },
+        "passwordRepeated": {
+          "type": "string",
+          "example": "Kamil123!"
+        }
       }
     }
   }
