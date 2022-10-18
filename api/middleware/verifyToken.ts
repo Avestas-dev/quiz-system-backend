@@ -23,13 +23,11 @@ export const verifyToken = async (
     const user = await prisma.user.findFirst({
       where: { id: decoded.user_id },
     });
-    console.log(user);
 
     res.locals.user = { email: user?.email, id: user?.id };
 
     return next();
   } catch (err: any) {
-    console.log(err);
     if (err?.name && err.name === "JsonWebTokenError") {
       return validationErrorHandler(res, "TOKEN_INVALID");
     } else if (err?.name && err.name === "TokenExpiredError") {
