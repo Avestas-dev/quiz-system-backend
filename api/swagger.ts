@@ -7,6 +7,17 @@ const doc = {
   },
   host: "localhost:8000",
   schemes: ["http"],
+  definitions: {
+    Login: {
+      email: "kamilporeba@hotmail.com",
+      password: "Kamil123!",
+    },
+    Register: {
+      email: "kamilporeba@hotmail.com",
+      password: "Kamil123!",
+      passwordRepeated: "Kamil123!",
+    },
+  },
 };
 
 const outputFile = "./swagger.json";
