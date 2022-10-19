@@ -11,36 +11,10 @@
     "http"
   ],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/": {
-      "get": {
-        "tags": [
-          "Common"
-        ],
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      }
-    },
     "/login": {
       "post": {
         "tags": [
-          "User"
+          "Auth"
         ],
         "description": "Endpoint to sign in a specific user",
         "parameters": [
@@ -50,7 +24,7 @@
             "description": "User login.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Login"
+              "$ref": "#/definitions/LoginRequest"
             }
           }
         ],
@@ -64,7 +38,7 @@
     "/register": {
       "post": {
         "tags": [
-          "User"
+          "Auth"
         ],
         "description": "Endpoint to register user",
         "parameters": [
@@ -74,7 +48,7 @@
             "description": "User login.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Register"
+              "$ref": "#/definitions/RegisterRequest"
             }
           }
         ],
@@ -85,16 +59,30 @@
         }
       }
     },
-    "/user/": {
+    "/refresh": {
       "get": {
         "tags": [
-          "User"
+          "Auth"
         ],
-        "description": "",
-        "parameters": [],
+        "description": "Get new token using refresh token.",
+        "parameters": [
+          {
+            "name": "refresh",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Gets refresh token.",
+            "schema": {
+              "$ref": "#/definitions/RefreshTokenResponse"
+            }
           }
         },
         "security": [
@@ -104,16 +92,73 @@
         ]
       }
     },
-    "/admin/": {
+    "/reset-start": {
       "get": {
         "tags": [
-          "Admin"
+          "Auth"
         ],
-        "description": "",
-        "parameters": [],
+        "description": "Endpoint to start reset password procedure",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "User reset.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResetStartRequest"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/reset": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to start reset password procedure",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "User reset.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResetStartRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Get user profile from token",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile.",
+            "schema": {
+              "$ref": "#/definitions/ProfileResponse"
+            }
           }
         },
         "security": [
@@ -125,7 +170,7 @@
     }
   },
   "definitions": {
-    "Login": {
+    "LoginRequest": {
       "type": "object",
       "properties": {
         "email": {
@@ -138,7 +183,24 @@
         }
       }
     },
-    "Register": {
+    "LoginResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc"
+        },
+        "refreshToken": {
+          "type": "string",
+          "example": "5f3c44c9-eac1-4ffd-a112-ae5a1fe38fed"
+        },
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        }
+      }
+    },
+    "RegisterRequest": {
       "type": "object",
       "properties": {
         "email": {
@@ -152,6 +214,51 @@
         "passwordRepeated": {
           "type": "string",
           "example": "Kamil123!"
+        }
+      }
+    },
+    "RegisterResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 6
+        },
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "$2b$10$QGj.YqitWM3o0NMzuB192umX0lHTtSjApAclGXeUF3H96deGimtsi"
+        },
+        "refreshToken": {}
+      }
+    },
+    "ProfileResponse": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        }
+      }
+    },
+    "RefreshTokenResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc"
+        }
+      }
+    },
+    "ResetStartRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
         }
       }
     }

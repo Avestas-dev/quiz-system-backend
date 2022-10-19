@@ -1,18 +1,9 @@
-### Login User 
-POST http://localhost:8000/user/calc HTTP/1.1 
-content-type: application/json
-
-{
-    "a": 5, "b": 3
-}
-
-
 ### Register User 
 POST http://localhost:8000/register HTTP/1.1 
 content-type: application/json
 
 {
-    "email": "kamilporeba2@hotmail.com",
+    "email": "kamilporeba3@hotmail.com",
     "password": "Kamil123!",
     "passwordRepeated": "Kamil123!"
 }
@@ -25,4 +16,26 @@ content-type: application/json
 {
     "email": "kamilporeba@hotmail.com",
     "password": "Kamil123!"
+}
+
+
+### Profile User 
+POST http://localhost:8000/profile HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMzI2MjEsImV4cCI6MTY2NjEzMjYzMX0.0f_7fi0ObkE6Hpy-a9yj429nwa6aVst6GOPrH5SYsxs
+
+
+### Refresh
+GET http://localhost:8000/refresh HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMzEyNDMsImV4cCI6MTY2NjEzMTI1M30.RBLaHRDGdIK1LBdLr3YNJuk-zE8aaPyxPUIbG1pM_mA
+Refresh: 1044dc07-a23b-46fd-bdec-f304f5181d41
+
+
+### Reset
+GET http://localhost:8000/reset-start HTTP/1.1 
+content-type: application/json
+
+{
+    "email": "kamilporeba@hotmail.com"
 }

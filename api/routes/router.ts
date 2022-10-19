@@ -16,7 +16,7 @@ router.use(express.urlencoded({ extended: true }));
 
 // routes
 router.use("/", commonRouter);
-router.use("/user", userRouter);
+router.use("/", userRouter);
 router.use("/admin", adminRouter);
 
 //swagger

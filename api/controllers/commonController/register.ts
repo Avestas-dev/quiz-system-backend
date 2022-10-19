@@ -10,15 +10,20 @@ export const registerUser = async (
   req: RegisterRequestModel,
   res: RegisterResponseModel
 ) => {
-  // #swagger.tags = ['User']
-  // #swagger.description = 'Endpoint to register user'
-
-  /*	#swagger.parameters['obj'] = {
-            in: 'body',
-            description: 'User login.',
-            required: true,
-            schema: { $ref: "#/definitions/Register" }
-    } */
+  /*
+      #swagger.tags = ['Auth']
+      #swagger.description = 'Endpoint to register user'
+      #swagger.parameters['obj'] = {
+        in: 'body',
+        description: 'User login.',
+        required: true,
+        schema: { $ref: "#/definitions/RegisterRequest" }
+      } 
+      #swagger.responses[200] = {
+        description: 'User successfully signed up.',
+        schema: { $ref: '#/definitions/RegisterResponse' 
+      }
+   */
 
   const { email, password } = req.body;
 
@@ -30,6 +35,5 @@ export const registerUser = async (
       password: encryptedPassword,
     },
   });
-
   return res.json(user);
 };
