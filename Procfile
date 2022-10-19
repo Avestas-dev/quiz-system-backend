@@ -1,2 +1,2 @@
 web: node dist/api/index.js
-release: npx prisma migrate dev --name init
+release: npx prisma migrate deploy && npx prisma generate
