@@ -1,8 +1,5 @@
-import { PrismaClient } from "@prisma/client";
 import { Request } from "express";
 import { ProfileResponseModel } from "../../models/profileModel";
-
-const prisma = new PrismaClient();
 
 export const profile = async (req: Request, res: ProfileResponseModel) => {
   /* 	#swagger.tags = ['Auth']

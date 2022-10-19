@@ -1,10 +1,8 @@
-import { PrismaClient } from "@prisma/client";
 import { randomUUID } from "crypto";
 import jwt from "jsonwebtoken";
 import { validationErrorHandler } from "../../helpers/errorHandler";
+import { prisma } from "../../helpers/prisma";
 import { LoginRequestModel, LoginResponseModel } from "../../models/loginModel";
-
-const prisma = new PrismaClient();
 
 export const login = async (
   req: LoginRequestModel,

@@ -1,10 +1,9 @@
-import { PrismaClient } from "@prisma/client";
 import { randomUUID } from "crypto";
 import dayjs from "dayjs";
 import { Response } from "express";
 import { validationErrorHandler } from "../../helpers/errorHandler";
+import { prisma } from "../../helpers/prisma";
 import { LoginRequestModel } from "../../models/loginModel";
-const prisma = new PrismaClient();
 
 export const resetPasswordStart = async (
   req: LoginRequestModel,

@@ -1,10 +1,9 @@
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import { prisma } from "../../helpers/prisma";
 import {
   RegisterRequestModel,
   RegisterResponseModel,
 } from "../../models/registerModel";
-const prisma = new PrismaClient();
 
 export const registerUser = async (
   req: RegisterRequestModel,
