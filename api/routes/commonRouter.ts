@@ -4,6 +4,7 @@ import swaggerDocument from "../../swagger.json";
 import { login } from "../controllers/commonController/login";
 import { registerUser } from "../controllers/commonController/register";
 import { resetPasswordStart } from "../controllers/commonController/resetPasswordStart";
+import { sendEmail } from "../controllers/commonController/sendEmail";
 import { refreshToken } from "../controllers/userController/refreshToken";
 import { loginValidation } from "../middleware/validation/loginValidation";
 import { registerValidation } from "../middleware/validation/registerValidation";
@@ -25,7 +26,8 @@ commonRouter.get(
 commonRouter.post("/login", loginValidation, login);
 commonRouter.post("/register", registerValidation, registerUser);
 commonRouter.get("/refresh", refreshToken);
-commonRouter.get("/reset-start", resetPasswordStart);
+commonRouter.post("/reset-start", resetPasswordStart);
 commonRouter.get("/reset", resetPasswordStart);
+commonRouter.post("/send-message", sendEmail);
 
 export default commonRouter;

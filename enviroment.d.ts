@@ -10,6 +10,7 @@ declare global {
       PORT: number;
       /** in minutes */
       RESET_PASSWORD_DELAY: number;
+      SENDGRID_API_KEY: string;
     }
   }
 }

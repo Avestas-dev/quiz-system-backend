@@ -33,7 +33,16 @@ Refresh: 1044dc07-a23b-46fd-bdec-f304f5181d41
 
 
 ### Reset
-GET http://localhost:8000/reset-start HTTP/1.1 
+POST http://localhost:8000/reset-start HTTP/1.1 
+content-type: application/json
+
+{
+    "email": "kamilporeba@hotmail.com"
+}
+
+
+### Send message
+POST http://localhost:8000/send-message HTTP/1.1 
 content-type: application/json
 
 {

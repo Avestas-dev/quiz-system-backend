@@ -93,7 +93,7 @@
       }
     },
     "/reset-start": {
-      "get": {
+      "post": {
         "tags": [
           "Auth"
         ],
@@ -133,6 +133,17 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/send-message": {
+      "post": {
+        "description": "",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
