@@ -11,6 +11,7 @@ declare global {
       /** in minutes */
       RESET_PASSWORD_DELAY: number;
       SENDGRID_API_KEY: string;
+      GOOGLE_CLIENT_ID: string;
     }
   }
 }

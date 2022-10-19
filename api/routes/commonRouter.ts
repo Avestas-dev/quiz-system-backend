@@ -2,7 +2,9 @@ import express from "express";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "../../swagger.json";
 import { login } from "../controllers/commonController/login";
+import { loginGoogle } from "../controllers/commonController/loginGoogle";
 import { registerUser } from "../controllers/commonController/register";
+import { registerGoogle } from "../controllers/commonController/registerGoogle";
 import { resetPasswordStart } from "../controllers/commonController/resetPasswordStart";
 import { sendEmail } from "../controllers/commonController/sendEmail";
 import { refreshToken } from "../controllers/userController/refreshToken";
@@ -29,5 +31,7 @@ commonRouter.get("/refresh", refreshToken);
 commonRouter.post("/reset-start", resetPasswordStart);
 commonRouter.get("/reset", resetPasswordStart);
 commonRouter.post("/send-message", sendEmail);
+commonRouter.post("/login-google", loginGoogle, login);
+commonRouter.post("/register-google", registerGoogle);
 
 export default commonRouter;

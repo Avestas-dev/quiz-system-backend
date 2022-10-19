@@ -151,6 +151,54 @@
         }
       }
     },
+    "/login-google": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to sign in a specific user",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "User login.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/register-google": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to sign up a specific user using Google",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "User google register.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterGoogleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/profile": {
       "post": {
         "tags": [
@@ -211,6 +259,70 @@
         }
       }
     },
+    "LoginGoogleRequest": {
+      "type": "object",
+      "properties": {
+        "idToken": {
+          "type": "string",
+          "example": "token"
+        }
+      }
+    },
+    "LoginGoogleResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc"
+        },
+        "refreshToken": {
+          "type": "string",
+          "example": "5f3c44c9-eac1-4ffd-a112-ae5a1fe38fed"
+        }
+      }
+    },
+    "RegisterGoogleResponse": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        },
+        "googleSub": {
+          "type": "string",
+          "example": "googleSub"
+        },
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "password": {
+          "type": "string",
+          "example": "password"
+        },
+        "passwordResetDate": {
+          "type": "object",
+          "properties": {}
+        },
+        "passwordResetToken": {
+          "type": "string",
+          "example": "resetToken"
+        },
+        "refreshToken": {
+          "type": "string",
+          "example": "refreshToken"
+        }
+      }
+    },
+    "RegisterGoogleRequest": {
+      "type": "object",
+      "properties": {
+        "idToken": {
+          "type": "string",
+          "example": "token"
+        }
+      }
+    },
     "RegisterRequest": {
       "type": "object",
       "properties": {
@@ -231,19 +343,34 @@
     "RegisterResponse": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "number",
-          "example": 6
-        },
         "email": {
           "type": "string",
           "example": "kamilporeba@hotmail.com"
         },
+        "googleSub": {
+          "type": "string",
+          "example": "googleSub"
+        },
+        "id": {
+          "type": "number",
+          "example": 1
+        },
         "password": {
           "type": "string",
-          "example": "$2b$10$QGj.YqitWM3o0NMzuB192umX0lHTtSjApAclGXeUF3H96deGimtsi"
+          "example": "password"
         },
-        "refreshToken": {}
+        "passwordResetDate": {
+          "type": "object",
+          "properties": {}
+        },
+        "passwordResetToken": {
+          "type": "string",
+          "example": "resetToken"
+        },
+        "refreshToken": {
+          "type": "string",
+          "example": "refreshToken"
+        }
       }
     },
     "ProfileResponse": {

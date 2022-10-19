@@ -88,6 +88,14 @@ export const errorType = {
     message: "All inputs required",
     status: 400,
   },
+  GOOGLE_LOGIN_FAILED: {
+    message: "Google login failed",
+    status: 400,
+  },
+  GOOGLE_REGISTER_FAILED: {
+    message: "Google register failed",
+    status: 400,
+  },
   ENVIROMENT_VARIABLES_ERROR: {
     message: "Enviroment variables are not set",
     status: 500,
