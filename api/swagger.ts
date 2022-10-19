@@ -20,7 +20,7 @@ const doc = {
       email: "kamilporeba@hotmail.com",
     },
     LoginGoogleRequest: {
-      idToken: "token",
+      tokenId: "token",
     },
     LoginGoogleResponse: {
       token:
@@ -38,7 +38,7 @@ const doc = {
     },
 
     RegisterGoogleRequest: {
-      idToken: "token",
+      tokenId: "token",
     },
     RegisterRequest: {
       email: "kamilporeba@hotmail.com",

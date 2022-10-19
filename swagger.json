@@ -262,7 +262,7 @@
     "LoginGoogleRequest": {
       "type": "object",
       "properties": {
-        "idToken": {
+        "tokenId": {
           "type": "string",
           "example": "token"
         }
@@ -317,7 +317,7 @@
     "RegisterGoogleRequest": {
       "type": "object",
       "properties": {
-        "idToken": {
+        "tokenId": {
           "type": "string",
           "example": "token"
         }

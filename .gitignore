@@ -4,6 +4,7 @@
 node_modules
 dist
 yarn.lock
+.env
 .env.staging
 .env.local
 sendgrid.env 
