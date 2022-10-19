@@ -30,7 +30,7 @@ export const login = async (
       { user_id: res.locals.user.id },
       process.env.TOKEN_KEY,
       {
-        expiresIn: 10,
+        expiresIn: process.env.TOKEN_VALIDATION_TIME,
       }
     );
 

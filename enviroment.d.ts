@@ -8,6 +8,8 @@ declare global {
       TOKEN_VALIDATION_TIME: number;
       REFRESH_TOKEN_SECRET: Secret;
       PORT: number;
+      /** in minutes */
+      RESET_PASSWORD_DELAY: number;
     }
   }
 }

@@ -64,6 +64,10 @@ export const errorType = {
     message: "User does not exist.",
     status: 400,
   },
+  RESET_TIME_TOO_LOW: {
+    message: "Password has been reset recently, and you must wait.",
+    status: 400,
+  },
   TRAINING_NOT_EXISTS: {
     message: "Training with given id does not exist.",
     status: 400,

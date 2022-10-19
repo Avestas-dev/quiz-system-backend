@@ -60,7 +60,7 @@
       }
     },
     "/refresh": {
-      "post": {
+      "get": {
         "tags": [
           "Auth"
         ],
@@ -90,6 +90,54 @@
             "apiKeyAuth": []
           }
         ]
+      }
+    },
+    "/reset-start": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to start reset password procedure",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "User reset.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResetStartRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/reset": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to start reset password procedure",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "User reset.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResetStartRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/profile": {
@@ -202,6 +250,15 @@
         "token": {
           "type": "string",
           "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc"
+        }
+      }
+    },
+    "ResetStartRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
         }
       }
     }

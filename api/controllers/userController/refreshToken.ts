@@ -1,13 +1,9 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
 
-export const refreshToken = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const refreshToken = async (req: Request, res: Response) => {
   /* 	#swagger.tags = ['Auth']
         #swagger.description = 'Get new token using refresh token.'
         #swagger.security = [{"apiKeyAuth": []}]

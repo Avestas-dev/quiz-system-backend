@@ -22,11 +22,20 @@ content-type: application/json
 ### Profile User 
 POST http://localhost:8000/profile HTTP/1.1 
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMjU2MjMsImV4cCI6MTc1MjEyNTYyM30.fSI6jXZfZat9sUZxhQ1VIxeTCw6ujFh3gfRhlIDrwpU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMzI2MjEsImV4cCI6MTY2NjEzMjYzMX0.0f_7fi0ObkE6Hpy-a9yj429nwa6aVst6GOPrH5SYsxs
 
 
 ### Refresh
-POST http://localhost:8000/refresh HTTP/1.1 
+GET http://localhost:8000/refresh HTTP/1.1 
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMjU0NTUsImV4cCI6MTY2NjEyNTQ2NX0.MfmJJ399hceSz4LO5dR6z75NNQ0yPka_UYP0HP7TLMI
-Refresh: 51e7c4e2-821b-4126-8eca-6c07b5f08d73
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMzEyNDMsImV4cCI6MTY2NjEzMTI1M30.RBLaHRDGdIK1LBdLr3YNJuk-zE8aaPyxPUIbG1pM_mA
+Refresh: 1044dc07-a23b-46fd-bdec-f304f5181d41
+
+
+### Reset
+GET http://localhost:8000/reset-start HTTP/1.1 
+content-type: application/json
+
+{
+    "email": "kamilporeba@hotmail.com"
+}

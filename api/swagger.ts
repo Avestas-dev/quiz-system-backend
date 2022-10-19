@@ -36,6 +36,9 @@ const doc = {
       token:
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc",
     },
+    ResetStartRequest: {
+      email: "kamilporeba@hotmail.com",
+    },
   },
 };
 
