@@ -3,10 +3,11 @@ import dayjs from "dayjs";
 import { Response } from "express";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
-import { LoginRequestModel } from "../../models/loginModel";
+import { sendResetPasswordEmail } from "../../helpers/sendResetPasswordEmail";
+import { ResetPasswordStartRequestModel } from "../../models/resetPasswordModel";
 
 export const resetPasswordStart = async (
-  req: LoginRequestModel,
+  req: ResetPasswordStartRequestModel,
   res: Response
 ) => {
   /*  #swagger.tags = ['Auth']
@@ -24,7 +25,7 @@ export const resetPasswordStart = async (
     },
   });
 
-  if (!user) validationErrorHandler(res, "USER_NOT_EXIST");
+  if (!user) return validationErrorHandler(res, "USER_NOT_EXIST");
 
   if (user?.passwordResetDate) {
     if (
@@ -38,15 +39,24 @@ export const resetPasswordStart = async (
       return validationErrorHandler(res, "RESET_TIME_TOO_LOW");
   }
 
-  await prisma.user.update({
-    where: {
-      email: req.body.email,
-    },
-    data: {
-      passwordResetDate: new Date(),
-      passwordResetToken: randomUUID(),
-    },
+  const randomGUID = randomUUID();
+  const isSuccess = await sendResetPasswordEmail({
+    email: user.email,
+    resetGUID: randomGUID,
   });
-
-  res.json({});
+  if (isSuccess) {
+    await prisma.user.update({
+      where: {
+        email: req.body.email,
+        id: user.id,
+      },
+      data: {
+        passwordResetDate: new Date(),
+        passwordResetToken: randomGUID,
+      },
+    });
+    return res.json({});
+  } else {
+    return validationErrorHandler(res, "RESET_PASSWORD_FAILED");
+  }
 };

@@ -68,6 +68,18 @@ export const errorType = {
     message: "Password has been reset recently, and you must wait.",
     status: 400,
   },
+  RESET_GUID_REQUIRED: {
+    message: "Password has been reset recently, and you must wait.",
+    status: 400,
+  },
+  RESET_PASSWORD_FAILED: {
+    message: "Reset password failed.",
+    status: 500,
+  },
+  RESET_TOKEN_WRONG: {
+    message: "Reset token is incorrect.",
+    status: 400,
+  },
   TRAINING_NOT_EXISTS: {
     message: "Training with given id does not exist.",
     status: 400,

@@ -5,11 +5,12 @@ import { login } from "../controllers/commonController/login";
 import { loginGoogle } from "../controllers/commonController/loginGoogle";
 import { registerUser } from "../controllers/commonController/register";
 import { registerGoogle } from "../controllers/commonController/registerGoogle";
+import { resetPassword } from "../controllers/commonController/resetPassword";
 import { resetPasswordStart } from "../controllers/commonController/resetPasswordStart";
-import { sendEmail } from "../controllers/commonController/sendEmail";
 import { refreshToken } from "../controllers/userController/refreshToken";
 import { loginValidation } from "../middleware/validation/loginValidation";
 import { registerValidation } from "../middleware/validation/registerValidation";
+import { resetValidation } from "../middleware/validation/resetValidation";
 
 // Middleware imports here
 // Urlencoded
@@ -27,10 +28,12 @@ commonRouter.get(
 // unauthorized routes
 commonRouter.post("/login", loginValidation, login);
 commonRouter.post("/register", registerValidation, registerUser);
+
 commonRouter.get("/refresh", refreshToken);
+
 commonRouter.post("/reset-start", resetPasswordStart);
-commonRouter.get("/reset", resetPasswordStart);
-commonRouter.post("/send-message", sendEmail);
+commonRouter.post("/reset", resetValidation, resetPassword);
+
 commonRouter.post("/login-google", loginGoogle, login);
 commonRouter.post("/register-google", registerGoogle);
 

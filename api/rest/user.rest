@@ -22,7 +22,7 @@ content-type: application/json
 ### Profile User 
 POST http://localhost:8000/profile HTTP/1.1 
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMzI2MjEsImV4cCI6MTY2NjEzMjYzMX0.0f_7fi0ObkE6Hpy-a9yj429nwa6aVst6GOPrH5SYsxs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYyMTk3MzMsImV4cCI6MTc1MjIxOTczM30.JC__s5oNnuanbqoPxX55tDdzJ4OsbvUD6GVPLiWnlsw
 
 
 ### Refresh
@@ -41,14 +41,6 @@ content-type: application/json
 }
 
 
-### Send message
-POST http://localhost:8000/send-message HTTP/1.1 
-content-type: application/json
-
-{
-    "email": "kamilporeba@hotmail.com"
-}
-
 ### Google Login
 POST http://localhost:8000/login-google HTTP/1.1 
 content-type: application/json
@@ -63,5 +55,26 @@ POST http://localhost:8000/register-google HTTP/1.1
 content-type: application/json
 
 {
-    "tokenId": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImVlMWI5Zjg4Y2ZlMzE1MWRkZDI4NGE2MWJmOGNlY2Y2NTliMTMwY2YiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMzAwNzk5NzAxNzI1LWl0ZXRzMmNiYms2ampwN25qZ3VnZzVncmwzbjI3M3BmLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMzAwNzk5NzAxNzI1LWl0ZXRzMmNiYms2ampwN25qZ3VnZzVncmwzbjI3M3BmLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3ODQ5MTI3NDQ2OTQ5NDk1MzU5IiwiZW1haWwiOiJoYW5uaWJhbHJhYml0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiUkRaazJkWTQ2ZDFMS29VLXZtWlowdyIsIm5hbWUiOiJLYW1pbCBQb3LEmWJhIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FMbTV3dTI2TFZqZGtHLVdfWkU4b2NuRWdNLVRRcDRwUHlyanlEa1JzYTA4amc9czk2LWMiLCJnaXZlbl9uYW1lIjoiS2FtaWwiLCJmYW1pbHlfbmFtZSI6IlBvcsSZYmEiLCJsb2NhbGUiOiJwbCIsImlhdCI6MTY2NjE5NDMyNiwiZXhwIjoxNjY2MTk3OTI2LCJqdGkiOiI5NjgwY2EwNDA3Nzg5YTRlYzBlNTU3MWI1YjlkNzE3MWE1YTliNWQ0In0.T2IJs-QAhWgoewaqXUEOMV9Hjl-sB5Rjbs7UI1NAQn-szXfqw7fZRv1UjMUcUbnVwT_ho-ida9UerbDuCIcpaIt2xWcuwiD5qeDrwxRkBbwBy7bNmCEaIMxUtD4W_JXbwdfGaDGu4xpRFiuZ_kUgIKoQZZ3-7Ea13tDzsow55JTNhq1N57S0PqxDUtmTgbOIFMkbQ9u4V_lGWeOUhWry-3ICD2TcUDq9sfDmtZy_RFwEV3zl2o4pftAsSA8W_PbHLV0f1ebrwLbYju8yZ7VU1p6PNZTH4y6AQKhbMhnKY4VypPewHFeJ7c2u7tTo2JVKKq9LMeMjiTUMow-DR0KZ2w"
+    "tokenId": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYyMTk3MzMsImV4cCI6MTc1MjIxOTczM30.JC__s5oNnuanbqoPxX55tDdzJ4OsbvUD6GVPLiWnlsw"
+}
+
+
+### Reset password start
+POST http://localhost:8000/reset-start HTTP/1.1 
+content-type: application/json
+
+{
+    "tokenId": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYyMTk5NjksImV4cCI6MTc1MjIxOTk2OX0.UTcbb1JDUKlztUaC2zeojtuvFDCQzKXYQIXlTIKXCUw"
+}
+
+
+### Reset password
+POST http://localhost:8000/reset HTTP/1.1 
+content-type: application/json
+
+{
+    "email": "kamilporeba@hotmail.com",
+    "resetGUID": "abfb2694-3490-48f0-9c2f-69f7bc7c3f30",
+    "password": "Kamil123!",
+    "passwordRepeated": "Kamil123!"
 }

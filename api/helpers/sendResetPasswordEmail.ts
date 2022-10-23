@@ -2,25 +2,43 @@ import sgMail from "@sendgrid/mail";
 
 type sendValidationMessageProps = {
   email: string;
+  resetGUID: string;
 };
 
-export const sendResetPasswordEmail = ({
+// TODO: https://quiz-system-frontend-uhwb.vercel.app/reset/{{resetGUID}}  // reset password webiste
+export const sendResetPasswordEmail = async ({
   email,
+  resetGUID,
 }: sendValidationMessageProps) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  let isSuccess = false;
   const msg = {
-    to: "hannibalrabit@gmail.com", // Change to your recipient
-    from: "kamilporeba@hotmail.com", // Change to your verified sender
-    subject: "Sending with SendGrid is Fun",
-    text: "and easy to do anywhere, even with Node.js",
-    html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+    from: "hannibalrabit@gmail.com", // Change to your verified sender
+    to: email,
+    template_id: "d-5e5df9400d724e3ea3331a2120f73eaf",
+
+    personalizations: [
+      {
+        to: [
+          {
+            email: email,
+          },
+        ],
+        dynamic_template_data: {
+          resetGUID: resetGUID,
+          toEmail: email,
+          emailResponse: "hannibalrabit@gmail.com",
+        },
+      },
+    ],
   };
-  sgMail
-    .send(msg)
+  await sgMail
+    .send(msg as any)
     .then(() => {
-      console.log("Email sent");
+      isSuccess = true;
     })
     .catch((error: any) => {
-      console.error(error);
+      isSuccess = false;
     });
+  return isSuccess;
 };

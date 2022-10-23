@@ -36,7 +36,6 @@ const doc = {
       passwordResetToken: "resetToken",
       refreshToken: "refreshToken",
     },
-
     RegisterGoogleRequest: {
       tokenId: "token",
     },
@@ -63,6 +62,12 @@ const doc = {
     },
     ResetStartRequest: {
       email: "kamilporeba@hotmail.com",
+    },
+    ResetRequest: {
+      email: "kamilporeba@hotmail.com",
+      resetGUID: "e31ace7a-99fd-45e1-91c7-855e02d54983",
+      password: "Kamil123!",
+      passwordRepeated: "Kamil123!",
     },
   },
 };
