@@ -121,11 +121,19 @@ export const errorType = {
     status: 400,
   },
   TRAINING_NAME_TOO_LONG: {
-    message: "Training name too long - max 100 characters.",
+    message: "Training name too long - max. 100 characters.",
+    status: 400,
+  },
+  TRAINING_NAME_TOO_SHORT: {
+    message: "Training name too long - min. 3 characters.",
     status: 400,
   },
   TRAINING_NAME_ALREADY_EXIST: {
     message: "Training with this name already exists.",
+    status: 400,
+  },
+  EDITED_TRAINING_NOT_FOUND: {
+    message: "Edited training was not found.",
     status: 400,
   },
 };

@@ -1,32 +1,35 @@
 import { Prisma } from "@prisma/client";
 import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
-import { AddTrainingRequestModel } from "../../../models/addTrainingModel";
 import { AuthResponse } from "../../../models/authRequest";
+import { EditTrainingRequestModel } from "../../../models/editTrainingModel";
 
-export const addTraining = async (
-  req: AddTrainingRequestModel,
+export const editTraining = async (
+  req: EditTrainingRequestModel,
   res: AuthResponse
 ) => {
   /* 	#swagger.tags = ['User']
-        #swagger.description = 'Create training'
+        #swagger.description = 'Edit training'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.parameters['obj'] = {
             in: 'body',
-            description: 'Create request.',
+            description: 'Edit request.',
             required: true,
-            schema: { $ref: "#/definitions/AddTrainingRequest" }
+            schema: { $ref: "#/definitions/EditTrainingRequest" }
         }         
   */
 
-  const { name, visibility } = req.body;
+  const { trainingId, name, visibility } = req.body;
 
   try {
-    await prisma.training.create({
+    await prisma.training.update({
       data: {
         name: name,
         visibility: visibility,
         userId: res.locals.user.id,
+      },
+      where: {
+        id: trainingId,
       },
     });
   } catch (e) {

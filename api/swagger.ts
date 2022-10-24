@@ -73,6 +73,11 @@ const doc = {
       name: "Training name",
       visibility: true,
     },
+    EditTrainingRequest: {
+      trainingId: 1,
+      name: "Training name",
+      visibility: true,
+    },
   },
 };
 

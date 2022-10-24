@@ -218,9 +218,60 @@
     },
     "/user/add-training": {
       "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
+        "tags": [
+          "User"
+        ],
+        "description": "Create training",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTrainingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/user/edit-training": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Edit training",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Edit request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditTrainingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     }
   },
@@ -420,6 +471,23 @@
     "AddTrainingRequest": {
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string",
+          "example": "Training name"
+        },
+        "visibility": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "EditTrainingRequest": {
+      "type": "object",
+      "properties": {
+        "trainingId": {
+          "type": "number",
+          "example": 1
+        },
         "name": {
           "type": "string",
           "example": "Training name"
