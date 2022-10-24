@@ -10,19 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum QuestionStatus {
-  KNOWN
-  UNKNOWN
-  NOT_ANSWERED
-}
-
 model Question {
-  id               Int                @id @default(autoincrement())
+  id               Int              @id @default(autoincrement())
   question         String
-  answer           String
-  AnsweredQuestion AnsweredQuestion[]
-  training         Training           @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+  AnsweredQuestion UserAnswer[]
+  training         Training         @relation(fields: [trainingId], references: [id], onDelete: Cascade)
   trainingId       Int
+  QuestionAnswer   QuestionAnswer[]
 }
 
 model Training {
@@ -36,24 +30,33 @@ model Training {
 }
 
 model TrainingSession {
-  id               Int                @id @default(autoincrement())
-  date             DateTime           @default(now())
-  finished         Boolean
-  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId           Int
-  Training         Training           @relation(fields: [trainingId], references: [id], onDelete: Cascade)
-  trainingId       Int
-  answeredQuestion AnsweredQuestion[]
-
+  id         Int          @id @default(autoincrement())
+  date       DateTime     @default(now())
+  finished   Boolean
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
+  Training   Training     @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+  trainingId Int
+  userAnswer UserAnswer[]
 }
 
-model AnsweredQuestion {
+model QuestionAnswer {
+  id         Int          @id @default(autoincrement())
+  questionId Int
+  question   Question     @relation(fields: [questionId], references: [id])
+  answer     String
+  isCorrect  Boolean
+  UserAnswer UserAnswer[]
+}
+
+model UserAnswer {
   id                Int             @id @default(autoincrement())
-  status            QuestionStatus
   trainingSession   TrainingSession @relation(fields: [trainingSessionId], references: [id], onDelete: Cascade)
   trainingSessionId Int
   question          Question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
   questionId        Int
+  questionAnswerId  Int
+  questionAnswer    QuestionAnswer  @relation(fields: [questionAnswerId], references: [id])
 }
 
 model User {
@@ -62,8 +65,8 @@ model User {
   password           String
   refreshToken       String?
   passwordResetToken String?
-  passwordResetDate  DateTime? 
+  passwordResetDate  DateTime?
   googleSub          String?
-  trainings       Training[]
-  TrainingSession TrainingSession[]
+  trainings          Training[]
+  TrainingSession    TrainingSession[]
 }
