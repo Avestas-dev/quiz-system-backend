@@ -117,7 +117,7 @@
       }
     },
     "/reset": {
-      "get": {
+      "post": {
         "tags": [
           "Auth"
         ],
@@ -129,21 +129,10 @@
             "description": "User reset.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ResetStartRequest"
+              "$ref": "#/definitions/ResetRequest"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/send-message": {
-      "post": {
-        "description": "",
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -199,7 +188,7 @@
         }
       }
     },
-    "/profile": {
+    "/user/profile": {
       "post": {
         "tags": [
           "Auth"
@@ -225,6 +214,13 @@
             "apiKeyAuth": []
           }
         ]
+      }
+    },
+    "/user/add-training": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     }
   },
@@ -397,6 +393,40 @@
         "email": {
           "type": "string",
           "example": "kamilporeba@hotmail.com"
+        }
+      }
+    },
+    "ResetRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        },
+        "resetGUID": {
+          "type": "string",
+          "example": "e31ace7a-99fd-45e1-91c7-855e02d54983"
+        },
+        "password": {
+          "type": "string",
+          "example": "Kamil123!"
+        },
+        "passwordRepeated": {
+          "type": "string",
+          "example": "Kamil123!"
+        }
+      }
+    },
+    "AddTrainingRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Training name"
+        },
+        "visibility": {
+          "type": "boolean",
+          "example": true
         }
       }
     }

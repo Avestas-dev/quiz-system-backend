@@ -69,6 +69,10 @@ const doc = {
       password: "Kamil123!",
       passwordRepeated: "Kamil123!",
     },
+    AddTrainingRequest: {
+      name: "Training name",
+      visibility: true,
+    },
   },
 };
 

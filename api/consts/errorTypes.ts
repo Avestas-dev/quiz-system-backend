@@ -37,7 +37,7 @@ export const errorType = {
     status: 400,
   },
   PASSWORD_REQUIRED: {
-    message: "Password is required",
+    message: "Password is required.",
     status: 400,
   },
   PASSWORD_REPEATED_REQUIRED: {
@@ -49,7 +49,7 @@ export const errorType = {
     status: 403,
   },
   EMAIL_REQUIRED: {
-    message: "Email is required",
+    message: "Email is required.",
     status: 400,
   },
   PASSWORD_MIN_LENGTH: {
@@ -93,24 +93,40 @@ export const errorType = {
     status: 400,
   },
   INTERNAL_SERVER_ERROR: {
-    message: "Internal server error",
+    message: "Internal server error.",
     status: 500,
   },
   ALL_INPUTS_REQUIRED: {
-    message: "All inputs required",
+    message: "All inputs required.",
     status: 400,
   },
   GOOGLE_LOGIN_FAILED: {
-    message: "Google login failed",
+    message: "Google login failed.",
     status: 400,
   },
   GOOGLE_REGISTER_FAILED: {
-    message: "Google register failed",
+    message: "Google register failed.",
     status: 400,
   },
   ENVIROMENT_VARIABLES_ERROR: {
-    message: "Enviroment variables are not set",
+    message: "Enviroment variables are not set.",
     status: 500,
+  },
+  TRAINING_NAME_NOT_PROVIDED: {
+    message: "Training name is not provided.",
+    status: 400,
+  },
+  TRAINING_VISIBILITY_NOT_PROVIDED: {
+    message: "Training visiblity not provided.",
+    status: 400,
+  },
+  TRAINING_NAME_TOO_LONG: {
+    message: "Training name too long - max 100 characters.",
+    status: 400,
+  },
+  TRAINING_NAME_ALREADY_EXIST: {
+    message: "Training with this name already exists.",
+    status: 400,
   },
 };
 
