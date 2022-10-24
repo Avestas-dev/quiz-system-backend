@@ -497,6 +497,26 @@
           "example": true
         }
       }
+    },
+    "GetAllTrainingsResponse": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Training name"
+          },
+          "visibility": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      }
     }
   }
 }

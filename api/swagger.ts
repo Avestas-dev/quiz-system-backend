@@ -78,6 +78,14 @@ const doc = {
       name: "Training name",
       visibility: true,
     },
+    GetAllTrainingsResponse: [
+      {
+        id: 1,
+        name: "Training name",
+        visibility: true,
+        userId: 4,
+      },
+    ],
   },
 };
 

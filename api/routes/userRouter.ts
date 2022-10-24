@@ -2,6 +2,7 @@ import express from "express";
 import { profile } from "../controllers/userController/profile";
 import { addTraining } from "../controllers/userController/training/addTraining";
 import { editTraining } from "../controllers/userController/training/editTraining";
+import { getAllTrainings } from "../controllers/userController/training/getAllTrainings";
 import { addTrainingValidation } from "../middleware/validation/addTrainingValidation";
 import { editTrainingValidation } from "../middleware/validation/editTrainingValidation";
 import { verifyToken } from "../middleware/verifyToken";
@@ -23,5 +24,6 @@ userRouter.put(
   editTrainingValidation,
   editTraining
 );
+userRouter.get("/user/get-all-trainings", getAllTrainings);
 
 export default userRouter;
