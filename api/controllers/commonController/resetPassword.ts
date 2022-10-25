@@ -4,7 +4,7 @@ import { Response } from "express";
 import jwt from "jsonwebtoken";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
-import { ResetPasswordRequestModel } from "../../models/resetPasswordModel";
+import { ResetPasswordRequestModel } from "../../models/auth/resetPasswordModel";
 
 // TODO: add validation link expiry check - if password was generated more than hour ago, then send info about expiry + add info about it to email
 export const resetPassword = async (

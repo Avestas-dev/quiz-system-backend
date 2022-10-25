@@ -3,7 +3,10 @@ import { NextFunction } from "express";
 import validator from "validator";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
-import { LoginRequestModel, LoginResponseModel } from "../../models/loginModel";
+import {
+  LoginRequestModel,
+  LoginResponseModel,
+} from "../../models/auth/loginModel";
 
 export const loginValidation = async (
   req: LoginRequestModel,

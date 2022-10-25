@@ -5,7 +5,7 @@ import { prisma } from "../../helpers/prisma";
 import {
   RegisterRequestModel,
   RegisterResponseModel,
-} from "../../models/registerModel";
+} from "../../models/auth/registerModel";
 
 export const registerValidation = async (
   req: RegisterRequestModel,

@@ -2,7 +2,10 @@ import { randomUUID } from "crypto";
 import jwt from "jsonwebtoken";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
-import { LoginRequestModel, LoginResponseModel } from "../../models/loginModel";
+import {
+  LoginRequestModel,
+  LoginResponseModel,
+} from "../../models/auth/loginModel";
 
 export const login = async (
   req: LoginRequestModel,

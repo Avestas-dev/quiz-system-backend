@@ -2,7 +2,7 @@ import { Response } from "express";
 import { OAuth2Client } from "google-auth-library";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
-import { RegisterGoogleRequestModel } from "../../models/registerGoogleModel";
+import { RegisterGoogleRequestModel } from "../../models/auth/registerGoogleModel";
 
 export const registerGoogle = async (
   req: RegisterGoogleRequestModel,

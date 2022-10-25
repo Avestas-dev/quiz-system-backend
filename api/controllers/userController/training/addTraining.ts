@@ -1,8 +1,8 @@
 import { Prisma } from "@prisma/client";
 import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
-import { AddTrainingRequestModel } from "../../../models/addTrainingModel";
-import { AuthResponse } from "../../../models/authRequest";
+import { AuthResponse } from "../../../models/auth/authRequest";
+import { AddTrainingRequestModel } from "../../../models/training/addTrainingModel";
 
 export const addTraining = async (
   req: AddTrainingRequestModel,

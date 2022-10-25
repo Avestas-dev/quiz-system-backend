@@ -3,7 +3,7 @@ import { prisma } from "../../helpers/prisma";
 import {
   RegisterRequestModel,
   RegisterResponseModel,
-} from "../../models/registerModel";
+} from "../../models/auth/registerModel";
 
 export const registerUser = async (
   req: RegisterRequestModel,

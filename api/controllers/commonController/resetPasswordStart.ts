@@ -4,7 +4,7 @@ import { Response } from "express";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
 import { sendResetPasswordEmail } from "../../helpers/sendResetPasswordEmail";
-import { ResetPasswordStartRequestModel } from "../../models/resetPasswordModel";
+import { ResetPasswordStartRequestModel } from "../../models/auth/resetPasswordModel";
 
 export const resetPasswordStart = async (
   req: ResetPasswordStartRequestModel,

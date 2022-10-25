@@ -2,7 +2,7 @@ import { NextFunction, Request } from "express";
 import { OAuth2Client } from "google-auth-library";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
-import { LoginGoogleResponseModel } from "../../models/loginGoogleModel";
+import { LoginGoogleResponseModel } from "../../models/auth/loginGoogleModel";
 
 export const loginGoogle = async (
   req: Request,

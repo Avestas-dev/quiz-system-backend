@@ -3,7 +3,7 @@ import { prisma } from "../../../helpers/prisma";
 import {
   DeleteTrainingRequestModel,
   DeleteTrainingsResponseModel,
-} from "../../../models/deleteTrainingModel";
+} from "../../../models/training/deleteTrainingModel";
 
 export const deleteTraining = async (
   req: DeleteTrainingRequestModel,

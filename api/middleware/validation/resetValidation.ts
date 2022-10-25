@@ -5,7 +5,7 @@ import { prisma } from "../../helpers/prisma";
 import {
   ResetPasswordRequestModel,
   ResetPasswordResponseModel,
-} from "../../models/resetPasswordModel";
+} from "../../models/auth/resetPasswordModel";
 
 export const resetValidation = async (
   req: ResetPasswordRequestModel,

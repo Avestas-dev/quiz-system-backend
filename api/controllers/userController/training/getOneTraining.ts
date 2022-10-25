@@ -1,9 +1,9 @@
 import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
-    GetOneTrainingRequestModel,
-    GetOneTrainingsResponseModel
-} from "../../../models/getOneTrainingModel";
+  GetOneTrainingRequestModel,
+  GetOneTrainingsResponseModel,
+} from "../../../models/training/getOneTrainingModel";
 
 export const getOneTraining = async (
   req: GetOneTrainingRequestModel,
