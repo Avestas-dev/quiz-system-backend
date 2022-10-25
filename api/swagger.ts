@@ -86,6 +86,20 @@ const doc = {
         userId: 4,
       },
     ],
+    GetOneTrainingRequest: {
+      trainingId: 1,
+    },
+    DeleteTrainingRequest: {
+      trainingId: 1,
+    },
+    GetOneTrainingsResponse: [
+      {
+        id: 1,
+        name: "Training name",
+        visibility: true,
+        userId: 4,
+      },
+    ],
   },
 };
 

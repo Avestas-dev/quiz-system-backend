@@ -136,6 +136,10 @@ export const errorType = {
     message: "Edited training was not found.",
     status: 400,
   },
+  TRAINING_NOT_FOUND: {
+    message: "Training not found.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize this

@@ -273,6 +273,64 @@
           }
         ]
       }
+    },
+    "/user/get-all-trainings": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Gets all trainings of all user that have visiblity set to true, and all trainings of logged in user.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/get-one-training": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Gets one training.",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Get one training request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetOneTrainingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/delete-training": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "description": "Delete training.",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Delete request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteTrainingRequest"
+            }
+          }
+        ],
+        "responses": {}
+      }
     }
   },
   "definitions": {
@@ -514,6 +572,52 @@
           "visibility": {
             "type": "boolean",
             "example": true
+          },
+          "userId": {
+            "type": "number",
+            "example": 4
+          }
+        }
+      }
+    },
+    "GetOneTrainingRequest": {
+      "type": "object",
+      "properties": {
+        "trainingId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "DeleteTrainingRequest": {
+      "type": "object",
+      "properties": {
+        "trainingId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "GetOneTrainingsResponse": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Training name"
+          },
+          "visibility": {
+            "type": "boolean",
+            "example": true
+          },
+          "userId": {
+            "type": "number",
+            "example": 4
           }
         }
       }

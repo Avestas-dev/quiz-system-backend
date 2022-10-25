@@ -1,8 +1,10 @@
 import express from "express";
 import { profile } from "../controllers/userController/profile";
 import { addTraining } from "../controllers/userController/training/addTraining";
+import { deleteTraining } from "../controllers/userController/training/deleteTraining";
 import { editTraining } from "../controllers/userController/training/editTraining";
 import { getAllTrainings } from "../controllers/userController/training/getAllTrainings";
+import { getOneTraining } from "../controllers/userController/training/getOneTraining";
 import { addTrainingValidation } from "../middleware/validation/addTrainingValidation";
 import { editTrainingValidation } from "../middleware/validation/editTrainingValidation";
 import { verifyToken } from "../middleware/verifyToken";
@@ -17,6 +19,7 @@ userRouter.use(express.urlencoded({ extended: true }));
 // authorized routes
 userRouter.use(verifyToken);
 userRouter.post("/user/profile", profile);
+
 userRouter.post("/user/add-training", addTrainingValidation, addTraining);
 userRouter.put(
   "/user/edit-training",
@@ -24,6 +27,9 @@ userRouter.put(
   editTrainingValidation,
   editTraining
 );
+
 userRouter.get("/user/get-all-trainings", getAllTrainings);
+userRouter.get("/user/get-one-training", getOneTraining);
+userRouter.delete("/user/delete-training", deleteTraining);
 
 export default userRouter;
