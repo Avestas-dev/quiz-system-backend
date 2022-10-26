@@ -6,7 +6,7 @@ export const getAllTrainings = async (req: Request, res: AuthResponse) => {
         #swagger.description = 'Gets all trainings of all user that have visiblity set to true, and all trainings of logged in user.'
         #swagger.responses[200] = {
         description: 'All trainings received.',
-        schema: { $ref: '#/definitions/GetAllTrainingsResponse' 
+        schema: { $ref: '#/definitions/GetAllTrainingsResponse' }
       }
         
   */

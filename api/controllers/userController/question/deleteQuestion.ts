@@ -10,7 +10,7 @@ export const deleteQuestion = async (
   req: DeleteQuestionRequestModel,
   res: DeleteQuestionResponseModel
 ) => {
-  /* 	#swagger.tags = ['User']
+  /* 	#swagger.tags = ['Question']
         #swagger.description = 'Remove question'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.parameters['obj'] = {

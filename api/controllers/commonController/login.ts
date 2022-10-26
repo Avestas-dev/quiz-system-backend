@@ -17,11 +17,10 @@ export const login = async (
         in: 'body',
         description: 'User login.',
         required: true,
-        schema: { $ref: "#/definitions/LoginRequest" }
       } 
       #swagger.responses[200] = {
         description: 'User successfully logged in.',
-        schema: { $ref: "#/definitions/LoginResponse" 
+        schema: { $ref: "#/definitions/LoginResponse" }
       }  
   */
 

@@ -13,7 +13,7 @@ export const getOneTraining = async (
         #swagger.description = 'Gets one training.'
         #swagger.responses[200] = {
         description: 'One training received.',
-        schema: { $ref: '#/definitions/GetOneTrainingResponse' 
+        schema: { $ref: '#/definitions/GetOneTrainingResponse' }
       }
       #swagger.parameters['obj'] = {
             in: 'body',

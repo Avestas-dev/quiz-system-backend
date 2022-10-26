@@ -18,7 +18,7 @@ export const registerGoogle = async (
       } 
       #swagger.responses[200] = {
         description: 'User successfully logged in.',
-        schema: { $ref: '#/definitions/RegisterGoogleResponse' 
+        schema: { $ref: '#/definitions/RegisterGoogleResponse' }
       }
   */
   try {

@@ -21,16 +21,27 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "User login.",
-            "required": true,
             "schema": {
-              "$ref": "#/definitions/LoginRequest"
-            }
+              "type": "object",
+              "properties": {
+                "password": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                }
+              }
+            },
+            "description": "User login.",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "User successfully logged in.",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
           }
         }
       }
@@ -54,7 +65,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "User successfully signed up.",
+            "schema": {
+              "$ref": "#/definitions/RegisterResponse"
+            }
           }
         }
       }
@@ -153,13 +167,16 @@
             "description": "User login.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LoginRequest"
+              "$ref": "#/definitions/LoginGoogleRequest"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "User successfully logged in.",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
           }
         }
       }
@@ -183,7 +200,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "User successfully logged in.",
+            "schema": {
+              "$ref": "#/definitions/RegisterGoogleResponse"
+            }
           }
         }
       }
@@ -208,7 +228,10 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "All trainings received.",
+            "schema": {
+              "$ref": "#/definitions/GetAllTrainingsResponse"
+            }
           }
         }
       }
@@ -232,7 +255,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "One training received.",
+            "schema": {
+              "$ref": "#/definitions/GetOneTrainingResponse"
+            }
           }
         }
       },
@@ -348,7 +374,7 @@
       },
       "delete": {
         "tags": [
-          "User"
+          "Question"
         ],
         "description": "Remove question",
         "parameters": [
@@ -540,7 +566,7 @@
         ]
       }
     },
-    "/user/profile": {
+    "/profile": {
       "post": {
         "tags": [
           "Auth"

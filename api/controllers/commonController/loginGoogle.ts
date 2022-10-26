@@ -19,7 +19,7 @@ export const loginGoogle = async (
       } 
       #swagger.responses[200] = {
         description: 'User successfully logged in.',
-        schema: { $ref: '#/definitions/LoginGoogleResponse' 
+        schema: { $ref: '#/definitions/LoginGoogleResponse' }
       }
   */
   try {

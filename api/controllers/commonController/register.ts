@@ -20,7 +20,7 @@ export const registerUser = async (
       } 
       #swagger.responses[200] = {
         description: 'User successfully signed up.',
-        schema: { $ref: '#/definitions/RegisterResponse' 
+        schema: { $ref: '#/definitions/RegisterResponse' }
       }
    */
 

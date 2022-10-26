@@ -54,7 +54,7 @@ userRouter.post(
   addQuestionAnswer
 );
 userRouter.post("/training", addTrainingValidation, addTraining);
-userRouter.post("/user/profile", profile);
+userRouter.post("/profile", profile);
 
 userRouter.put("/question", editQuestionValidation, editQuestion);
 userRouter.put(
