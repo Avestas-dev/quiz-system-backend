@@ -4,6 +4,7 @@ import { deleteQuestionAnswer } from "../controllers/userController/answer/delet
 import { profile } from "../controllers/userController/profile";
 import { addQuestion } from "../controllers/userController/question/addQuestion";
 import { deleteQuestion } from "../controllers/userController/question/deleteQuestion";
+import { editQuestion } from "../controllers/userController/question/editQuestion";
 import { getQuestion } from "../controllers/userController/question/getQuestion";
 import { getQuestions } from "../controllers/userController/question/getQuestions";
 import { addTraining } from "../controllers/userController/training/addTraining";
@@ -14,6 +15,7 @@ import { getOneTraining } from "../controllers/userController/training/getOneTra
 import { addQuestionAnswerValidation } from "../middleware/validation/addQuestionAnswerValidation";
 import { addQuestionValidation } from "../middleware/validation/addQuestionValidation";
 import { addTrainingValidation } from "../middleware/validation/addTrainingValidation";
+import { editQuestionValidation } from "../middleware/validation/editQuestionValidation";
 import { editTrainingValidation } from "../middleware/validation/editTrainingValidation";
 import { verifyToken } from "../middleware/verifyToken";
 
@@ -51,5 +53,6 @@ userRouter.post(
   addQuestionAnswerValidation,
   addQuestionAnswer
 );
+userRouter.put("/user/edit-question", editQuestionValidation, editQuestion);
 
 export default userRouter;

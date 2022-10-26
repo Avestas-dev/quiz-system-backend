@@ -184,6 +184,10 @@ export const errorType = {
     message: "Question was not deleted.",
     status: 400,
   },
+  QUESTION_NOT_UPDATED: {
+    message: "Question was not updated.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize this

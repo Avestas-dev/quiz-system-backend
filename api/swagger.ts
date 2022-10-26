@@ -142,6 +142,10 @@ const doc = {
     DeleteQuestionRequest: {
       questionId: 1,
     },
+    EditQuestionRequest: {
+      questionId: 1,
+      question: "Sample question",
+    },
   },
 };
 
