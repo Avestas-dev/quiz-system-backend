@@ -2,7 +2,7 @@ import { Request } from "express";
 import { prisma } from "../../../helpers/prisma";
 import { AuthResponse } from "../../../models/auth/authRequest";
 export const getAllTrainings = async (req: Request, res: AuthResponse) => {
-  /* 	#swagger.tags = ['User']
+  /* 	#swagger.tags = ['Training']
         #swagger.description = 'Gets all trainings of all user that have visiblity set to true, and all trainings of logged in user.'
         #swagger.responses[200] = {
         description: 'All trainings received.',

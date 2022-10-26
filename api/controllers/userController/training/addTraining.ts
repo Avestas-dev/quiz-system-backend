@@ -8,7 +8,7 @@ export const addTraining = async (
   req: AddTrainingRequestModel,
   res: AuthResponse
 ) => {
-  /* 	#swagger.tags = ['User']
+  /* 	#swagger.tags = ['Training']
         #swagger.description = 'Create training'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.parameters['obj'] = {

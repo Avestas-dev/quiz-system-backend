@@ -9,7 +9,7 @@ export const getOneTraining = async (
   req: GetOneTrainingRequestModel,
   res: GetOneTrainingsResponseModel
 ) => {
-  /* 	#swagger.tags = ['User']
+  /* 	#swagger.tags = ['Training']
         #swagger.description = 'Gets one training.'
         #swagger.responses[200] = {
         description: 'One training received.',

@@ -9,7 +9,7 @@ export const editQuestionAnswer = async (
   req: EditQuestionAnswerRequestModel,
   res: EditQuestionAnswerResponseModel
 ) => {
-  /* 	#swagger.tags = ['User']
+  /* 	#swagger.tags = ['Answer']
         #swagger.description = 'Edit question answer.'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.parameters['obj'] = {

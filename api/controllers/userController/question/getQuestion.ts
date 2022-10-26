@@ -9,7 +9,7 @@ export const getQuestion = async (
   req: GetQuestionRequestModel,
   res: GetQuestionResponseModel
 ) => {
-  /* 	#swagger.tags = ['User']
+  /* 	#swagger.tags = ['Question']
         #swagger.description = 'Get one question details'
         #swagger.security = [{"apiKeyAuth": []}]
   */

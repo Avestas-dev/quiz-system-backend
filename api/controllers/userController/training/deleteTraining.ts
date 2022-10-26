@@ -9,7 +9,7 @@ export const deleteTraining = async (
   req: DeleteTrainingRequestModel,
   res: DeleteTrainingsResponseModel
 ) => {
-  /* 	#swagger.tags = ['User']
+  /* 	#swagger.tags = ['Training']
         #swagger.description = 'Delete training.'
         #swagger.parameters['obj'] = {
             in: 'body',

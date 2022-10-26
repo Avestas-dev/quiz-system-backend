@@ -19,15 +19,11 @@ export const login = async (
         required: true,
         schema: { $ref: "#/definitions/LoginRequest" }
       } 
-      
-  */
-
-  /* 
       #swagger.responses[200] = {
         description: 'User successfully logged in.',
-        schema: { $ref: '#/definitions/LoginResponse' 
-      }
-      */
+        schema: { $ref: "#/definitions/LoginResponse" 
+      }  
+  */
 
   if (process.env.TOKEN_KEY) {
     // generate token

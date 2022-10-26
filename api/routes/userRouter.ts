@@ -15,11 +15,11 @@ import { editTraining } from "../controllers/userController/training/editTrainin
 import { getAllTrainings } from "../controllers/userController/training/getAllTrainings";
 import { getOneTraining } from "../controllers/userController/training/getOneTraining";
 import { addQuestionAnswerValidation } from "../middleware/validation/answer/addQuestionAnswerValidation";
-import { addQuestionValidation } from "../middleware/validation/question/addQuestionValidation";
 import { addQuestionWithAnswersValidation } from "../middleware/validation/answer/addQuestionWithAnswersValidation";
-import { addTrainingValidation } from "../middleware/validation/training/addTrainingValidation";
 import { editQuestionAnswerValidation } from "../middleware/validation/answer/editQuestionAnswerValidation";
+import { addQuestionValidation } from "../middleware/validation/question/addQuestionValidation";
 import { editQuestionValidation } from "../middleware/validation/question/editQuestionValidation";
+import { addTrainingValidation } from "../middleware/validation/training/addTrainingValidation";
 import { editTrainingValidation } from "../middleware/validation/training/editTrainingValidation";
 import { verifyToken } from "../middleware/verifyToken";
 
@@ -33,37 +33,37 @@ userRouter.use(express.urlencoded({ extended: true }));
 // authorized routes
 userRouter.use(verifyToken);
 
-userRouter.get("/user/get-all-trainings", getAllTrainings);
-userRouter.get("/user/get-one-training", getOneTraining);
-userRouter.get("/user/get-questions", getQuestions);
-userRouter.get("/user/get-question", getQuestion);
+userRouter.get("/training/all", getAllTrainings);
+userRouter.get("/training", getOneTraining);
+userRouter.get("/question/all", getQuestions);
+userRouter.get("/question", getQuestion);
 
-userRouter.delete("/user/delete-training", deleteTraining);
-userRouter.delete("/user/delete-question-answer", deleteQuestionAnswer);
-userRouter.delete("/user/delete-question", deleteQuestion);
+userRouter.delete("/training", deleteTraining);
+userRouter.delete("/question-answer", deleteQuestionAnswer);
+userRouter.delete("/question", deleteQuestion);
 
-userRouter.post("/user/add-question", addQuestionValidation, addQuestion);
+userRouter.post("/question", addQuestionValidation, addQuestion);
 userRouter.post(
-  "/user/add-question-with-answers",
+  "/question/with-answers",
   addQuestionWithAnswersValidation,
   addQuestionWithAnswers
 );
 userRouter.post(
-  "/user/add-question-answer",
+  "/question-answer",
   addQuestionAnswerValidation,
   addQuestionAnswer
 );
-userRouter.post("/user/add-training", addTrainingValidation, addTraining);
+userRouter.post("/training", addTrainingValidation, addTraining);
 userRouter.post("/user/profile", profile);
 
-userRouter.put("/user/edit-question", editQuestionValidation, editQuestion);
+userRouter.put("/question", editQuestionValidation, editQuestion);
 userRouter.put(
-  "/user/edit-question-answer",
+  "/question-answer",
   editQuestionAnswerValidation,
   editQuestionAnswer
 );
 userRouter.put(
-  "/user/edit-training",
+  "/training",
   addTrainingValidation,
   editTrainingValidation,
   editTraining
