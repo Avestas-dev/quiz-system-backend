@@ -1,7 +1,7 @@
 import { NextFunction, Response } from "express";
-import { validationErrorHandler } from "../../helpers/errorHandler";
-import { prisma } from "../../helpers/prisma";
-import { EditTrainingRequestModel } from "../../models/training/editTrainingModel";
+import { validationErrorHandler } from "../../../helpers/errorHandler";
+import { prisma } from "../../../helpers/prisma";
+import { EditTrainingRequestModel } from "../../../models/training/editTrainingModel";
 
 export const editTrainingValidation = async (
   req: EditTrainingRequestModel,

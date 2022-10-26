@@ -1,9 +1,9 @@
 import { NextFunction } from "express";
-import { validationErrorHandler } from "../../helpers/errorHandler";
+import { validationErrorHandler } from "../../../helpers/errorHandler";
 import {
   AddQuestionAnswerRequestModel,
   AddQuestionAnswerResponseModel,
-} from "../../models/answer/addQuestionAnswerModel";
+} from "../../../models/answer/addQuestionAnswerModel";
 
 export const addQuestionAnswerValidation = async (
   req: AddQuestionAnswerRequestModel,

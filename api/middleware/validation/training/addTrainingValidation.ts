@@ -1,6 +1,6 @@
 import { NextFunction, Response } from "express";
-import { validationErrorHandler } from "../../helpers/errorHandler";
-import { AddTrainingRequestModel } from "../../models/training/addTrainingModel";
+import { validationErrorHandler } from "../../../helpers/errorHandler";
+import { AddTrainingRequestModel } from "../../../models/training/addTrainingModel";
 
 export const addTrainingValidation = async (
   req: AddTrainingRequestModel,

@@ -1,10 +1,10 @@
 import { NextFunction } from "express";
-import { validationErrorHandler } from "../../helpers/errorHandler";
-import { prisma } from "../../helpers/prisma";
+import { validationErrorHandler } from "../../../helpers/errorHandler";
+import { prisma } from "../../../helpers/prisma";
 import {
   EditQuestionAnswerRequestModel,
   EditQuestionAnswerResponseModel,
-} from "../../models/answer/editQuestionAnswerModel";
+} from "../../../models/answer/editQuestionAnswerModel";
 
 export const editQuestionAnswerValidation = async (
   req: EditQuestionAnswerRequestModel,

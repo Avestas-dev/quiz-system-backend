@@ -9,9 +9,9 @@ import { resetPassword } from "../controllers/commonController/resetPassword";
 import { resetPasswordStart } from "../controllers/commonController/resetPasswordStart";
 import { refreshToken } from "../controllers/userController/refreshToken";
 import { initializeDatabase } from "../helpers/databaseInitializer";
-import { loginValidation } from "../middleware/validation/loginValidation";
-import { registerValidation } from "../middleware/validation/registerValidation";
-import { resetValidation } from "../middleware/validation/resetValidation";
+import { loginValidation } from "../middleware/validation/auth/loginValidation";
+import { registerValidation } from "../middleware/validation/auth/registerValidation";
+import { resetValidation } from "../middleware/validation/auth/resetValidation";
 
 // Middleware imports here
 // Urlencoded

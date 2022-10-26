@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt";
 import { NextFunction } from "express";
 import validator from "validator";
-import { validationErrorHandler } from "../../helpers/errorHandler";
-import { prisma } from "../../helpers/prisma";
+import { validationErrorHandler } from "../../../helpers/errorHandler";
+import { prisma } from "../../../helpers/prisma";
 import {
   LoginRequestModel,
   LoginResponseModel,
-} from "../../models/auth/loginModel";
+} from "../../../models/auth/loginModel";
 
 export const loginValidation = async (
   req: LoginRequestModel,

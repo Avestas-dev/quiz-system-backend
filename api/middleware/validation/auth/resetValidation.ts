@@ -1,11 +1,11 @@
 import { NextFunction } from "express";
 import validator from "validator";
-import { validationErrorHandler } from "../../helpers/errorHandler";
-import { prisma } from "../../helpers/prisma";
+import { validationErrorHandler } from "../../../helpers/errorHandler";
+import { prisma } from "../../../helpers/prisma";
 import {
   ResetPasswordRequestModel,
   ResetPasswordResponseModel,
-} from "../../models/auth/resetPasswordModel";
+} from "../../../models/auth/resetPasswordModel";
 
 export const resetValidation = async (
   req: ResetPasswordRequestModel,

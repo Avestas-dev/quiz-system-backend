@@ -14,13 +14,13 @@ import { deleteTraining } from "../controllers/userController/training/deleteTra
 import { editTraining } from "../controllers/userController/training/editTraining";
 import { getAllTrainings } from "../controllers/userController/training/getAllTrainings";
 import { getOneTraining } from "../controllers/userController/training/getOneTraining";
-import { addQuestionAnswerValidation } from "../middleware/validation/addQuestionAnswerValidation";
-import { addQuestionValidation } from "../middleware/validation/addQuestionValidation";
-import { addQuestionWithAnswersValidation } from "../middleware/validation/addQuestionWithAnswersValidation";
-import { addTrainingValidation } from "../middleware/validation/addTrainingValidation";
-import { editQuestionAnswerValidation } from "../middleware/validation/editQuestionAnswerValidation";
-import { editQuestionValidation } from "../middleware/validation/editQuestionValidation";
-import { editTrainingValidation } from "../middleware/validation/editTrainingValidation";
+import { addQuestionAnswerValidation } from "../middleware/validation/answer/addQuestionAnswerValidation";
+import { addQuestionValidation } from "../middleware/validation/question/addQuestionValidation";
+import { addQuestionWithAnswersValidation } from "../middleware/validation/answer/addQuestionWithAnswersValidation";
+import { addTrainingValidation } from "../middleware/validation/training/addTrainingValidation";
+import { editQuestionAnswerValidation } from "../middleware/validation/answer/editQuestionAnswerValidation";
+import { editQuestionValidation } from "../middleware/validation/question/editQuestionValidation";
+import { editTrainingValidation } from "../middleware/validation/training/editTrainingValidation";
 import { verifyToken } from "../middleware/verifyToken";
 
 // Middleware imports here

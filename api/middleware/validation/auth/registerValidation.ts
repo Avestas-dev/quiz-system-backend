@@ -1,11 +1,11 @@
 import { NextFunction } from "express";
 import validator from "validator";
-import { validationErrorHandler } from "../../helpers/errorHandler";
-import { prisma } from "../../helpers/prisma";
+import { validationErrorHandler } from "../../../helpers/errorHandler";
+import { prisma } from "../../../helpers/prisma";
 import {
   RegisterRequestModel,
   RegisterResponseModel,
-} from "../../models/auth/registerModel";
+} from "../../../models/auth/registerModel";
 
 export const registerValidation = async (
   req: RegisterRequestModel,
