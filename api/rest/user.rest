@@ -182,4 +182,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpY
     "questionId": 1
 }
 
+### Delete question answer
+DELETE http://localhost:8000/user/delete-question-answer HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjY2MTg2MzYsImV4cCI6MTc1MjYxODYzNn0.49rxGYHadlUpsxQxzVD72ZSAnf7h-e7Ghj9tSHPtNJM
+
+{
+    "questionAnswerId": 14
+}
+
 

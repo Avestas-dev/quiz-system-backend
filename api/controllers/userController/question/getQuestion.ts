@@ -13,9 +13,7 @@ export const getQuestion = async (
         #swagger.description = 'Get one question details'
         #swagger.security = [{"apiKeyAuth": []}]
   */
-
   const { questionId } = req.body;
-
   try {
     const question = await prisma.question.findFirst({
       where: {

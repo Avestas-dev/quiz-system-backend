@@ -22,7 +22,7 @@ export const editTraining = async (
   const { trainingId, name, visibility } = req.body;
 
   try {
-    await prisma.training.update({
+    await prisma.training.updateMany({
       data: {
         name: name,
         visibility: visibility,
@@ -30,6 +30,7 @@ export const editTraining = async (
       },
       where: {
         id: trainingId,
+        userId: res.locals.user.id,
       },
     });
   } catch (e) {

@@ -1,5 +1,6 @@
 import express from "express";
 import { addQuestionAnswer } from "../controllers/userController/answer/addQuestionAnswer";
+import { deleteQuestionAnswer } from "../controllers/userController/answer/deleteQuestionAnswer";
 import { profile } from "../controllers/userController/profile";
 import { addQuestion } from "../controllers/userController/question/addQuestion";
 import { getQuestion } from "../controllers/userController/question/getQuestion";
@@ -38,7 +39,10 @@ userRouter.get("/user/get-all-trainings", getAllTrainings);
 userRouter.get("/user/get-one-training", getOneTraining);
 userRouter.get("/user/get-questions", getQuestions);
 userRouter.get("/user/get-question", getQuestion);
+
 userRouter.delete("/user/delete-training", deleteTraining);
+userRouter.delete("/user/delete-question-answer", deleteQuestionAnswer);
+
 userRouter.post("/user/add-question", addQuestionValidation, addQuestion);
 userRouter.post(
   "/user/add-question-answer",

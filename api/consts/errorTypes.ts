@@ -172,6 +172,14 @@ export const errorType = {
     message: "Question does not exist.",
     status: 400,
   },
+  QUESTION_ANSWER_NOT_EXIST: {
+    message: "Question answer does not exist.",
+    status: 400,
+  },
+  QUESTION_ANSWER_NOT_DELETED: {
+    message: "Question answer was not deleted.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize this

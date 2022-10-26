@@ -137,6 +137,9 @@ const doc = {
         },
       ],
     },
+    DeleteQuestionAnswerRequest: {
+      questionAnswerId: 1,
+    },
   },
 };
 
