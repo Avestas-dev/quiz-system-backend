@@ -104,6 +104,12 @@ const doc = {
       question: 1,
       trainingId: 1,
     },
+    AddQuestionAnswerRequest: {
+      question: 1,
+      questionId: 1,
+      answer: "Sample answer",
+      isCorrect: true,
+    },
   },
 };
 

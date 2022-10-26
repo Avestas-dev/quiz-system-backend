@@ -152,6 +152,26 @@ export const errorType = {
     message: "Question too long - max. 500 characters.",
     status: 400,
   },
+  ANSWER_NOT_PROVIDED: {
+    message: "Answer not provided.",
+    status: 400,
+  },
+  IS_CORRECT_NOT_PROVIDED: {
+    message: "Is correct field not provided.",
+    status: 400,
+  },
+  ANSWER_TOO_LONG: {
+    message: "Answer too long - max. 500 characters.",
+    status: 400,
+  },
+  QUESTION_ID_NOT_PROVIDED: {
+    message: "Question Id not provided.",
+    status: 400,
+  },
+  QUESTION_NOT_EXIST: {
+    message: "Question does not exist.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize this
