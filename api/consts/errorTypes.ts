@@ -140,6 +140,18 @@ export const errorType = {
     message: "Training not found.",
     status: 400,
   },
+  QUESTION_NOT_PROVIDED: {
+    message: "Question not provided.",
+    status: 400,
+  },
+  TRAINING_ID_NOT_PROVIDED: {
+    message: "Training Id not provided.",
+    status: 400,
+  },
+  QUESTION_TOO_LONG: {
+    message: "Question too long - max. 500 characters.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize this

@@ -331,6 +331,35 @@
         ],
         "responses": {}
       }
+    },
+    "/user/add-question": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Create question",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create question request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddQuestionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
     }
   },
   "definitions": {
@@ -619,6 +648,19 @@
             "type": "number",
             "example": 4
           }
+        }
+      }
+    },
+    "AddQuestionRequest": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "number",
+          "example": 1
+        },
+        "trainingId": {
+          "type": "number",
+          "example": 1
         }
       }
     }

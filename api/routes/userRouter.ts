@@ -1,5 +1,6 @@
 import express from "express";
 import { profile } from "../controllers/userController/profile";
+import { addQuestion } from "../controllers/userController/question/addQuestion";
 import { addTraining } from "../controllers/userController/training/addTraining";
 import { deleteTraining } from "../controllers/userController/training/deleteTraining";
 import { editTraining } from "../controllers/userController/training/editTraining";
@@ -31,5 +32,6 @@ userRouter.put(
 userRouter.get("/user/get-all-trainings", getAllTrainings);
 userRouter.get("/user/get-one-training", getOneTraining);
 userRouter.delete("/user/delete-training", deleteTraining);
+userRouter.post("/user/add-question", addQuestion);
 
 export default userRouter;

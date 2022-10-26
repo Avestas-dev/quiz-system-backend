@@ -100,6 +100,10 @@ const doc = {
         userId: 4,
       },
     ],
+    AddQuestionRequest: {
+      question: 1,
+      trainingId: 1,
+    },
   },
 };
 
