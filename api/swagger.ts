@@ -146,6 +146,11 @@ const doc = {
       questionId: 1,
       question: "Sample question",
     },
+    EditQuestionAnswerRequest: {
+      answer: "Sample answer",
+      isCorrect: true,
+      questionAnswerId: 1,
+    },
   },
 };
 

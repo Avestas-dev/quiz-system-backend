@@ -1,6 +1,7 @@
 import express from "express";
 import { addQuestionAnswer } from "../controllers/userController/answer/addQuestionAnswer";
 import { deleteQuestionAnswer } from "../controllers/userController/answer/deleteQuestionAnswer";
+import { editQuestionAnswer } from "../controllers/userController/answer/editQuestionAnswer";
 import { profile } from "../controllers/userController/profile";
 import { addQuestion } from "../controllers/userController/question/addQuestion";
 import { deleteQuestion } from "../controllers/userController/question/deleteQuestion";
@@ -15,6 +16,7 @@ import { getOneTraining } from "../controllers/userController/training/getOneTra
 import { addQuestionAnswerValidation } from "../middleware/validation/addQuestionAnswerValidation";
 import { addQuestionValidation } from "../middleware/validation/addQuestionValidation";
 import { addTrainingValidation } from "../middleware/validation/addTrainingValidation";
+import { editQuestionAnswerValidation } from "../middleware/validation/editQuestionAnswerValidation";
 import { editQuestionValidation } from "../middleware/validation/editQuestionValidation";
 import { editTrainingValidation } from "../middleware/validation/editTrainingValidation";
 import { verifyToken } from "../middleware/verifyToken";
@@ -28,15 +30,6 @@ userRouter.use(express.urlencoded({ extended: true }));
 
 // authorized routes
 userRouter.use(verifyToken);
-userRouter.post("/user/profile", profile);
-
-userRouter.post("/user/add-training", addTrainingValidation, addTraining);
-userRouter.put(
-  "/user/edit-training",
-  addTrainingValidation,
-  editTrainingValidation,
-  editTraining
-);
 
 userRouter.get("/user/get-all-trainings", getAllTrainings);
 userRouter.get("/user/get-one-training", getOneTraining);
@@ -53,6 +46,20 @@ userRouter.post(
   addQuestionAnswerValidation,
   addQuestionAnswer
 );
+userRouter.post("/user/add-training", addTrainingValidation, addTraining);
+userRouter.post("/user/profile", profile);
+
 userRouter.put("/user/edit-question", editQuestionValidation, editQuestion);
+userRouter.put(
+  "/user/edit-question-answer",
+  editQuestionAnswerValidation,
+  editQuestionAnswer
+);
+userRouter.put(
+  "/user/edit-training",
+  addTrainingValidation,
+  editTrainingValidation,
+  editTraining
+);
 
 export default userRouter;

@@ -188,6 +188,14 @@ export const errorType = {
     message: "Question was not updated.",
     status: 400,
   },
+  QUESTION_ANSWER_ID_NOT_PROVIDED: {
+    message: "Question answer Id was not provided.",
+    status: 400,
+  },
+  QUESTION_ANSWER_NOT_UPDATED: {
+    message: "Question answer was not updated.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize this

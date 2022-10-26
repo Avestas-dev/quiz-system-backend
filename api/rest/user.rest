@@ -209,7 +209,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpY
 
 {
     "questionId": 1,
-    "question": "Sample question111"
+    "question": "Sample question"
 }
 
+
+### Edit question answer
+PUT http://localhost:8000/user/edit-question-answer HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjY2MTg2MzYsImV4cCI6MTc1MjYxODYzNn0.49rxGYHadlUpsxQxzVD72ZSAnf7h-e7Ghj9tSHPtNJM
+
+{
+    "answer": "Sample answer11",
+    "isCorrect": false,
+    "questionAnswerId": 16
+}
 
