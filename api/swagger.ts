@@ -1,6 +1,7 @@
-// import swaggerAutogen from "swagger-autogen";
+import swaggerAutogenFunc from "swagger-autogen";
+const swaggerAutogen = swaggerAutogenFunc();
 
-const swaggerAutogen = require("swagger-autogen")();
+// const swaggerAutogen = require("swagger-autogen")();
 const doc = {
   info: {
     title: "Quiz System Api",
@@ -109,6 +110,32 @@ const doc = {
       questionId: 1,
       answer: "Sample answer",
       isCorrect: true,
+    },
+    GetQuestionsResponse: {
+      id: 1,
+      question: "Test question",
+      trainingId: 1,
+      QuestionAnswer: [
+        {
+          id: 1,
+          questionId: 1,
+          answer: "sample answer",
+          isCorrect: true,
+        },
+      ],
+    },
+    GetQuestionResponse: {
+      id: 1,
+      question: "Test question",
+      trainingId: 1,
+      QuestionAnswer: [
+        {
+          id: 1,
+          questionId: 1,
+          answer: "sample answer",
+          isCorrect: true,
+        },
+      ],
     },
   },
 };

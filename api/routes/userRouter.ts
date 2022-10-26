@@ -2,6 +2,7 @@ import express from "express";
 import { addQuestionAnswer } from "../controllers/userController/answer/addQuestionAnswer";
 import { profile } from "../controllers/userController/profile";
 import { addQuestion } from "../controllers/userController/question/addQuestion";
+import { getQuestion } from "../controllers/userController/question/getQuestion";
 import { getQuestions } from "../controllers/userController/question/getQuestions";
 import { addTraining } from "../controllers/userController/training/addTraining";
 import { deleteTraining } from "../controllers/userController/training/deleteTraining";
@@ -36,6 +37,7 @@ userRouter.put(
 userRouter.get("/user/get-all-trainings", getAllTrainings);
 userRouter.get("/user/get-one-training", getOneTraining);
 userRouter.get("/user/get-questions", getQuestions);
+userRouter.get("/user/get-question", getQuestion);
 userRouter.delete("/user/delete-training", deleteTraining);
 userRouter.post("/user/add-question", addQuestionValidation, addQuestion);
 userRouter.post(
