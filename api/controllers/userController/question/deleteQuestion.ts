@@ -2,39 +2,37 @@ import { Prisma } from "@prisma/client";
 import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
-  DeleteQuestionAnswerRequestModel,
-  DeleteQuestionAnswerResponseModel,
-} from "../../../models/answer/deleteQuestionAnswerModel";
+  DeleteQuestionRequestModel,
+  DeleteQuestionResponseModel,
+} from "../../../models/question/deleteQuestionModel";
 
-export const deleteQuestionAnswer = async (
-  req: DeleteQuestionAnswerRequestModel,
-  res: DeleteQuestionAnswerResponseModel
+export const deleteQuestion = async (
+  req: DeleteQuestionRequestModel,
+  res: DeleteQuestionResponseModel
 ) => {
   /* 	#swagger.tags = ['User']
-        #swagger.description = 'Remove question answer'
+        #swagger.description = 'Remove question'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.parameters['obj'] = {
             in: 'body',
-            description: 'Remove question answer.',
+            description: 'Question removed.',
             required: true,
-            schema: { $ref: "#/definitions/DeleteQuestionAnswerRequest" }
+            schema: { $ref: "#/definitions/DeleteQuestionRequest" }
         }         
   */
-  const { questionAnswerId } = req.body;
+  const { questionId } = req.body;
 
   try {
-    const { count } = await prisma.questionAnswer.deleteMany({
+    const { count } = await prisma.question.deleteMany({
       where: {
-        id: questionAnswerId,
-        question: {
-          training: {
-            userId: res.locals.user.id,
-          },
+        id: questionId,
+        training: {
+          userId: res.locals.user.id,
         },
       },
     });
     if (count === 0) {
-      return validationErrorHandler(res, "QUESTION_ANSWER_NOT_DELETED");
+      return validationErrorHandler(res, "QUESTION_NOT_DELETED");
     }
 
     return res.json(count);

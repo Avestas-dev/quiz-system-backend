@@ -180,6 +180,10 @@ export const errorType = {
     message: "Question answer was not deleted.",
     status: 400,
   },
+  QUESTION_NOT_DELETED: {
+    message: "Question was not deleted.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize this

@@ -3,6 +3,7 @@ import { addQuestionAnswer } from "../controllers/userController/answer/addQuest
 import { deleteQuestionAnswer } from "../controllers/userController/answer/deleteQuestionAnswer";
 import { profile } from "../controllers/userController/profile";
 import { addQuestion } from "../controllers/userController/question/addQuestion";
+import { deleteQuestion } from "../controllers/userController/question/deleteQuestion";
 import { getQuestion } from "../controllers/userController/question/getQuestion";
 import { getQuestions } from "../controllers/userController/question/getQuestions";
 import { addTraining } from "../controllers/userController/training/addTraining";
@@ -42,6 +43,7 @@ userRouter.get("/user/get-question", getQuestion);
 
 userRouter.delete("/user/delete-training", deleteTraining);
 userRouter.delete("/user/delete-question-answer", deleteQuestionAnswer);
+userRouter.delete("/user/delete-question", deleteQuestion);
 
 userRouter.post("/user/add-question", addQuestionValidation, addQuestion);
 userRouter.post(

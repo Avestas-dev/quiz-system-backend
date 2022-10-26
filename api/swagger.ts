@@ -1,5 +1,4 @@
-import swaggerAutogenFunc from "swagger-autogen";
-const swaggerAutogen = swaggerAutogenFunc();
+const swaggerAutogen = require("swagger-autogen")();
 
 // const swaggerAutogen = require("swagger-autogen")();
 const doc = {
@@ -139,6 +138,9 @@ const doc = {
     },
     DeleteQuestionAnswerRequest: {
       questionAnswerId: 1,
+    },
+    DeleteQuestionRequest: {
+      questionId: 1,
     },
   },
 };

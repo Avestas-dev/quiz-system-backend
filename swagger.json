@@ -312,6 +312,44 @@
         }
       }
     },
+    "/user/get-questions": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get all questions for training",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/user/get-question": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get one question details",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/user/delete-training": {
       "delete": {
         "tags": [
@@ -332,6 +370,64 @@
         "responses": {}
       }
     },
+    "/user/delete-question-answer": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "description": "Remove question answer",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Remove question answer.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteQuestionAnswerRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/user/delete-question": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "description": "Remove question",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Question removed.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteQuestionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/user/add-question": {
       "post": {
         "tags": [
@@ -346,6 +442,35 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/AddQuestionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/user/add-question-answer": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Add answer for question",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create answer for question request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddQuestionAnswerRequest"
             }
           }
         ],
@@ -659,6 +784,127 @@
           "example": 1
         },
         "trainingId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "AddQuestionAnswerRequest": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "number",
+          "example": 1
+        },
+        "questionId": {
+          "type": "number",
+          "example": 1
+        },
+        "answer": {
+          "type": "string",
+          "example": "Sample answer"
+        },
+        "isCorrect": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "GetQuestionsResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "question": {
+          "type": "string",
+          "example": "Test question"
+        },
+        "trainingId": {
+          "type": "number",
+          "example": 1
+        },
+        "QuestionAnswer": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "questionId": {
+                "type": "number",
+                "example": 1
+              },
+              "answer": {
+                "type": "string",
+                "example": "sample answer"
+              },
+              "isCorrect": {
+                "type": "boolean",
+                "example": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "GetQuestionResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "question": {
+          "type": "string",
+          "example": "Test question"
+        },
+        "trainingId": {
+          "type": "number",
+          "example": 1
+        },
+        "QuestionAnswer": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "questionId": {
+                "type": "number",
+                "example": 1
+              },
+              "answer": {
+                "type": "string",
+                "example": "sample answer"
+              },
+              "isCorrect": {
+                "type": "boolean",
+                "example": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "DeleteQuestionAnswerRequest": {
+      "type": "object",
+      "properties": {
+        "questionAnswerId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "DeleteQuestionRequest": {
+      "type": "object",
+      "properties": {
+        "questionId": {
           "type": "number",
           "example": 1
         }
