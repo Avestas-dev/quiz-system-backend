@@ -196,9 +196,13 @@ export const errorType = {
     message: "Question answer was not updated.",
     status: 400,
   },
+  ANSWER_ARRAY_VALIDATION_ERROR: {
+    message: "Not all provided answers are correct.",
+    status: 400,
+  },
 };
 
-// TODO: find better way to optimize this
+// TODO: find better way to optimize thisd
 export const findStatusByMessage = (message: string) => {
   const values = Object.values(errorType);
   const keys = Object.keys(errorType);

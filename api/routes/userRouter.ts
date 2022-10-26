@@ -4,6 +4,7 @@ import { deleteQuestionAnswer } from "../controllers/userController/answer/delet
 import { editQuestionAnswer } from "../controllers/userController/answer/editQuestionAnswer";
 import { profile } from "../controllers/userController/profile";
 import { addQuestion } from "../controllers/userController/question/addQuestion";
+import { addQuestionWithAnswers } from "../controllers/userController/question/addQuestionWithAnswers";
 import { deleteQuestion } from "../controllers/userController/question/deleteQuestion";
 import { editQuestion } from "../controllers/userController/question/editQuestion";
 import { getQuestion } from "../controllers/userController/question/getQuestion";
@@ -15,6 +16,7 @@ import { getAllTrainings } from "../controllers/userController/training/getAllTr
 import { getOneTraining } from "../controllers/userController/training/getOneTraining";
 import { addQuestionAnswerValidation } from "../middleware/validation/addQuestionAnswerValidation";
 import { addQuestionValidation } from "../middleware/validation/addQuestionValidation";
+import { addQuestionWithAnswersValidation } from "../middleware/validation/addQuestionWithAnswersValidation";
 import { addTrainingValidation } from "../middleware/validation/addTrainingValidation";
 import { editQuestionAnswerValidation } from "../middleware/validation/editQuestionAnswerValidation";
 import { editQuestionValidation } from "../middleware/validation/editQuestionValidation";
@@ -41,6 +43,11 @@ userRouter.delete("/user/delete-question-answer", deleteQuestionAnswer);
 userRouter.delete("/user/delete-question", deleteQuestion);
 
 userRouter.post("/user/add-question", addQuestionValidation, addQuestion);
+userRouter.post(
+  "/user/add-question-with-answers",
+  addQuestionWithAnswersValidation,
+  addQuestionWithAnswers
+);
 userRouter.post(
   "/user/add-question-answer",
   addQuestionAnswerValidation,

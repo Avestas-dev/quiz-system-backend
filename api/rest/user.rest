@@ -224,3 +224,32 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpY
     "questionAnswerId": 16
 }
 
+
+### Add question with answers
+POST http://localhost:8000/user/add-question-with-answers HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjY2MTg2MzYsImV4cCI6MTc1MjYxODYzNn0.49rxGYHadlUpsxQxzVD72ZSAnf7h-e7Ghj9tSHPtNJM
+
+{
+    "question": "Sample batch question",
+    "trainingId": 22,
+    "answers": [
+        {
+            "answer": "Answer one",
+            "isCorrect": false
+        },
+        {
+            "answer": "Answer two",
+            "isCorrect": true
+        },
+        {
+            "answer": "Answer three",
+            "isCorrect": true
+        },
+        {
+            "answer": "Answer four",
+            "isCorrect": true
+        }
+    ]
+}
+

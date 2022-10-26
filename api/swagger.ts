@@ -151,6 +151,20 @@ const doc = {
       isCorrect: true,
       questionAnswerId: 1,
     },
+    AddQuestionWithAnswersRequest: {
+      question: "Sample question",
+      trainingId: 1,
+      answers: [
+        {
+          answer: "Sample answer",
+          isCorrect: true,
+        },
+        {
+          answer: "Sample answer 2",
+          isCorrect: false,
+        },
+      ],
+    },
   },
 };
 
