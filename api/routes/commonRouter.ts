@@ -8,6 +8,7 @@ import { registerGoogle } from "../controllers/commonController/registerGoogle";
 import { resetPassword } from "../controllers/commonController/resetPassword";
 import { resetPasswordStart } from "../controllers/commonController/resetPasswordStart";
 import { refreshToken } from "../controllers/userController/refreshToken";
+import { initializeDatabase } from "../helpers/databaseInitializer";
 import { loginValidation } from "../middleware/validation/loginValidation";
 import { registerValidation } from "../middleware/validation/registerValidation";
 import { resetValidation } from "../middleware/validation/resetValidation";
@@ -36,5 +37,7 @@ commonRouter.post("/reset", resetValidation, resetPassword);
 
 commonRouter.post("/login-google", loginGoogle, login);
 commonRouter.post("/register-google", registerGoogle);
+
+commonRouter.post("/initdb", initializeDatabase);
 
 export default commonRouter;

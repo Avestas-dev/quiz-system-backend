@@ -188,90 +188,15 @@
         }
       }
     },
-    "/user/profile": {
+    "/initdb": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
-        "description": "Get user profile from token",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "User profile.",
-            "schema": {
-              "$ref": "#/definitions/ProfileResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      }
-    },
-    "/user/add-training": {
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "description": "Create training",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Create request.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/AddTrainingRequest"
-            }
-          }
-        ],
+        "description": "",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      }
-    },
-    "/user/edit-training": {
-      "put": {
-        "tags": [
-          "User"
-        ],
-        "description": "Edit training",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Edit request.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/EditTrainingRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
+        }
       }
     },
     "/user/get-all-trainings": {
@@ -457,6 +382,35 @@
         ]
       }
     },
+    "/user/add-question-with-answers": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Create question with answers",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create question with answers request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddQuestionAnswerRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/user/add-question-answer": {
       "post": {
         "tags": [
@@ -471,6 +425,150 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/AddQuestionAnswerRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/user/add-training": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Create training",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTrainingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/user/profile": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Get user profile from token",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile.",
+            "schema": {
+              "$ref": "#/definitions/ProfileResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/user/edit-question": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Edit question.",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Edit question success.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditQuestionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/user/edit-question-answer": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Edit question answer.",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Edit question question success.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditQuestionAnswerRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/user/edit-training": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Edit training",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Edit request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditTrainingRequest"
             }
           }
         ],
@@ -907,6 +1005,65 @@
         "questionId": {
           "type": "number",
           "example": 1
+        }
+      }
+    },
+    "EditQuestionRequest": {
+      "type": "object",
+      "properties": {
+        "questionId": {
+          "type": "number",
+          "example": 1
+        },
+        "question": {
+          "type": "string",
+          "example": "Sample question"
+        }
+      }
+    },
+    "EditQuestionAnswerRequest": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "string",
+          "example": "Sample answer"
+        },
+        "isCorrect": {
+          "type": "boolean",
+          "example": true
+        },
+        "questionAnswerId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "AddQuestionWithAnswersRequest": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string",
+          "example": "Sample question"
+        },
+        "trainingId": {
+          "type": "number",
+          "example": 1
+        },
+        "answers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "answer": {
+                "type": "string",
+                "example": "Sample answer 2"
+              },
+              "isCorrect": {
+                "type": "boolean",
+                "example": false
+              }
+            }
+          }
         }
       }
     }

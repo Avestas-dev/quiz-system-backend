@@ -135,7 +135,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpY
 
 {
     "trainingId": 1,
-    "question": "Test question"    
+    "question": "Test question 5"    
 }
 
 
@@ -253,3 +253,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpY
     ]
 }
 
+### Init db
+POST http://localhost:8000/initdb HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjY2MTg2MzYsImV4cCI6MTc1MjYxODYzNn0.49rxGYHadlUpsxQxzVD72ZSAnf7h-e7Ghj9tSHPtNJM

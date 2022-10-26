@@ -7,7 +7,6 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
-const DATABASE_URL = process.env.DATABASE_URL;
 
 // Cors policy
 const corsOpts = {
