@@ -259,6 +259,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpY
 {
     "trainingId": 1000000
 }
+
+
 ### Training session - end
 
 POST http://localhost:8000/training-session/end HTTP/1.1 
@@ -268,5 +270,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpY
 {
     "trainingId": 1000000
 }
+
+
+### Training session - questions
+
+Get http://localhost:8000/training-session/5/questions HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE2Njc0MDA0NTgsImV4cCI6MTc1MzQwMDQ1OH0.vxCYg17R4HdSW2WiMiCRKaorprnxCTS-9jIk4xkHh3g
+
 
 

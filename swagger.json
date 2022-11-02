@@ -379,6 +379,61 @@
         ]
       }
     },
+    "/training-session/end": {
+      "post": {
+        "tags": [
+          "Training Session"
+        ],
+        "description": "Ends training sessions",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Ending of training session request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EndTrainingSessionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/training-session/{trainingSessionId}/questions": {
+      "get": {
+        "tags": [
+          "Training Session"
+        ],
+        "description": "Get all questions for training session that were not answered, and were created after creation of training session.",
+        "parameters": [
+          {
+            "name": "trainingSessionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/question/all/{trainingId}": {
       "get": {
         "tags": [
@@ -1172,6 +1227,15 @@
       }
     },
     "StartTrainingSessionRequest": {
+      "type": "object",
+      "properties": {
+        "trainingId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "EndTrainingSessionRequest": {
       "type": "object",
       "properties": {
         "trainingId": {

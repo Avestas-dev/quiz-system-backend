@@ -35,15 +35,17 @@ export const startTrainingSession = async (
 
     // if training session does not exist, then create new one
     if (!existingSession) {
-      await prisma.trainingSession.create({
+      const newTrainingSession = await prisma.trainingSession.create({
         data: {
           trainingId: trainingId,
           userId: res.locals.user.id,
           finished: false,
         },
       });
+      return res.json({ trainingSessionId: newTrainingSession.id });
+    } else {
+      return res.json({ trainingSessionId: existingSession.id });
     }
-    return res.json();
   } catch (e) {
     if (
       e instanceof Prisma.PrismaClientKnownRequestError &&

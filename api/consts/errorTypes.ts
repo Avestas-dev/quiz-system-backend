@@ -204,6 +204,10 @@ export const errorType = {
     message: "Training session was not finished.",
     status: 400,
   },
+  TRAINING_SESSION_NOT_FOUND: {
+    message: "Training session with given id was not found.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize thisd
