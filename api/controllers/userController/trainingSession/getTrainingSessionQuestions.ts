@@ -4,7 +4,7 @@ import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
   GetTrainingSessionQuestionsRequestModel,
-  GetTrainingSessionQuestionsResponseModel,
+  GetTrainingSessionQuestionsResponseModel
 } from "../../../models/trainingSession/getTrainingSessionQuestionsModel";
 
 export const getTrainingSessionQuestions = async (
@@ -12,7 +12,7 @@ export const getTrainingSessionQuestions = async (
   res: GetTrainingSessionQuestionsResponseModel
 ) => {
   /* 	#swagger.tags = ['Training Session']
-        #swagger.description = 'Get all questions for training session that were not answered, and were created after creation of training session.'
+        #swagger.description = 'Get all questions for training session that were not answered, and were created after creation of training session. This endpoint should be used to get questions for training session that is started or continued (when previous was not finished) using endpoint /training-session/start'
         #swagger.security = [{"apiKeyAuth": []}]
   */
   const { trainingSessionId } = req.params;

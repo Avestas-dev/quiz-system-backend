@@ -3,7 +3,7 @@ import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
   AddUserAnswerRequestModel,
-  AddUserAnswerResponseModel,
+  AddUserAnswerResponseModel
 } from "../../../models/userAnswer/addUserAnswerModel";
 
 export const addUserAnswer = async (
@@ -11,7 +11,7 @@ export const addUserAnswer = async (
   res: AddUserAnswerResponseModel
 ) => {
   /* 	#swagger.tags = ['User Answer']
-        #swagger.description = 'Create question'
+        #swagger.description = 'Add answer to question. This endpoint should be used when responding to question, answers should be an array.'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.parameters['obj'] = {
             in: 'body',
@@ -35,7 +35,9 @@ export const addUserAnswer = async (
       return validationErrorHandler(res, "QUESTION_ANSWERED_ALREADY");
     }
 
-    // add check if every questionAnswerId belongs to same question
+    // check if training question session belongs to user
+
+    // check if every questionAnswerId belongs to same question
     const questionAnswersIdsForQuestion = await prisma.question.findMany({
       where: {
         id: request.questionId,
@@ -65,7 +67,8 @@ export const addUserAnswer = async (
         "QUESTION_ANSWER_NOT_FOR_GIVEN_QUESTION"
       );
 
-    await prisma.userAnswer.createMany({
+    const { count } = await prisma.userAnswer.createMany({
+      skipDuplicates: true,
       data: request?.questionAnswerIds?.map((questionAnswerId) => {
         return {
           trainingSessionId: request.trainingSessionId,
@@ -74,6 +77,8 @@ export const addUserAnswer = async (
         };
       }),
     });
+    if (count === 0) validationErrorHandler(res, "QUESTION_ANSWER_NOT_ADDED")
+    return res.json();
   } catch (e) {
     if (
       e instanceof Prisma.PrismaClientKnownRequestError &&
@@ -92,5 +97,4 @@ export const addUserAnswer = async (
     console.log(e);
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
   }
-  return res.json({});
 };

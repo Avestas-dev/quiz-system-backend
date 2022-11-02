@@ -11,7 +11,7 @@ export const startTrainingSession = async (
   res: StartTrainingSessionResponseModel
 ) => {
   /* 	#swagger.tags = ['Training Session']
-        #swagger.description = 'Start training sessions'
+        #swagger.description = 'Start training session. It makes new training session with finished status set to false. If training session with given id already exists, then response is always success - before creating new training session, it is required to use /training-session/end endpoint.'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.parameters['obj'] = {
             in: 'body',

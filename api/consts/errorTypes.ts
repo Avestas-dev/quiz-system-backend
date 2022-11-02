@@ -212,6 +212,10 @@ export const errorType = {
     message: "Training question was answered during this training session.",
     status: 400,
   },
+  QUESTION_ANSWER_NOT_ADDED: {
+    message: "Question answer was not added. Something went wrong.",
+    status: 400,
+  },
   QUESTION_ANSWER_NOT_FOR_GIVEN_QUESTION: {
     message: "Given question answer ids are not for given question.",
     status: 400,
