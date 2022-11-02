@@ -439,8 +439,34 @@
         "tags": [
           "Training Session"
         ],
-        "description": "Get all done by user training sessions",
+        "description": "Get all training sessions done or started by user",
         "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/training-session/{trainingSessionId}": {
+      "get": {
+        "tags": [
+          "Training Session"
+        ],
+        "description": "Get single training session with all the details for it",
+        "parameters": [
+          {
+            "name": "trainingSessionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1303,7 +1329,7 @@
           "type": "number",
           "example": 1
         },
-        "questionAnswerId": {
+        "questionAnswerIds": {
           "type": "array",
           "example": [
             1,

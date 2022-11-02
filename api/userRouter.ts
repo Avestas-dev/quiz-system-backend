@@ -16,6 +16,7 @@ import { getAllTrainings } from "./controllers/userController/training/getAllTra
 import { getOneTraining } from "./controllers/userController/training/getOneTraining";
 import { endTrainingSession } from "./controllers/userController/trainingSession/endTrainingSession";
 import { getTrainingSessionQuestions } from "./controllers/userController/trainingSession/getTrainingSessionQuestions";
+import { getUserTrainingSession } from "./controllers/userController/trainingSession/getUserTrainingSession";
 import { getUserTrainingSessions } from "./controllers/userController/trainingSession/getUserTrainingSessions";
 import { startTrainingSession } from "./controllers/userController/trainingSession/startTrainingSession";
 import { addUserAnswer } from "./controllers/userController/userAnswer/addUserAnswer";
@@ -58,6 +59,7 @@ userRouter.get(
   getTrainingSessionQuestions
 );
 userRouter.get("/training-session/all", getUserTrainingSessions);
+userRouter.get("/training-session/:trainingSessionId", getUserTrainingSession);
 
 // QUESTIONS
 userRouter.get("/question/all/:trainingId", getQuestions);

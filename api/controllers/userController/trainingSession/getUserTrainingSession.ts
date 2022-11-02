@@ -2,23 +2,26 @@ import dayjs from "dayjs";
 import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
-  GetDoneTrainingSessionsResponseModel,
-  GetUserTrainingSessionsRequestModel,
-} from "../../../models/trainingSession/getUserTrainingSessionsModel";
+    GetDoneTrainingSessionResponseModel,
+    GetUserTrainingSessionRequestModel
+} from "../../../models/trainingSession/getUserTrainingSessionModel";
 
-export const getUserTrainingSessions = async (
-  req: GetUserTrainingSessionsRequestModel,
-  res: GetDoneTrainingSessionsResponseModel
+export const getUserTrainingSession = async (
+  req: GetUserTrainingSessionRequestModel,
+  res: GetDoneTrainingSessionResponseModel
 ) => {
   /* 	#swagger.tags = ['Training Session']
-        #swagger.description = 'Get all training sessions done or started by user'
+        #swagger.description = 'Get single training session with all the details for it'
         #swagger.security = [{"apiKeyAuth": []}]
   */
+
+  const { trainingSessionId } = req.params;
 
   try {
     const trainingSessions = await prisma.trainingSession.findMany({
       where: {
         userId: res.locals.user.id,
+        id: Number(trainingSessionId),
       },
       include: {
         Training: {
@@ -33,6 +36,7 @@ export const getUserTrainingSessions = async (
                 QuestionAnswer: {
                   select: {
                     id: true,
+                    answer: true,
                     isCorrect: true,
                   },
                 },
@@ -64,6 +68,7 @@ export const getUserTrainingSessions = async (
               return {
                 trainingQuestionId: question.id,
                 question: question.question,
+                answers: question.QuestionAnswer,
                 correctAnswers: question.QuestionAnswer.filter(
                   (qa) => qa.isCorrect
                 ).map((questionAnswer) => questionAnswer.id),
@@ -74,6 +79,7 @@ export const getUserTrainingSessions = async (
             })
             .map((trainingQuestion) => {
               return {
+                ...trainingQuestion,
                 trainingQuestionId: trainingQuestion.trainingQuestionId,
                 question: trainingQuestion.question,
                 answerStatus: (trainingQuestion.userAnswers?.length === 0
