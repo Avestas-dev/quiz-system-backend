@@ -11,7 +11,7 @@ export const registerUser = async (
 ) => {
   /*
       #swagger.tags = ['Auth']
-      #swagger.description = 'Endpoint to register user'
+      #swagger.description = 'Endpoint to register user.'
       #swagger.parameters['obj'] = {
         in: 'body',
         description: 'User login.',

@@ -1,8 +1,8 @@
 import { Training, User } from "@prisma/client";
 import { Request, Response } from "express";
 
-type GetOneTrainingRequestBody = {
-  trainingId: number;
+type GetOneTrainingRequestParams = {
+  trainingId: string;
 };
 
 type Locals = {
@@ -12,9 +12,8 @@ type Locals = {
 type GetOneTrainingResponseBody = Training;
 
 export type GetOneTrainingRequestModel = Request<
-  any,
-  any,
-  GetOneTrainingRequestBody
+  GetOneTrainingRequestParams,
+  any
 >;
 
 export type GetOneTrainingsResponseModel = Response<

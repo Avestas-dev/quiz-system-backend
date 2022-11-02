@@ -8,7 +8,7 @@ export const refreshToken = async (req: Request, res: Response) => {
         #swagger.description = 'Get new token using refresh token.'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.responses[200] = {
-            description: 'Gets refresh token.',
+            description: 'User sucessfully reseted token.',
             schema: { $ref: '#/definitions/RefreshTokenResponse' }
         }
   */

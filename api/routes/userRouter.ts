@@ -34,13 +34,13 @@ userRouter.use(express.urlencoded({ extended: true }));
 userRouter.use(verifyToken);
 
 userRouter.get("/training/all", getAllTrainings);
-userRouter.get("/training", getOneTraining);
-userRouter.get("/question/all", getQuestions);
-userRouter.get("/question", getQuestion);
+userRouter.get("/training/:trainingId", getOneTraining);
+userRouter.get("/question/all/:trainingId", getQuestions);
+userRouter.get("/question/:questionId", getQuestion);
 
-userRouter.delete("/training", deleteTraining);
-userRouter.delete("/question-answer", deleteQuestionAnswer);
-userRouter.delete("/question", deleteQuestion);
+userRouter.delete("/training/:trainingId", deleteTraining);
+userRouter.delete("/question-answer/:questionAnswerId", deleteQuestionAnswer);
+userRouter.delete("/question/:questionId", deleteQuestion);
 
 userRouter.post("/question", addQuestionValidation, addQuestion);
 userRouter.post(

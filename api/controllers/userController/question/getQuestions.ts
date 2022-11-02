@@ -10,17 +10,27 @@ export const getQuestions = async (
   res: GetQuestionsResponseModel
 ) => {
   /* 	#swagger.tags = ['Question']
-        #swagger.description = 'Get all questions for training'
+        #swagger.description = 'Get all questions for training, with or without answers.'
         #swagger.security = [{"apiKeyAuth": []}]
+        #swagger.parameters['withAnswers'] = {
+            in: 'query',
+            description: 'If questions should include answers or no.',
+            required: true,
+        }  
+        #swagger.responses[200] = {
+          description: 'All questions received.',
+          schema: { $ref: '#/definitions/GetQuestionsResponse' }
+        }
   */
 
-  const { trainingId, withAnswers } = req.body;
+  const { trainingId } = req.params;
+  const { withAnswers } = req.query;
 
   try {
     const questions = await prisma.question.findMany({
       where: {
         training: {
-          id: trainingId,
+          id: Number(trainingId),
           OR: [
             { userId: res.locals.user.id },
             {
@@ -30,11 +40,12 @@ export const getQuestions = async (
         },
       },
       include: {
-        QuestionAnswer: !!withAnswers,
+        QuestionAnswer: withAnswers === "true",
       },
     });
     return res.json(questions);
   } catch (e) {
+    console.log(e);
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
   }
 };

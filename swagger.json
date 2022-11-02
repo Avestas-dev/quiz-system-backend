@@ -10,6 +10,14 @@
   "schemes": [
     "http"
   ],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "Bearer token verification"
+    }
+  },
   "paths": {
     "/login": {
       "post": {
@@ -21,19 +29,11 @@
           {
             "name": "obj",
             "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "password": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                }
-              }
-            },
             "description": "User login.",
-            "required": true
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginRequest"
+            }
           }
         ],
         "responses": {
@@ -51,7 +51,7 @@
         "tags": [
           "Auth"
         ],
-        "description": "Endpoint to register user",
+        "description": "Endpoint to register user.",
         "parameters": [
           {
             "name": "obj",
@@ -93,7 +93,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Gets refresh token.",
+            "description": "User sucessfully reseted token.",
             "schema": {
               "$ref": "#/definitions/RefreshTokenResponse"
             }
@@ -135,7 +135,7 @@
         "tags": [
           "Auth"
         ],
-        "description": "Endpoint to start reset password procedure",
+        "description": "Endpoint to start reset password procedure.",
         "parameters": [
           {
             "name": "obj",
@@ -167,7 +167,7 @@
             "description": "User login.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LoginGoogleRequest"
+              "$ref": "#/definitions/LoginRequest"
             }
           }
         ],
@@ -233,10 +233,15 @@
               "$ref": "#/definitions/GetAllTrainingsResponse"
             }
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/training": {
+    "/training/{trainingId}": {
       "get": {
         "tags": [
           "Training"
@@ -244,13 +249,10 @@
         "description": "Gets one training.",
         "parameters": [
           {
-            "name": "obj",
-            "in": "body",
-            "description": "Get one training request.",
+            "name": "trainingId",
+            "in": "path",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/GetOneTrainingRequest"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -260,7 +262,12 @@
               "$ref": "#/definitions/GetOneTrainingResponse"
             }
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -269,58 +276,10 @@
         "description": "Delete training.",
         "parameters": [
           {
-            "name": "obj",
-            "in": "body",
-            "description": "Delete request.",
+            "name": "trainingId",
+            "in": "path",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/DeleteTrainingRequest"
-            }
-          }
-        ],
-        "responses": {}
-      },
-      "post": {
-        "tags": [
-          "Training"
-        ],
-        "description": "Create training",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Create request.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/AddTrainingRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Training"
-        ],
-        "description": "Edit training",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Edit request.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/EditTrainingRequest"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -335,16 +294,43 @@
         ]
       }
     },
-    "/question/all": {
+    "/question/all/{trainingId}": {
       "get": {
         "tags": [
           "Question"
         ],
-        "description": "Get all questions for training",
-        "parameters": [],
+        "description": "Get all questions for training, with or without answers.",
+        "parameters": [
+          {
+            "name": "trainingId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "withAnswers",
+            "in": "query",
+            "description": "If questions should include answers or no.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "schema",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "All questions received.",
+            "schema": {
+              "$ref": "#/definitions/GetQuestionsResponse"
+            }
           }
         },
         "security": [
@@ -354,16 +340,26 @@
         ]
       }
     },
-    "/question": {
+    "/question/{questionId}": {
       "get": {
         "tags": [
           "Question"
         ],
-        "description": "Get one question details",
-        "parameters": [],
+        "description": "Get one question details, with all answers.",
+        "parameters": [
+          {
+            "name": "questionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "All questions received.",
+            "schema": {
+              "$ref": "#/definitions/GetQuestionResponse"
+            }
           }
         },
         "security": [
@@ -379,12 +375,21 @@
         "description": "Remove question",
         "parameters": [
           {
-            "name": "obj",
-            "in": "body",
-            "description": "Question removed.",
+            "name": "questionId",
+            "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
             "schema": {
-              "$ref": "#/definitions/DeleteQuestionRequest"
+              "type": "object",
+              "properties": {
+                "questionId": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
@@ -398,7 +403,47 @@
             "apiKeyAuth": []
           }
         ]
-      },
+      }
+    },
+    "/question-answer/{questionAnswerId}": {
+      "delete": {
+        "tags": [
+          "Answer"
+        ],
+        "description": "Remove question answer",
+        "parameters": [
+          {
+            "name": "questionAnswerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "questionAnswerId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/question": {
       "post": {
         "tags": [
           "Question"
@@ -454,20 +499,20 @@
         ]
       }
     },
-    "/question-answer": {
-      "delete": {
+    "/question/with-answers": {
+      "post": {
         "tags": [
-          "Answer"
+          "Question"
         ],
-        "description": "Remove question answer",
+        "description": "Create question with answers",
         "parameters": [
           {
             "name": "obj",
             "in": "body",
-            "description": "Remove question answer.",
+            "description": "Create question with answers request.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/DeleteQuestionAnswerRequest"
+              "$ref": "#/definitions/AddQuestionWithAnswersRequest"
             }
           }
         ],
@@ -481,7 +526,9 @@
             "apiKeyAuth": []
           }
         ]
-      },
+      }
+    },
+    "/question-answer": {
       "post": {
         "tags": [
           "Answer"
@@ -537,20 +584,47 @@
         ]
       }
     },
-    "/question/with-answers": {
+    "/training": {
       "post": {
         "tags": [
-          "Question"
+          "Training"
         ],
-        "description": "Create question with answers",
+        "description": "Create training",
         "parameters": [
           {
             "name": "obj",
             "in": "body",
-            "description": "Create question with answers request.",
+            "description": "Create request.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AddQuestionAnswerRequest"
+              "$ref": "#/definitions/AddTrainingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Training"
+        ],
+        "description": "Edit training",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Edit request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditTrainingRequest"
             }
           }
         ],
@@ -572,13 +646,7 @@
           "Auth"
         ],
         "description": "Get user profile from token",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "User profile.",
@@ -668,8 +736,8 @@
           "example": "password"
         },
         "passwordResetDate": {
-          "type": "object",
-          "properties": {}
+          "type": "string",
+          "example": "2017-07-21"
         },
         "passwordResetToken": {
           "type": "string",
@@ -727,8 +795,8 @@
           "example": "password"
         },
         "passwordResetDate": {
-          "type": "object",
-          "properties": {}
+          "type": "string",
+          "example": "2017-07-21"
         },
         "passwordResetToken": {
           "type": "string",
@@ -746,6 +814,10 @@
         "email": {
           "type": "string",
           "example": "kamilporeba@hotmail.com"
+        },
+        "id": {
+          "type": "number",
+          "example": 1
         }
       }
     },
@@ -851,12 +923,24 @@
         }
       }
     },
-    "DeleteTrainingRequest": {
+    "GetOneTrainingResponse": {
       "type": "object",
       "properties": {
-        "trainingId": {
+        "id": {
           "type": "number",
           "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "Training name"
+        },
+        "visibility": {
+          "type": "boolean",
+          "example": true
+        },
+        "userId": {
+          "type": "number",
+          "example": 4
         }
       }
     },
@@ -888,8 +972,8 @@
       "type": "object",
       "properties": {
         "question": {
-          "type": "number",
-          "example": 1
+          "type": "string",
+          "example": "Sample question"
         },
         "trainingId": {
           "type": "number",
@@ -900,10 +984,6 @@
     "AddQuestionAnswerRequest": {
       "type": "object",
       "properties": {
-        "question": {
-          "type": "number",
-          "example": 1
-        },
         "questionId": {
           "type": "number",
           "example": 1
@@ -919,40 +999,43 @@
       }
     },
     "GetQuestionsResponse": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "number",
-          "example": 1
-        },
-        "question": {
-          "type": "string",
-          "example": "Test question"
-        },
-        "trainingId": {
-          "type": "number",
-          "example": 1
-        },
-        "QuestionAnswer": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number",
-                "example": 1
-              },
-              "questionId": {
-                "type": "number",
-                "example": 1
-              },
-              "answer": {
-                "type": "string",
-                "example": "sample answer"
-              },
-              "isCorrect": {
-                "type": "boolean",
-                "example": true
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "question": {
+            "type": "string",
+            "example": "Test question"
+          },
+          "trainingId": {
+            "type": "number",
+            "example": 1
+          },
+          "QuestionAnswer": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "questionId": {
+                  "type": "number",
+                  "example": 1
+                },
+                "answer": {
+                  "type": "string",
+                  "example": "sample answer"
+                },
+                "isCorrect": {
+                  "type": "boolean",
+                  "example": true
+                }
               }
             }
           }
@@ -997,24 +1080,6 @@
               }
             }
           }
-        }
-      }
-    },
-    "DeleteQuestionAnswerRequest": {
-      "type": "object",
-      "properties": {
-        "questionAnswerId": {
-          "type": "number",
-          "example": 1
-        }
-      }
-    },
-    "DeleteQuestionRequest": {
-      "type": "object",
-      "properties": {
-        "questionId": {
-          "type": "number",
-          "example": 1
         }
       }
     },

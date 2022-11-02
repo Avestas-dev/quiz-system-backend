@@ -16,7 +16,7 @@ export const addQuestionWithAnswers = async (
             in: 'body',
             description: 'Create question with answers request.',
             required: true,
-            schema: { $ref: "#/definitions/AddQuestionAnswerRequest" }
+            schema: { $ref: "#/definitions/AddQuestionWithAnswersRequest" }
         }         
   */
 

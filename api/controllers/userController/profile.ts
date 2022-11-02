@@ -10,7 +10,6 @@ export const profile = async (req: Request, res: ProfileResponseModel) => {
             schema: { $ref: '#/definitions/ProfileResponse' }
         }
   */
-  const token = req.headers["authorization"]?.split(" ")[1];
   return res.json({
     id: res.locals.user.id,
     email: res.locals.user.email,

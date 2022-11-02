@@ -8,6 +8,14 @@ const doc = {
   },
   host: "localhost:8000",
   schemes: ["http"],
+  securityDefinitions: {
+    apiKeyAuth: {
+      type: "apiKey",
+      in: "header",
+      name: "Authorization",
+      description: "Bearer token verification",
+    },
+  },
   definitions: {
     LoginRequest: {
       email: "kamilporeba@hotmail.com",
@@ -32,7 +40,7 @@ const doc = {
       googleSub: "googleSub",
       id: 1,
       password: "password",
-      passwordResetDate: new Date(),
+      passwordResetDate: "2017-07-21",
       passwordResetToken: "resetToken",
       refreshToken: "refreshToken",
     },
@@ -49,12 +57,13 @@ const doc = {
       googleSub: "googleSub",
       id: 1,
       password: "password",
-      passwordResetDate: new Date(),
+      passwordResetDate: "2017-07-21",
       passwordResetToken: "resetToken",
       refreshToken: "refreshToken",
     },
     ProfileResponse: {
       email: "kamilporeba@hotmail.com",
+      id: 1,
     },
     RefreshTokenResponse: {
       token:
@@ -78,6 +87,7 @@ const doc = {
       name: "Training name",
       visibility: true,
     },
+
     GetAllTrainingsResponse: [
       {
         id: 1,
@@ -89,8 +99,11 @@ const doc = {
     GetOneTrainingRequest: {
       trainingId: 1,
     },
-    DeleteTrainingRequest: {
-      trainingId: 1,
+    GetOneTrainingResponse: {
+      id: 1,
+      name: "Training name",
+      visibility: true,
+      userId: 4,
     },
     GetOneTrainingsResponse: [
       {
@@ -101,28 +114,29 @@ const doc = {
       },
     ],
     AddQuestionRequest: {
-      question: 1,
+      question: "Sample question",
       trainingId: 1,
     },
     AddQuestionAnswerRequest: {
-      question: 1,
       questionId: 1,
       answer: "Sample answer",
       isCorrect: true,
     },
-    GetQuestionsResponse: {
-      id: 1,
-      question: "Test question",
-      trainingId: 1,
-      QuestionAnswer: [
-        {
-          id: 1,
-          questionId: 1,
-          answer: "sample answer",
-          isCorrect: true,
-        },
-      ],
-    },
+    GetQuestionsResponse: [
+      {
+        id: 1,
+        question: "Test question",
+        trainingId: 1,
+        QuestionAnswer: [
+          {
+            id: 1,
+            questionId: 1,
+            answer: "sample answer",
+            isCorrect: true,
+          },
+        ],
+      },
+    ],
     GetQuestionResponse: {
       id: 1,
       question: "Test question",
@@ -135,12 +149,6 @@ const doc = {
           isCorrect: true,
         },
       ],
-    },
-    DeleteQuestionAnswerRequest: {
-      questionAnswerId: 1,
-    },
-    DeleteQuestionRequest: {
-      questionId: 1,
     },
     EditQuestionRequest: {
       questionId: 1,

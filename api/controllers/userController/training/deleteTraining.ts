@@ -10,23 +10,19 @@ export const deleteTraining = async (
   res: DeleteTrainingsResponseModel
 ) => {
   /* 	#swagger.tags = ['Training']
-        #swagger.description = 'Delete training.'
-        #swagger.parameters['obj'] = {
-            in: 'body',
-            description: 'Delete request.',
-            required: true,
-            schema: { $ref: "#/definitions/DeleteTrainingRequest" }
-        } 
-      }
+      #swagger.description = 'Delete training.'
+      #swagger.security = [{"apiKeyAuth": []}]
+      
+      
   */
-  const { trainingId } = req.body;
+  const { trainingId } = req.params;
 
   const training = await prisma.training.deleteMany({
     where: {
-      id: trainingId,
+      id: Number(trainingId),
       userId: res.locals.user.id,
     },
   });
-  if (training.count) res.json();
+  if (training.count > 0) res.json();
   else return validationErrorHandler(res, "TRAINING_NOT_FOUND");
 };

@@ -9,29 +9,26 @@ export const getOneTraining = async (
   req: GetOneTrainingRequestModel,
   res: GetOneTrainingsResponseModel
 ) => {
-  /* 	#swagger.tags = ['Training']
-        #swagger.description = 'Gets one training.'
-        #swagger.responses[200] = {
-        description: 'One training received.',
-        schema: { $ref: '#/definitions/GetOneTrainingResponse' }
-      }
-      #swagger.parameters['obj'] = {
-            in: 'body',
-            description: 'Get one training request.',
-            required: true,
-            schema: { $ref: "#/definitions/GetOneTrainingRequest" }
-        }      
+  /* 	  
+    #swagger.tags = ['Training']
+    #swagger.description = 'Gets one training.'
+    #swagger.security = [{"apiKeyAuth": []}]
+    #swagger.responses[200] = {
+      description: 'One training received.',
+      schema: { $ref: '#/definitions/GetOneTrainingResponse' }
+    }
+    
   */
-  const { trainingId } = req.body;
+  const { trainingId } = req.params;
 
   const training = await prisma.training.findFirst({
     where: {
       OR: [
         {
-          id: trainingId,
+          id: Number(trainingId),
           userId: res.locals.user.id,
         },
-        { id: trainingId, visibility: true },
+        { id: Number(trainingId), visibility: true },
       ],
     },
   });

@@ -12,7 +12,7 @@ export const resetPassword = async (
   res: Response
 ) => {
   /*  #swagger.tags = ['Auth']
-      #swagger.description = 'Endpoint to start reset password procedure' 
+      #swagger.description = 'Endpoint to start reset password procedure.' 
   	  #swagger.parameters['obj'] = {
         in: 'body',
         description: 'User reset.',
@@ -45,11 +45,7 @@ export const resetPassword = async (
       where: { id: res.locals.user.id },
     });
 
-    return res.json({
-      token: token,
-      refreshToken: refreshToken,
-      email: res.locals.user.email,
-    });
+    return res.json();
   }
 
   return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");

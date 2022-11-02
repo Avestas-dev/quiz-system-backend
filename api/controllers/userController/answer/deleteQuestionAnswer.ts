@@ -13,12 +13,7 @@ export const deleteQuestionAnswer = async (
   /* 	#swagger.tags = ['Answer']
         #swagger.description = 'Remove question answer'
         #swagger.security = [{"apiKeyAuth": []}]
-        #swagger.parameters['obj'] = {
-            in: 'body',
-            description: 'Remove question answer.',
-            required: true,
-            schema: { $ref: "#/definitions/DeleteQuestionAnswerRequest" }
-        }         
+              
   */
   const { questionAnswerId } = req.body;
 

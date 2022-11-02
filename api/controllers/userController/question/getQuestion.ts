@@ -10,14 +10,18 @@ export const getQuestion = async (
   res: GetQuestionResponseModel
 ) => {
   /* 	#swagger.tags = ['Question']
-        #swagger.description = 'Get one question details'
+        #swagger.description = 'Get one question details, with all answers.'
         #swagger.security = [{"apiKeyAuth": []}]
+          #swagger.responses[200] = {
+          description: 'All questions received.',
+          schema: { $ref: '#/definitions/GetQuestionResponse' }
+        }
   */
-  const { questionId } = req.body;
+  const { questionId } = req.params;
   try {
     const question = await prisma.question.findFirst({
       where: {
-        id: questionId,
+        id: Number(questionId),
         training: {
           OR: [{ userId: res.locals.user.id }, { visibility: true }],
         },

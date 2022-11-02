@@ -17,7 +17,7 @@ export const addQuestionAnswer = async (
             in: 'body',
             description: 'Create answer for question request.',
             required: true,
-            schema: { $ref: "#/definitions/AddQuestionAnswerRequest" }
+            schema: { $ref: '#/definitions/AddQuestionAnswerRequest' }
         }         
   */
   const { answer, isCorrect, questionId } = req.body;

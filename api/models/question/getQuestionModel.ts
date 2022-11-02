@@ -1,8 +1,8 @@
 import { Question, User } from "@prisma/client";
 import { Request, Response } from "express";
 
-type GetQuestionRequestBody = {
-  questionId: number;
+type GetQuestionRequestParams = {
+  questionId: string;
 };
 
 type GetQuestionLocals = {
@@ -11,7 +11,7 @@ type GetQuestionLocals = {
 
 type GetQuestionResponseBody = Question;
 
-export type GetQuestionRequestModel = Request<any, any, GetQuestionRequestBody>;
+export type GetQuestionRequestModel = Request<GetQuestionRequestParams, any>;
 
 export type GetQuestionResponseModel = Response<
   GetQuestionResponseBody,
