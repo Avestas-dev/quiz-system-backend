@@ -22,7 +22,7 @@ content-type: application/json
 ### Profile User 
 POST http://localhost:8000/profile HTTP/1.1 
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYyMTk3MzMsImV4cCI6MTc1MjIxOTczM30.JC__s5oNnuanbqoPxX55tDdzJ4OsbvUD6GVPLiWnlsw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE2Njc0MDA0NTgsImV4cCI6MTc1MzQwMDQ1OH0.vxCYg17R4HdSW2WiMiCRKaorprnxCTS-9jIk4xkHh3g
 
 
 ### Refresh
@@ -246,3 +246,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpY
 POST http://localhost:8000/initdb HTTP/1.1 
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjY2MTg2MzYsImV4cCI6MTc1MjYxODYzNn0.49rxGYHadlUpsxQxzVD72ZSAnf7h-e7Ghj9tSHPtNJM
+
+
+
+
+### Training session - start
+
+POST http://localhost:8000/training-session/start HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE2Njc0MDA0NTgsImV4cCI6MTc1MzQwMDQ1OH0.vxCYg17R4HdSW2WiMiCRKaorprnxCTS-9jIk4xkHh3g
+
+{
+    "trainingId": 1000000
+}

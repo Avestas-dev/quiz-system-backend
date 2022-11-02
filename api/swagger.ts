@@ -173,6 +173,9 @@ const doc = {
         },
       ],
     },
+    StartTrainingSessionRequest: {
+      trainingId: 1,
+    },
   },
 };
 

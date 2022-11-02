@@ -294,6 +294,91 @@
         ]
       }
     },
+    "/training": {
+      "post": {
+        "tags": [
+          "Training"
+        ],
+        "description": "Create training",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTrainingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Training"
+        ],
+        "description": "Edit training",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Edit request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditTrainingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/training-session/start": {
+      "post": {
+        "tags": [
+          "Training Session"
+        ],
+        "description": "Start training sessions",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Start training session request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StartTrainingSessionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/question/all/{trainingId}": {
       "get": {
         "tags": [
@@ -405,44 +490,6 @@
         ]
       }
     },
-    "/question-answer/{questionAnswerId}": {
-      "delete": {
-        "tags": [
-          "Answer"
-        ],
-        "description": "Remove question answer",
-        "parameters": [
-          {
-            "name": "questionAnswerId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "questionAnswerId": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      }
-    },
     "/question": {
       "post": {
         "tags": [
@@ -528,6 +575,44 @@
         ]
       }
     },
+    "/question-answer/{questionAnswerId}": {
+      "delete": {
+        "tags": [
+          "Answer"
+        ],
+        "description": "Remove question answer",
+        "parameters": [
+          {
+            "name": "questionAnswerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "questionAnswerId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/question-answer": {
       "post": {
         "tags": [
@@ -569,62 +654,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/EditQuestionAnswerRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      }
-    },
-    "/training": {
-      "post": {
-        "tags": [
-          "Training"
-        ],
-        "description": "Create training",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Create request.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/AddTrainingRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Training"
-        ],
-        "description": "Edit training",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Edit request.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/EditTrainingRequest"
             }
           }
         ],
@@ -1139,6 +1168,15 @@
               }
             }
           }
+        }
+      }
+    },
+    "StartTrainingSessionRequest": {
+      "type": "object",
+      "properties": {
+        "trainingId": {
+          "type": "number",
+          "example": 1
         }
       }
     }
