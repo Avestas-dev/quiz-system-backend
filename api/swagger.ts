@@ -179,6 +179,11 @@ const doc = {
     EndTrainingSessionRequest: {
       trainingId: 1,
     },
+    AddUserAnswerRequest: {
+      trainingSessionId: 1,
+      questionId: 1,
+      questionAnswerId: [1, 2, 3],
+    },
   },
 };
 

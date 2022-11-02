@@ -630,6 +630,35 @@
         ]
       }
     },
+    "/user-answer": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Create question",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Add answer to given question in given training session.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddUserAnswerRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/question-answer/{questionAnswerId}": {
       "delete": {
         "tags": [
@@ -1241,6 +1270,30 @@
         "trainingId": {
           "type": "number",
           "example": 1
+        }
+      }
+    },
+    "AddUserAnswerRequest": {
+      "type": "object",
+      "properties": {
+        "trainingSessionId": {
+          "type": "number",
+          "example": 1
+        },
+        "questionId": {
+          "type": "number",
+          "example": 1
+        },
+        "questionAnswerId": {
+          "type": "array",
+          "example": [
+            1,
+            2,
+            3
+          ],
+          "items": {
+            "type": "number"
+          }
         }
       }
     }

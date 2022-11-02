@@ -280,3 +280,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpY
 
 
 
+### Training session - questions
+
+POST http://localhost:8000/user-answer HTTP/1.1 
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE2Njc0MDA0NTgsImV4cCI6MTc1MzQwMDQ1OH0.vxCYg17R4HdSW2WiMiCRKaorprnxCTS-9jIk4xkHh3g
+
+{
+    "trainingSessionId": 5,
+    "questionId": 1000000,
+    "questionAnswerIds": [1000000, 1000001, 1000002]
+}
+
+    
+
+

@@ -208,6 +208,14 @@ export const errorType = {
     message: "Training session with given id was not found.",
     status: 400,
   },
+  QUESTION_ANSWERED_ALREADY: {
+    message: "Training question was answered during this training session.",
+    status: 400,
+  },
+  QUESTION_ANSWER_NOT_FOR_GIVEN_QUESTION: {
+    message: "Given question answer ids are not for given question.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize thisd

@@ -17,6 +17,7 @@ import { getOneTraining } from "../controllers/userController/training/getOneTra
 import { endTrainingSession } from "../controllers/userController/trainingSession/endTrainingSession";
 import { getTrainingSessionQuestions } from "../controllers/userController/trainingSession/getTrainingSessionQuestions";
 import { startTrainingSession } from "../controllers/userController/trainingSession/startTrainingSession";
+import { addUserAnswer } from "../controllers/userController/userAnswer/addUserAnswer";
 import { addQuestionAnswerValidation } from "../middleware/validation/answer/addQuestionAnswerValidation";
 import { addQuestionWithAnswersValidation } from "../middleware/validation/answer/addQuestionWithAnswersValidation";
 import { editQuestionAnswerValidation } from "../middleware/validation/answer/editQuestionAnswerValidation";
@@ -65,6 +66,9 @@ userRouter.post(
   addQuestionWithAnswers
 );
 userRouter.put("/question", editQuestionValidation, editQuestion);
+
+// USER ANSWER
+userRouter.post("/user-answer", addUserAnswer);
 
 // QUESTION ANSWER
 userRouter.delete("/question-answer/:questionAnswerId", deleteQuestionAnswer);

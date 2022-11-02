@@ -63,8 +63,8 @@ export const getTrainingSessionQuestions = async (
       );
 
     const notAnsweredQuestions =
-      trainingQuestionsFromBeforeTrainingSessionStart.filter((e) =>
-        uniqueAnswersId.find((w) => w !== e.id)
+      trainingQuestionsFromBeforeTrainingSessionStart.filter(
+        (e) => !uniqueAnswersId.find((w) => w === e.id)
       );
 
     return res.json({
