@@ -33,40 +33,43 @@ userRouter.use(express.urlencoded({ extended: true }));
 // authorized routes
 userRouter.use(verifyToken);
 
+// TRAINING
 userRouter.get("/training/all", getAllTrainings);
 userRouter.get("/training/:trainingId", getOneTraining);
-userRouter.get("/question/all/:trainingId", getQuestions);
-userRouter.get("/question/:questionId", getQuestion);
-
-userRouter.delete("/training/:trainingId", deleteTraining);
-userRouter.delete("/question-answer/:questionAnswerId", deleteQuestionAnswer);
-userRouter.delete("/question/:questionId", deleteQuestion);
-
-userRouter.post("/question", addQuestionValidation, addQuestion);
-userRouter.post(
-  "/question/with-answers",
-  addQuestionWithAnswersValidation,
-  addQuestionWithAnswers
-);
-userRouter.post(
-  "/question-answer",
-  addQuestionAnswerValidation,
-  addQuestionAnswer
-);
 userRouter.post("/training", addTrainingValidation, addTraining);
-userRouter.post("/profile", profile);
-
-userRouter.put("/question", editQuestionValidation, editQuestion);
-userRouter.put(
-  "/question-answer",
-  editQuestionAnswerValidation,
-  editQuestionAnswer
-);
+userRouter.delete("/training/:trainingId", deleteTraining);
 userRouter.put(
   "/training",
   addTrainingValidation,
   editTrainingValidation,
   editTraining
 );
+
+// QUESTIONS
+userRouter.get("/question/all/:trainingId", getQuestions);
+userRouter.get("/question/:questionId", getQuestion);
+userRouter.delete("/question/:questionId", deleteQuestion);
+userRouter.post("/question", addQuestionValidation, addQuestion);
+userRouter.post(
+  "/question/with-answers",
+  addQuestionWithAnswersValidation,
+  addQuestionWithAnswers
+);
+userRouter.put("/question", editQuestionValidation, editQuestion);
+
+// QUESTION ANSWER
+userRouter.delete("/question-answer/:questionAnswerId", deleteQuestionAnswer);
+userRouter.post(
+  "/question-answer",
+  addQuestionAnswerValidation,
+  addQuestionAnswer
+);
+userRouter.put(
+  "/question-answer",
+  editQuestionAnswerValidation,
+  editQuestionAnswer
+);
+
+userRouter.post("/profile", profile);
 
 export default userRouter;

@@ -18,6 +18,12 @@ Generate prisma client
 
 ---
 
+Format code
+
+    yarn prisma format
+
+---
+
 Open prisma studio
 
     npx prisma studio
