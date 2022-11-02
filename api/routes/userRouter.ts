@@ -14,7 +14,8 @@ import { deleteTraining } from "../controllers/userController/training/deleteTra
 import { editTraining } from "../controllers/userController/training/editTraining";
 import { getAllTrainings } from "../controllers/userController/training/getAllTrainings";
 import { getOneTraining } from "../controllers/userController/training/getOneTraining";
-import { startTrainingSession } from "../controllers/userController/training/startTrainingSession";
+import { endTrainingSession } from "../controllers/userController/trainingSession/endTrainingSession";
+import { startTrainingSession } from "../controllers/userController/trainingSession/startTrainingSession";
 import { addQuestionAnswerValidation } from "../middleware/validation/answer/addQuestionAnswerValidation";
 import { addQuestionWithAnswersValidation } from "../middleware/validation/answer/addQuestionWithAnswersValidation";
 import { editQuestionAnswerValidation } from "../middleware/validation/answer/editQuestionAnswerValidation";
@@ -46,6 +47,7 @@ userRouter.put(
   editTraining
 );
 userRouter.post("/training-session/start", startTrainingSession);
+userRouter.post("/training-session/end", endTrainingSession);
 
 // QUESTIONS
 userRouter.get("/question/all/:trainingId", getQuestions);

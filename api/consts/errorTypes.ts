@@ -200,6 +200,10 @@ export const errorType = {
     message: "Not all provided answers are correct.",
     status: 400,
   },
+  TRAINING_SESSION_NOT_FINISHED: {
+    message: "Training session was not finished.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize thisd

@@ -176,6 +176,9 @@ const doc = {
     StartTrainingSessionRequest: {
       trainingId: 1,
     },
+    EndTrainingSessionRequest: {
+      trainingId: 1,
+    },
   },
 };
 
