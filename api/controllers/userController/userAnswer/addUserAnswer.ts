@@ -10,7 +10,7 @@ export const addUserAnswer = async (
   req: AddUserAnswerRequestModel,
   res: AddUserAnswerResponseModel
 ) => {
-  /* 	#swagger.tags = ['Question']
+  /* 	#swagger.tags = ['User Answer']
         #swagger.description = 'Create question'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.parameters['obj'] = {
@@ -55,9 +55,9 @@ export const addUserAnswer = async (
 
     // if selected question answer ids are not for given question, then return error
     const answerValidationPassed =
-      questionAnswersIdForQuestion.filter((e) =>
-        request.questionAnswerIds.find((t) => e === t)
-      ).length === request.questionAnswerIds.length;
+      request.questionAnswerIds?.filter((e) =>
+        questionAnswersIdForQuestion?.find((t) => e === t)
+      )?.length === request.questionAnswerIds?.length;
 
     if (!answerValidationPassed)
       return validationErrorHandler(
@@ -66,7 +66,7 @@ export const addUserAnswer = async (
       );
 
     await prisma.userAnswer.createMany({
-      data: request?.questionAnswerIds.map((questionAnswerId) => {
+      data: request?.questionAnswerIds?.map((questionAnswerId) => {
         return {
           trainingSessionId: request.trainingSessionId,
           questionId: request.questionId,
@@ -89,6 +89,7 @@ export const addUserAnswer = async (
         return validationErrorHandler(res, "QUESTION_ANSWER_NOT_EXIST");
       }
     }
+    console.log(e);
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
   }
   return res.json({});

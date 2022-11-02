@@ -434,6 +434,25 @@
         ]
       }
     },
+    "/training-session/all": {
+      "get": {
+        "tags": [
+          "Training Session"
+        ],
+        "description": "Get all done by user training sessions",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/question/all/{trainingId}": {
       "get": {
         "tags": [
@@ -633,7 +652,7 @@
     "/user-answer": {
       "post": {
         "tags": [
-          "Question"
+          "User Answer"
         ],
         "description": "Create question",
         "parameters": [

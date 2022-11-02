@@ -15,7 +15,6 @@ export const getTrainingSessionQuestions = async (
         #swagger.description = 'Get all questions for training session that were not answered, and were created after creation of training session.'
         #swagger.security = [{"apiKeyAuth": []}]
   */
-
   const { trainingSessionId } = req.params;
 
   try {
@@ -55,6 +54,7 @@ export const getTrainingSessionQuestions = async (
     const uniqueAnswersId = _.uniqBy(userAnswer, "questionId").map(
       (e) => e.questionId
     );
+
     const trainingQuestions = trainingSession.Training.Question;
 
     const trainingQuestionsFromBeforeTrainingSessionStart =

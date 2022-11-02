@@ -1,9 +1,9 @@
 // Common router for all other routers used in project
 
 import express from "express";
+import userRouter from "../userRouter";
 import adminRouter from "./adminRouter";
 import commonRouter from "./commonRouter";
-import userRouter from "./userRouter";
 
 // import multer from "multer";
 

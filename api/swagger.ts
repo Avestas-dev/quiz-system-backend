@@ -182,7 +182,7 @@ const doc = {
     AddUserAnswerRequest: {
       trainingSessionId: 1,
       questionId: 1,
-      questionAnswerId: [1, 2, 3],
+      questionAnswerIds: [1, 2, 3],
     },
   },
 };

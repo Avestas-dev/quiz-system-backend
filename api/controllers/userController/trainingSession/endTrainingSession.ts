@@ -22,6 +22,13 @@ export const endTrainingSession = async (
   const { trainingId } = req.body;
 
   try {
+    const foundTrainingSession = await prisma.trainingSession.findFirst({
+      where: {
+        finished: false,
+        trainingId: trainingId,
+      },
+    });
+
     const { count } = await prisma.trainingSession.updateMany({
       where: {
         trainingId: trainingId,
@@ -34,6 +41,8 @@ export const endTrainingSession = async (
     });
     if (count === 0)
       return validationErrorHandler(res, "TRAINING_SESSION_NOT_FINISHED");
+
+    // calculate Statistics for given trainingSession
     return res.json();
   } catch (e) {
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
