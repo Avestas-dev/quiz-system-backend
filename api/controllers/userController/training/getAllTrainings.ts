@@ -26,6 +26,7 @@ export const getAllTrainings = async (req: Request, res: AuthResponse) => {
           tag: true,
         },
       },
+      LikeTraining: true,
     },
   });
   return res.json(
@@ -35,6 +36,7 @@ export const getAllTrainings = async (req: Request, res: AuthResponse) => {
         tagId: e.tagId,
         tagName: e.tag.name,
       })),
+      LikeTraining: !!al.LikeTraining.length,
     }))
   );
 };

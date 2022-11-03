@@ -556,6 +556,32 @@
         ]
       }
     },
+    "/like/{trainingId}": {
+      "post": {
+        "tags": [
+          "Likes"
+        ],
+        "description": "Training - like if not liked, dislike if liked.",
+        "parameters": [
+          {
+            "name": "trainingId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/question/all/{trainingId}": {
       "get": {
         "tags": [

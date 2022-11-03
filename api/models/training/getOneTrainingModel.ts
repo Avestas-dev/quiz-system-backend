@@ -9,7 +9,7 @@ type Locals = {
   user: User;
 };
 
-type GetOneTrainingResponseBody = Training;
+type GetOneTrainingResponseBody = Training & { LikeTraining: boolean };
 
 export type GetOneTrainingRequestModel = Request<
   GetOneTrainingRequestParams,

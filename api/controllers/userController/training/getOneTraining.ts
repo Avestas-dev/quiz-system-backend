@@ -37,10 +37,14 @@ export const getOneTraining = async (
           tag: true,
         },
       },
+      LikeTraining: true,
     },
   });
 
   if (!training) return validationErrorHandler(res, "TRAINING_NOT_FOUND");
 
-  return res.json(training);
+  return res.json({
+    ...training,
+    LikeTraining: !!training.LikeTraining.length,
+  });
 };
