@@ -220,6 +220,22 @@ export const errorType = {
     message: "Given question answer ids are not for given question.",
     status: 400,
   },
+  TAG_NAME_TOO_SHORT: {
+    message: "Tag must have more or equal to 3 letters.",
+    status: 400,
+  },
+  TAG_NAME_TOO_LONG: {
+    message: "Tag must have less than 30 letters.",
+    status: 400,
+  },
+  TAG_NAME_NOT_PROVIDED: {
+    message: "Tag name must be provided.",
+    status: 400,
+  },
+  INCORRECT_TAG_ARRAY: {
+    message: "Array of tags is not correct.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize thisd

@@ -19,15 +19,25 @@ export const addTraining = async (
         }         
   */
 
-  const { name, visibility } = req.body;
+  const { name, visibility, tagIds } = req.body;
 
   try {
-    await prisma.training.create({
+    const createdTraining = await prisma.training.create({
       data: {
         name: name,
         visibility: visibility,
         userId: res.locals.user.id,
       },
+    });
+    await prisma.tagTraining.deleteMany({
+      where: {
+        trainingId: createdTraining.id,
+      },
+    });
+    await prisma.tagTraining.createMany({
+      data: tagIds.map((tagId) => {
+        return { tagId: tagId, trainingId: createdTraining.id };
+      }),
     });
   } catch (e) {
     if (

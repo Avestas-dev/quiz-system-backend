@@ -20,6 +20,21 @@ export const getAllTrainings = async (req: Request, res: AuthResponse) => {
         { visibility: true },
       ],
     },
+    include: {
+      TagTraining: {
+        include: {
+          tag: true,
+        },
+      },
+    },
   });
-  return res.json(allTrainings);
+  return res.json(
+    allTrainings.map((al) => ({
+      ...al,
+      TagTraining: al.TagTraining.map((e) => ({
+        tagId: e.tagId,
+        tagName: e.tag.name,
+      })),
+    }))
+  );
 };

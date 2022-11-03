@@ -81,11 +81,13 @@ const doc = {
     AddTrainingRequest: {
       name: "Training name",
       visibility: true,
+      tagIds: [1],
     },
     EditTrainingRequest: {
       trainingId: 1,
       name: "Training name",
       visibility: true,
+      tagIds: [1],
     },
 
     GetAllTrainingsResponse: [
@@ -184,6 +186,13 @@ const doc = {
       questionId: 1,
       questionAnswerIds: [1, 2, 3],
     },
+    TagsResponse: [
+      {
+        id: 1,
+        name: "Tag name",
+        trainingId: 1,
+      },
+    ],
   },
 };
 

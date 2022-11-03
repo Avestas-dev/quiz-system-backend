@@ -31,6 +31,13 @@ export const getOneTraining = async (
         { id: Number(trainingId), visibility: true },
       ],
     },
+    include: {
+      TagTraining: {
+        include: {
+          tag: true,
+        },
+      },
+    },
   });
 
   if (!training) return validationErrorHandler(res, "TRAINING_NOT_FOUND");

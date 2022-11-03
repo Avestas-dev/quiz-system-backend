@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum TagStatus {
+  pending
+  rejected
+  accepted
+}
+
 model Question {
   id               Int              @id @default(autoincrement())
   question         String
@@ -18,7 +24,7 @@ model Question {
   trainingId       Int
   QuestionAnswer   QuestionAnswer[]
   CreatedAt        DateTime         @default(now())
-  UpdatedAt        DateTime         @updatedAt @default(now())
+  UpdatedAt        DateTime         @default(now()) @updatedAt
 }
 
 model Training {
@@ -30,7 +36,9 @@ model Training {
   Question        Question[]
   TrainingSession TrainingSession[]
   CreatedAt       DateTime          @default(now())
-  UpdatedAt       DateTime          @updatedAt @default(now())
+  UpdatedAt       DateTime          @default(now()) @updatedAt
+  TagTraining     TagTraining[]
+  LikeTraining    LikeTraining[]
 }
 
 model TrainingSession {
@@ -42,7 +50,7 @@ model TrainingSession {
   trainingId Int
   userAnswer UserAnswer[]
   CreatedAt  DateTime     @default(now())
-  UpdatedAt  DateTime     @updatedAt @default(now())
+  UpdatedAt  DateTime     @default(now()) @updatedAt
 }
 
 model QuestionAnswer {
@@ -53,7 +61,7 @@ model QuestionAnswer {
   isCorrect  Boolean
   UserAnswer UserAnswer[]
   CreatedAt  DateTime     @default(now())
-  UpdatedAt  DateTime     @updatedAt @default(now())
+  UpdatedAt  DateTime     @default(now()) @updatedAt
 }
 
 model UserAnswer {
@@ -65,7 +73,7 @@ model UserAnswer {
   questionAnswerId  Int
   questionAnswer    QuestionAnswer  @relation(fields: [questionAnswerId], references: [id])
   CreatedAt         DateTime        @default(now())
-  UpdatedAt         DateTime        @updatedAt @default(now())
+  UpdatedAt         DateTime        @default(now()) @updatedAt
 }
 
 model User {
@@ -79,5 +87,30 @@ model User {
   trainings          Training[]
   TrainingSession    TrainingSession[]
   CreatedAt          DateTime          @default(now())
-  UpdatedAt          DateTime          @updatedAt @default(now())
+  UpdatedAt          DateTime          @default(now()) @updatedAt
+  LikeTraining       LikeTraining[]
+}
+
+model Tag {
+  id          Int           @id @default(autoincrement())
+  name        String        @unique
+  TagTraining TagTraining[]
+
+  tagStatus   TagStatus     @default(pending)
+}
+
+model TagTraining {
+  id         Int      @id @default(autoincrement())
+  training   Training @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+  trainingId Int
+  tag        Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  tagId      Int
+}
+
+model LikeTraining {
+  id         Int      @id @default(autoincrement())
+  training   Training @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+  trainingId Int
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
 }

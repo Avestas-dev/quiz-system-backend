@@ -355,7 +355,7 @@
         "tags": [
           "Training Session"
         ],
-        "description": "Start training sessions",
+        "description": "Start training session. It makes new training session with finished status set to false. If training session with given id already exists, then response is always success - before creating new training session, it is required to use /training-session/end endpoint.",
         "parameters": [
           {
             "name": "obj",
@@ -384,7 +384,7 @@
         "tags": [
           "Training Session"
         ],
-        "description": "Ends training sessions",
+        "description": "Ends training session, setting its finished status to true. ",
         "parameters": [
           {
             "name": "obj",
@@ -413,7 +413,7 @@
         "tags": [
           "Training Session"
         ],
-        "description": "Get all questions for training session that were not answered, and were created after creation of training session.",
+        "description": "Get all questions for training session that were not answered, and were created after creation of training session. This endpoint should be used to get questions for training session that is started or continued (when previous was not finished) using endpoint /training-session/start",
         "parameters": [
           {
             "name": "trainingSessionId",
@@ -439,13 +439,9 @@
         "tags": [
           "Training Session"
         ],
-        "description": "Get all training sessions done or started by user",
+        "description": "Get all training sessions done or started by user - it should be used on screen where all training session history is shown - endpoint doesn",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
+        "responses": {},
         "security": [
           {
             "apiKeyAuth": []
@@ -479,12 +475,93 @@
         ]
       }
     },
+    "/tag": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "description": "Get all available tags for training.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TagsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Tags"
+        ],
+        "description": "Create new tag.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/tag/{trainingId}": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "description": "Get all available tags for training.",
+        "parameters": [
+          {
+            "name": "trainingId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TagsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/question/all/{trainingId}": {
       "get": {
         "tags": [
           "Question"
         ],
-        "description": "Get all questions for training, with or without answers.",
+        "description": "Get all questions for training, with or without answers. This endpoint should be used when browsing list of all trainings.",
         "parameters": [
           {
             "name": "trainingId",
@@ -680,7 +757,7 @@
         "tags": [
           "User Answer"
         ],
-        "description": "Create question",
+        "description": "Add answer to question. This endpoint should be used when responding to question, answers should be an array.",
         "parameters": [
           {
             "name": "obj",
@@ -1028,6 +1105,15 @@
         "visibility": {
           "type": "boolean",
           "example": true
+        },
+        "tagIds": {
+          "type": "array",
+          "example": [
+            1
+          ],
+          "items": {
+            "type": "number"
+          }
         }
       }
     },
@@ -1045,6 +1131,15 @@
         "visibility": {
           "type": "boolean",
           "example": true
+        },
+        "tagIds": {
+          "type": "array",
+          "example": [
+            1
+          ],
+          "items": {
+            "type": "number"
+          }
         }
       }
     },
@@ -1338,6 +1433,26 @@
           ],
           "items": {
             "type": "number"
+          }
+        }
+      }
+    },
+    "TagsResponse": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Tag name"
+          },
+          "trainingId": {
+            "type": "number",
+            "example": 1
           }
         }
       }

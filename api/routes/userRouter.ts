@@ -9,6 +9,9 @@ import { deleteQuestion } from "../controllers/userController/question/deleteQue
 import { editQuestion } from "../controllers/userController/question/editQuestion";
 import { getQuestion } from "../controllers/userController/question/getQuestion";
 import { getQuestions } from "../controllers/userController/question/getQuestions";
+import { addTag } from "../controllers/userController/tags/addTag";
+import { getAllTags } from "../controllers/userController/tags/getAllTags";
+import { getAllTagsForTraining } from "../controllers/userController/tags/getAllTagsForTraining";
 import { addTraining } from "../controllers/userController/training/addTraining";
 import { deleteTraining } from "../controllers/userController/training/deleteTraining";
 import { editTraining } from "../controllers/userController/training/editTraining";
@@ -16,6 +19,8 @@ import { getAllTrainings } from "../controllers/userController/training/getAllTr
 import { getOneTraining } from "../controllers/userController/training/getOneTraining";
 import { endTrainingSession } from "../controllers/userController/trainingSession/endTrainingSession";
 import { getTrainingSessionQuestions } from "../controllers/userController/trainingSession/getTrainingSessionQuestions";
+import { getUserTrainingSession } from "../controllers/userController/trainingSession/getUserTrainingSession";
+import { getUserTrainingSessions } from "../controllers/userController/trainingSession/getUserTrainingSessions";
 import { startTrainingSession } from "../controllers/userController/trainingSession/startTrainingSession";
 import { addUserAnswer } from "../controllers/userController/userAnswer/addUserAnswer";
 import { addQuestionAnswerValidation } from "../middleware/validation/answer/addQuestionAnswerValidation";
@@ -23,6 +28,7 @@ import { addQuestionWithAnswersValidation } from "../middleware/validation/answe
 import { editQuestionAnswerValidation } from "../middleware/validation/answer/editQuestionAnswerValidation";
 import { addQuestionValidation } from "../middleware/validation/question/addQuestionValidation";
 import { editQuestionValidation } from "../middleware/validation/question/editQuestionValidation";
+import { addTagValidation } from "../middleware/validation/tags/addTagValidation";
 import { addTrainingValidation } from "../middleware/validation/training/addTrainingValidation";
 import { editTrainingValidation } from "../middleware/validation/training/editTrainingValidation";
 import { verifyToken } from "../middleware/verifyToken";
@@ -48,12 +54,23 @@ userRouter.put(
   editTrainingValidation,
   editTraining
 );
+
+// TRAINING SESSION
 userRouter.post("/training-session/start", startTrainingSession);
 userRouter.post("/training-session/end", endTrainingSession);
 userRouter.get(
   "/training-session/:trainingSessionId/questions",
   getTrainingSessionQuestions
 );
+userRouter.get("/training-session/all", getUserTrainingSessions);
+userRouter.get("/training-session/:trainingSessionId", getUserTrainingSession);
+
+// TAGS
+userRouter.get("/tag", getAllTags);
+userRouter.get("/tag/:trainingId", getAllTagsForTraining);
+userRouter.post("/tag", addTagValidation, addTag);
+
+// LIKES TODO:Likes
 
 // QUESTIONS
 userRouter.get("/question/all/:trainingId", getQuestions);

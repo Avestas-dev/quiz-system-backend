@@ -19,7 +19,7 @@ export const editTraining = async (
         }         
   */
 
-  const { trainingId, name, visibility } = req.body;
+  const { trainingId, name, visibility, tagIds } = req.body;
 
   try {
     await prisma.training.updateMany({
@@ -32,6 +32,16 @@ export const editTraining = async (
         id: trainingId,
         userId: res.locals.user.id,
       },
+    });
+    await prisma.tagTraining.deleteMany({
+      where: {
+        trainingId: trainingId,
+      },
+    });
+    await prisma.tagTraining.createMany({
+      data: tagIds.map((tagId) => {
+        return { tagId: tagId, trainingId: trainingId };
+      }),
     });
   } catch (e) {
     if (
