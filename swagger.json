@@ -225,7 +225,15 @@
           "Training"
         ],
         "description": "Gets all trainings of all user that have visiblity set to true, and all trainings of logged in user.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "onlyLiked",
+            "in": "query",
+            "description": "If questions should include answers or no.",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "All trainings received.",
