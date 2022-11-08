@@ -513,7 +513,7 @@
       },
       "post": {
         "tags": [
-          "Tags"
+          "Admin-Tags"
         ],
         "description": "Create new tag.",
         "parameters": [
@@ -562,32 +562,6 @@
             "schema": {
               "$ref": "#/definitions/TagsResponse"
             }
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      }
-    },
-    "/like/{trainingId}": {
-      "post": {
-        "tags": [
-          "Likes"
-        ],
-        "description": "Training - like if not liked, dislike if liked.",
-        "parameters": [
-          {
-            "name": "trainingId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         },
         "security": [
@@ -929,6 +903,38 @@
             "schema": {
               "$ref": "#/definitions/ProfileResponse"
             }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/admin/tag": {
+      "post": {
+        "tags": [
+          "Admin-Tags"
+        ],
+        "description": "Create new tag.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         },
         "security": [

@@ -85,6 +85,7 @@ model User {
   passwordResetToken String?
   passwordResetDate  DateTime?
   googleSub          String?
+  isAdmin            Boolean           @default(false)
   trainings          Training[]
   TrainingSession    TrainingSession[]
   CreatedAt          DateTime          @default(now())

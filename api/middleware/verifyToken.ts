@@ -24,8 +24,7 @@ export const verifyToken = async (
       where: { id: decoded.user_id },
     });
 
-    res.locals.user = { email: user?.email, id: user?.id };
-
+    res.locals.user = user;
     return next();
   } catch (err: any) {
     if (err?.name && err.name === "JsonWebTokenError") {

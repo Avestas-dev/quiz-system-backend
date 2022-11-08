@@ -236,6 +236,10 @@ export const errorType = {
     message: "Array of tags is not correct.",
     status: 400,
   },
+  USER_NOT_ADMIN: {
+    message: "Currently logged in user is not an admin.",
+    status: 403,
+  },
 };
 
 // TODO: find better way to optimize thisd

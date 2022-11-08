@@ -19,6 +19,7 @@ export const addTag = async (
     const tags = await prisma.tag.create({
       data: {
         name: name,
+        tagStatus: "accepted",
       },
     });
 
