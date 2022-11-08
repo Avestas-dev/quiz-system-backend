@@ -513,7 +513,7 @@
       },
       "post": {
         "tags": [
-          "Admin-Tags"
+          "Tags"
         ],
         "description": "Create new tag.",
         "parameters": [
@@ -912,7 +912,7 @@
         ]
       }
     },
-    "/admin/admin/tag": {
+    "/admin/tag": {
       "post": {
         "tags": [
           "Admin-Tags"
@@ -926,6 +926,103 @@
               "type": "object",
               "properties": {
                 "name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Admin-Tags"
+        ],
+        "description": "Edit tag.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "tagId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/tag/accept": {
+      "post": {
+        "tags": [
+          "Admin-Tags"
+        ],
+        "description": "Accept new tag.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tagId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/tag/reject": {
+      "post": {
+        "tags": [
+          "Admin-Tags"
+        ],
+        "description": "Reject tag.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tagId": {
                   "example": "any"
                 }
               }

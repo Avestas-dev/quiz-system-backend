@@ -240,6 +240,10 @@ export const errorType = {
     message: "Currently logged in user is not an admin.",
     status: 403,
   },
+  NO_TAGS_UPDATED: {
+    message: "No tags have been updated.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize thisd

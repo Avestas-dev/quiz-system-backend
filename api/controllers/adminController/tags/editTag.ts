@@ -1,32 +1,33 @@
 import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
-  RejectTagRequestModel,
-  RejectTagResponseModel,
-} from "../../../models/tags/rejectTagModel.ts";
+  EditTagRequestModel,
+  EditTagResponseModel,
+} from "../../../models/tags/editTagModel";
 
-export const rejectTag = async (
-  req: RejectTagRequestModel,
-  res: RejectTagResponseModel
+export const editTag = async (
+  req: EditTagRequestModel,
+  res: EditTagResponseModel
 ) => {
   /* 	#swagger.tags = ['Admin-Tags']
       #swagger.security = [{"apiKeyAuth": []}]
-      #swagger.description = 'Reject tag.'
+      #swagger.description = 'Edit tag.'
   */
 
   try {
-    const { tagId } = req.body;
+    const { name, tagId } = req.body;
     const { count } = await prisma.tag.updateMany({
       where: {
         id: Number(tagId),
       },
       data: {
-        tagStatus: "rejected",
+        name: name,
       },
     });
     if (count === 0) return validationErrorHandler(res, "NO_TAGS_UPDATED");
     return res.json(count);
   } catch (e) {
+    console.log(e);
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
   }
 };

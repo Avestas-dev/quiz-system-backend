@@ -16,16 +16,16 @@ export const acceptTag = async (
 
   try {
     const { tagId } = req.body;
-    const tags = await prisma.tag.updateMany({
+    const { count } = await prisma.tag.updateMany({
       where: {
-        id: tagId,
+        id: Number(tagId),
       },
       data: {
         tagStatus: "accepted",
       },
     });
-
-    return res.json(tags);
+    if (count === 0) return validationErrorHandler(res, "NO_TAGS_UPDATED");
+    return res.json(count);
   } catch (e) {
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
   }

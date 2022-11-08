@@ -7,7 +7,6 @@ export const verifyAdmin = async (
   res: AuthResponse,
   next: NextFunction
 ) => {
-  console.log(res.locals.user);
   if (res.locals?.user?.isAdmin) return next();
   return validationErrorHandler(res, "USER_NOT_ADMIN");
 };

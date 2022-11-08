@@ -9,7 +9,7 @@ export const addTag = async (
   req: AddTagRequestModel,
   res: AddTagResponseModel
 ) => {
-  /* 	#swagger.tags = ['Admin-Tags']
+  /* 	#swagger.tags = ['Tags']
       #swagger.security = [{"apiKeyAuth": []}]
       #swagger.description = 'Create new tag.'
   */
