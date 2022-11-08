@@ -17,7 +17,6 @@ export const getOneTraining = async (
       description: 'One training received.',
       schema: { $ref: '#/definitions/GetOneTrainingResponse' }
     }
-    
   */
   const { trainingId } = req.params;
 
@@ -45,6 +44,6 @@ export const getOneTraining = async (
 
   return res.json({
     ...training,
-    LikeTraining: !!training.LikeTraining.length,
+    likedTraining: !!training.LikeTraining.length,
   });
 };

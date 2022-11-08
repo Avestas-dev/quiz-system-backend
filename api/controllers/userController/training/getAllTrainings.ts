@@ -10,6 +10,11 @@ export const getAllTrainings = async (req: Request, res: AuthResponse) => {
             in: 'query',
             description: 'Set to true, if only liked one should be displayed',
             required: true,
+    }
+    #swagger.parameters['search'] = {
+            in: 'query',
+            description: 'Set to search query',
+            required: false,
     }  
     #swagger.responses[200] = {
       description: 'All trainings received.',
@@ -17,13 +22,26 @@ export const getAllTrainings = async (req: Request, res: AuthResponse) => {
     }    
   */
   const onlyLiked = req.query?.onlyLiked === "true";
+  const searchParam = (req.query?.search as string) || "";
   const allTrainings = await prisma.training.findMany({
     where: {
       OR: [
         {
           userId: res.locals.user.id,
+          name: searchParam
+            ? {
+                search: searchParam,
+              }
+            : undefined,
         },
-        { visibility: true },
+        {
+          visibility: true,
+          name: searchParam
+            ? {
+                search: searchParam,
+              }
+            : undefined,
+        },
       ],
     },
     include: {
@@ -36,16 +54,16 @@ export const getAllTrainings = async (req: Request, res: AuthResponse) => {
     },
   });
 
-  return res.json(
-    allTrainings
-      .map((al) => ({
-        ...al,
-        TagTraining: al.TagTraining.map((e) => ({
-          tagId: e.tagId,
-          tagName: e.tag.name,
-        })),
-        LikeTraining: !!al.LikeTraining.length,
-      }))
-      .filter((e) => (onlyLiked ? e.LikeTraining : true))
-  );
+  const filteredTrainings = allTrainings
+    .map(({ LikeTraining, TagTraining, ...al }) => ({
+      ...al,
+      tagTraining: TagTraining.map((e) => ({
+        tagId: e.tagId,
+        tagName: e.tag.name,
+      })),
+      likedTraining: !!LikeTraining.length,
+    }))
+    .filter((e) => (onlyLiked ? e.likedTraining : true));
+
+  return res.json(filteredTrainings);
 };

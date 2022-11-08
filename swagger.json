@@ -229,8 +229,15 @@
           {
             "name": "onlyLiked",
             "in": "query",
-            "description": "If questions should include answers or no.",
+            "description": "Set to true, if only liked one should be displayed",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Set to search query",
+            "required": false,
             "type": "string"
           }
         ],
