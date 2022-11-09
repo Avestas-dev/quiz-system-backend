@@ -23,6 +23,7 @@ import { getUserTrainingSession } from "../controllers/userController/trainingSe
 import { getUserTrainingSessions } from "../controllers/userController/trainingSession/getUserTrainingSessions";
 import { startTrainingSession } from "../controllers/userController/trainingSession/startTrainingSession";
 import { addUserAnswer } from "../controllers/userController/userAnswer/addUserAnswer";
+import { checkBlockedUser } from "../middleware/checkBlockedUser";
 import { addQuestionAnswerValidation } from "../middleware/validation/answer/addQuestionAnswerValidation";
 import { addQuestionWithAnswersValidation } from "../middleware/validation/answer/addQuestionWithAnswersValidation";
 import { editQuestionAnswerValidation } from "../middleware/validation/answer/editQuestionAnswerValidation";
@@ -42,6 +43,7 @@ userRouter.use(express.urlencoded({ extended: true }));
 
 // authorized routes
 userRouter.use(verifyToken);
+userRouter.use(checkBlockedUser);
 
 // TRAINING
 userRouter.get("/training/all", getAllTrainings);

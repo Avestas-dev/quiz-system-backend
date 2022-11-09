@@ -24,6 +24,10 @@ export const verifyToken = async (
       where: { id: decoded.user_id },
     });
 
+    if (!user) {
+      return validationErrorHandler(res, "USER_NOT_EXIST");
+    }
+
     res.locals.user = user;
     return next();
   } catch (err: any) {

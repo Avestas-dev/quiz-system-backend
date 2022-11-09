@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
@@ -91,13 +91,20 @@ model User {
   CreatedAt          DateTime          @default(now())
   UpdatedAt          DateTime          @default(now()) @updatedAt
   LikeTraining       LikeTraining[]
+  BlockedUser        BlockedUser[]
+}
+
+model BlockedUser {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  blockedTo DateTime?
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Tag {
   id          Int           @id @default(autoincrement())
   name        String        @unique
   TagTraining TagTraining[]
-
   tagStatus   TagStatus     @default(pending)
 }
 

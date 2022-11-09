@@ -244,6 +244,14 @@ export const errorType = {
     message: "No tags have been updated.",
     status: 400,
   },
+  CANNOT_BLOCK_ADMIN: {
+    message: "Admin user cannot be blocked.",
+    status: 400,
+  },
+  USER_IS_BLOCKED: {
+    message: "User is blocked.",
+    status: 400,
+  },
 };
 
 // TODO: find better way to optimize thisd

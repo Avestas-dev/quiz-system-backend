@@ -1041,13 +1041,71 @@
         ]
       }
     },
-    "/admin/users": {
+    "/admin/user/all": {
       "get": {
         "tags": [
           "Admin-Users"
         ],
         "description": "Get All Users.",
         "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/user/block": {
+      "post": {
+        "tags": [
+          "Admin-Users"
+        ],
+        "description": "Block selected user for given time.",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Block given user to given date.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BlockUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/user/unlock": {
+      "post": {
+        "tags": [
+          "Admin-Users"
+        ],
+        "description": "Unlock given user.",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Unlock given user.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UnlockUserRequest"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1617,6 +1675,28 @@
             "type": "number",
             "example": 1
           }
+        }
+      }
+    },
+    "BlockUserRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "number",
+          "example": 1
+        },
+        "blockedTo": {
+          "type": "string",
+          "example": "2022-11-09T18:43:24.642Z"
+        }
+      }
+    },
+    "UnlockUserRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "number",
+          "example": 1
         }
       }
     }

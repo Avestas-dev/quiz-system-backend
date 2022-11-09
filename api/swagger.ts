@@ -193,6 +193,13 @@ const doc = {
         trainingId: 1,
       },
     ],
+    BlockUserRequest: {
+      userId: 1,
+      blockedTo: "2022-11-09T18:43:24.642Z",
+    },
+    UnlockUserRequest: {
+      userId: 1,
+    },
   },
 };
 

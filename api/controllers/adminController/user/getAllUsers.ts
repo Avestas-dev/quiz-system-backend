@@ -1,8 +1,15 @@
-import { Request, Response } from "express";
 import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
+import {} from "../../../models/user/blockUserModel";
+import {
+  GetAllUsersRequestModel,
+  GetAllUsersResponseModel,
+} from "../../../models/user/getAllUsersModel";
 
-export const getAllUsers = async (req: Request, res: Response) => {
+export const getAllUsers = async (
+  req: GetAllUsersRequestModel,
+  res: GetAllUsersResponseModel
+) => {
   /* 	#swagger.tags = ['Admin-Users']
       #swagger.security = [{"apiKeyAuth": []}]
       #swagger.description = 'Get All Users.'
