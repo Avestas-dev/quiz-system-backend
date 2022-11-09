@@ -16,6 +16,12 @@ export const getAllTrainings = async (req: Request, res: AuthResponse) => {
             description: 'Set to search query',
             required: false,
     }  
+    #swagger.parameters['tags'] = {
+            in: 'query',
+            description: 'Set tags',
+            required: false,
+            type: 'array'
+    }  
     #swagger.responses[200] = {
       description: 'All trainings received.',
       schema: { $ref: '#/definitions/GetAllTrainingsResponse' }
@@ -23,24 +29,46 @@ export const getAllTrainings = async (req: Request, res: AuthResponse) => {
   */
   const onlyLiked = req.query?.onlyLiked === "true";
   const searchParam = (req.query?.search as string) || "";
+  const tags = req?.query?.tags ? (req.query.tags as string)?.split(",") : [];
   const allTrainings = await prisma.training.findMany({
     where: {
-      OR: [
+      AND: [
+        tags?.length > 0
+          ? {
+              TagTraining: {
+                some: {
+                  tag: {
+                    name: {
+                      in: tags,
+                    },
+                  },
+                },
+              },
+            }
+          : {
+              id: {
+                gte: 0,
+              },
+            },
         {
-          userId: res.locals.user.id,
-          name: searchParam
-            ? {
-                search: searchParam,
-              }
-            : undefined,
-        },
-        {
-          visibility: true,
-          name: searchParam
-            ? {
-                search: searchParam,
-              }
-            : undefined,
+          OR: [
+            {
+              userId: res.locals.user.id,
+              name: searchParam
+                ? {
+                    search: searchParam,
+                  }
+                : undefined,
+            },
+            {
+              visibility: true,
+              name: searchParam
+                ? {
+                    search: searchParam,
+                  }
+                : undefined,
+            },
+          ],
         },
       ],
     },

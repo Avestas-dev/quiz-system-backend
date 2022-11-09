@@ -239,6 +239,43 @@
             "description": "Set to search query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "Set tags",
+            "required": false,
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All trainings received.",
+            "schema": {
+              "$ref": "#/definitions/GetAllTrainingsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/training/tagAll": {
+      "get": {
+        "tags": [
+          "Training"
+        ],
+        "description": "Gets all trainings by tag.",
+        "parameters": [
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "Set to search query",
+            "required": false,
+            "type": "array"
           }
         ],
         "responses": {
