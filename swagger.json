@@ -5,7 +5,7 @@
     "description": "Project made for Internet Application classes.",
     "version": "1.0.0"
   },
-  "host": "localhost:8000",
+  "host": "quiz-system-backend-h.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "http"
@@ -244,36 +244,6 @@
             "name": "tags",
             "in": "query",
             "description": "Set tags",
-            "required": false,
-            "type": "array"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "All trainings received.",
-            "schema": {
-              "$ref": "#/definitions/GetAllTrainingsResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
-      }
-    },
-    "/training/tagAll": {
-      "get": {
-        "tags": [
-          "Training"
-        ],
-        "description": "Gets all trainings by tag.",
-        "parameters": [
-          {
-            "name": "tags",
-            "in": "query",
-            "description": "Set to search query",
             "required": false,
             "type": "array"
           }
