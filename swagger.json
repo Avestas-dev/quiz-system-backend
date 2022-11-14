@@ -5,7 +5,7 @@
     "description": "Project made for Internet Application classes.",
     "version": "1.0.0"
   },
-  "host": "quiz-system-backend-h.herokuapp.com",
+  "host": "https://quiz-system-backend-h.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "http"
