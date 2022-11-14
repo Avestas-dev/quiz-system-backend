@@ -6,7 +6,7 @@ const doc = {
     title: "Quiz System Api",
     description: "Project made for Internet Application classes.",
   },
-  host: "localhost:8000",
+  host: process.env.API_URL,
   schemes: ["http"],
   securityDefinitions: {
     apiKeyAuth: {
