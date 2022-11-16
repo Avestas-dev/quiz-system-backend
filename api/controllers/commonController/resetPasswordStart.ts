@@ -38,7 +38,6 @@ export const resetPasswordStart = async (
     )
       return validationErrorHandler(res, "RESET_TIME_TOO_LOW");
   }
-
   const randomGUID = randomUUID();
   const isSuccess = await sendResetPasswordEmail({
     email: user.email,
@@ -47,7 +46,6 @@ export const resetPasswordStart = async (
   if (isSuccess) {
     await prisma.user.update({
       where: {
-        email: req.body.email,
         id: user.id,
       },
       data: {

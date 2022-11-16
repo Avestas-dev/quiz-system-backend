@@ -28,8 +28,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpY
 ### Refresh
 GET http://localhost:8000/refresh HTTP/1.1 
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMzEyNDMsImV4cCI6MTY2NjEzMTI1M30.RBLaHRDGdIK1LBdLr3YNJuk-zE8aaPyxPUIbG1pM_mA
-Refresh: 1044dc07-a23b-46fd-bdec-f304f5181d41
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE2Njg2MDI5MjYsImV4cCI6MTc1NDYwMjkyNn0.aVsBSyjZ5h4Ybf0yhuSgla7T2mk41P_Hs9dTwlyPZw4
+Refresh: 65156760-9611-4e10-8c54-4a7cfa3764f4
 
 
 ### Reset
