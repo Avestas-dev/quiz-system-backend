@@ -1,15 +1,18 @@
 import { Request } from "express";
 import { prisma } from "../../../helpers/prisma";
-import { AuthResponse } from "../../../models/auth/authRequest";
-export const getAllTrainings = async (req: Request, res: AuthResponse) => {
+import { GetAllTrainingsResponseModel } from "../../../models/training/getAllTrainingsModel";
+export const getAllTrainings = async (
+  req: Request,
+  res: GetAllTrainingsResponseModel
+) => {
   /* 	
     #swagger.tags = ['Training']
     #swagger.description = 'Gets all trainings of all user that have visiblity set to true, and all trainings of logged in user.'
     #swagger.security = [{"apiKeyAuth": []}]
      #swagger.parameters['onlyLiked'] = {
             in: 'query',
+            required: false,
             description: 'Set to true, if only liked one should be displayed',
-            required: true,
     }
     #swagger.parameters['search'] = {
             in: 'query',

@@ -1,12 +1,14 @@
 import { Prisma } from "@prisma/client";
 import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
-import { AuthResponse } from "../../../models/auth/authRequest";
-import { AddTrainingRequestModel } from "../../../models/training/addTrainingModel";
+import {
+  AddTrainingRequestModel,
+  AddTrainingResponseModel,
+} from "../../../models/training/addTrainingModel";
 
 export const addTraining = async (
   req: AddTrainingRequestModel,
-  res: AuthResponse
+  res: AddTrainingResponseModel
 ) => {
   /* 	#swagger.tags = ['Training']
         #swagger.description = 'Create training'
@@ -39,6 +41,7 @@ export const addTraining = async (
         return { tagId: tagId, trainingId: createdTraining.id };
       }),
     });
+    return res.json(createdTraining);
   } catch (e) {
     if (
       e instanceof Prisma.PrismaClientKnownRequestError &&
@@ -49,5 +52,4 @@ export const addTraining = async (
       return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
     }
   }
-  return res.json({});
 };

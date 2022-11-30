@@ -44,6 +44,8 @@ export const registerGoogle = async (
             googleSub: payload["sub"],
           },
         });
+
+        // TODO: limit number the props send
         return res.json(user);
       }
     }

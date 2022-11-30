@@ -2,7 +2,7 @@ import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
   GetQuestionsRequestModel,
-  GetQuestionsResponseModel
+  GetQuestionsResponseModel,
 } from "../../../models/question/getQuestionsModel";
 
 export const getQuestions = async (
@@ -10,12 +10,11 @@ export const getQuestions = async (
   res: GetQuestionsResponseModel
 ) => {
   /* 	#swagger.tags = ['Question']
-        #swagger.description = 'Get all questions for training, with or without answers. This endpoint should be used when browsing list of all trainings.'
+        #swagger.description = 'Get all questions for training, when withAnswers=true then also includes answers. This endpoint should be used when browsing list of all trainings.'
         #swagger.security = [{"apiKeyAuth": []}]
         #swagger.parameters['withAnswers'] = {
             in: 'query',
-            description: 'If questions should include answers or no.',
-            required: true,
+            description: 'Set to true when questions should include answers.',
         }  
         #swagger.responses[200] = {
           description: 'All questions received.',

@@ -12,8 +12,9 @@ export const refreshToken = async (req: Request, res: Response) => {
             schema: { $ref: '#/definitions/RefreshTokenResponse' }
         }
   */
+  const p = req;
   const refreshToken = req.headers["refresh"] as string;
-  const token = req.headers["authorization"]?.split(" ")[1];
+  const token = p.headers["authorization"]?.split(" ")[1];
   if (!token) return validationErrorHandler(res, "TOKEN_NOT_PROVIDED");
   if (!refreshToken)
     return validationErrorHandler(res, "REFRESH_TOKEN_NOT_PROVIDED");
@@ -45,7 +46,7 @@ export const refreshToken = async (req: Request, res: Response) => {
       }
     );
 
-    // sending new token
+    // sending new token TODO: should also send new refresh token, to not make it last forever
     return res.json({ token: newToken });
   } catch (err: any) {
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");

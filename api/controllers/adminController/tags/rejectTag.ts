@@ -12,6 +12,12 @@ export const rejectTag = async (
   /* 	#swagger.tags = ['Admin-Tags']
       #swagger.security = [{"apiKeyAuth": []}]
       #swagger.description = 'Reject tag.'
+      #swagger.parameters['obj'] = {
+        in: 'body',
+        description: 'Reject tag.',
+        required: true,
+        schema: { $ref: "#/definitions/RejectTagRequest" },
+      } 
   */
 
   try {

@@ -19,7 +19,6 @@ export const editQuestionAnswer = async (
             schema: { $ref: "#/definitions/EditQuestionAnswerRequest" }
         }         
   */
-
   const { answer, isCorrect, questionAnswerId } = req.body;
 
   try {
@@ -40,8 +39,8 @@ export const editQuestionAnswer = async (
     if (count === 0) {
       return validationErrorHandler(res, "QUESTION_ANSWER_NOT_UPDATED");
     }
+    return res.json({ count: count });
   } catch (e) {
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
   }
-  return res.json({});
 };

@@ -2,29 +2,16 @@ import { randomUUID } from "crypto";
 import jwt from "jsonwebtoken";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
+import { LoginGoogleRequestModel } from "../../models/auth/loginGoogleModel";
 import {
   LoginRequestModel,
   LoginResponseModel,
 } from "../../models/auth/loginModel";
 
-export const login = async (
-  req: LoginRequestModel,
+export const processLogin = async (
+  req: LoginRequestModel | LoginGoogleRequestModel,
   res: LoginResponseModel
 ) => {
-  /* 	#swagger.tags = ['Auth']
-      #swagger.description = 'Endpoint to sign in a specific user' 
-  	  #swagger.parameters['obj'] = {
-        in: 'body',
-        description: 'User login.',
-        required: true,
-        schema: { $ref: "#/definitions/LoginRequest" },
-      } 
-      #swagger.responses[200] = {
-        description: 'User successfully logged in.',
-        schema: { $ref: "#/definitions/LoginResponse" }
-      }  
-  */
-
   if (process.env.TOKEN_KEY) {
     // generate token
     const token = jwt.sign(
@@ -54,4 +41,25 @@ export const login = async (
   }
 
   return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
+};
+
+export const login = async (
+  req: LoginRequestModel,
+  res: LoginResponseModel
+) => {
+  /* 	#swagger.tags = ['Auth']
+      #swagger.description = 'Endpoint to sign in a specific user' 
+  	  #swagger.parameters['obj'] = {
+        in: 'body',
+        description: 'User login.',
+        required: true,
+        schema: { $ref: "#/definitions/LoginRequest" },
+      } 
+      #swagger.responses[200] = {
+        description: 'User successfully logged in.',
+        schema: { $ref: "#/definitions/LoginResponse" }
+      }  
+  */
+
+  await processLogin(req, res);
 };

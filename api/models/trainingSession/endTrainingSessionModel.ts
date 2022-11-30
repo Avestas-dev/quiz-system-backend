@@ -1,18 +1,18 @@
-import { User } from "@prisma/client";
 import { Request, Response } from "express";
-
-type EndTrainingSessionModel = {
-  trainingId: number;
-};
-
-type Locals = {
-  user: User;
-};
+import { extractReqBody } from "../../helpers/typescriptHelpers";
+import { commonLocals } from "../commonLocals";
 
 export type EndTrainingSessionRequestModel = Request<
   any,
   any,
-  EndTrainingSessionModel
+  {
+    trainingId: number;
+  }
 >;
 
-export type EndTrainingSessionResponseModel = Response<any, Locals>;
+export type EndTrainingSessionResponseModel = Response<any, commonLocals>;
+
+export const EndTrainingSessionRequestExample: extractReqBody<EndTrainingSessionRequestModel> =
+  {
+    trainingId: 1,
+  };

@@ -1,15 +1,20 @@
-import { User } from "@prisma/client";
 import { Request, Response } from "express";
+import { extractReqBody } from "../../helpers/typescriptHelpers";
+import { commonLocals } from "../commonLocals";
 
-type AddQuestionRequestBody = {
-  question: string;
-  trainingId: number;
-};
+export type AddQuestionRequestModel = Request<
+  any,
+  any,
+  {
+    question: string;
+    trainingId: number;
+  }
+>;
 
-type AddQuestionLocals = {
-  user: User;
-};
+export type AddQuestionResponseModel = Response<any, commonLocals>;
 
-export type AddQuestionRequestModel = Request<any, any, AddQuestionRequestBody>;
-
-export type AddQuestionResponseModel = Response<any, AddQuestionLocals>;
+export const AddQuestionRequestExample: extractReqBody<AddQuestionRequestModel> =
+  {
+    question: "Sample question",
+    trainingId: 1,
+  };

@@ -1,7 +1,7 @@
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "../../swagger.json";
-import { login } from "../controllers/commonController/login";
+import { login, processLogin } from "../controllers/commonController/login";
 import { loginGoogle } from "../controllers/commonController/loginGoogle";
 import { registerUser } from "../controllers/commonController/register";
 import { registerGoogle } from "../controllers/commonController/registerGoogle";
@@ -35,7 +35,7 @@ commonRouter.get("/refresh", refreshToken);
 commonRouter.post("/reset-start", resetPasswordStart);
 commonRouter.post("/reset", resetValidation, resetPassword);
 
-commonRouter.post("/login-google", loginGoogle, login);
+commonRouter.post("/login-google", loginGoogle, processLogin);
 commonRouter.post("/register-google", registerGoogle);
 
 commonRouter.post("/initdb", initializeDatabase);

@@ -2,12 +2,12 @@ import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
   GetOneTrainingRequestModel,
-  GetOneTrainingsResponseModel,
+  GetOneTrainingResponseModel,
 } from "../../../models/training/getOneTrainingModel";
 
 export const getOneTraining = async (
   req: GetOneTrainingRequestModel,
-  res: GetOneTrainingsResponseModel
+  res: GetOneTrainingResponseModel
 ) => {
   /* 	  
     #swagger.tags = ['Training']
@@ -41,9 +41,17 @@ export const getOneTraining = async (
   });
 
   if (!training) return validationErrorHandler(res, "TRAINING_NOT_FOUND");
-
+  const mappedTraining = [training].map(
+    ({ LikeTraining, TagTraining, ...al }) => ({
+      ...al,
+      tagTraining: TagTraining.map((e) => ({
+        tagId: e.tagId,
+        tagName: e.tag.name,
+      })),
+      likedTraining: !!LikeTraining.length,
+    })
+  );
   return res.json({
-    ...training,
-    likedTraining: !!training.LikeTraining.length,
+    ...mappedTraining?.[0],
   });
 };

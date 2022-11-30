@@ -1,11 +1,14 @@
-import { NextFunction, Request } from "express";
+import { NextFunction } from "express";
 import { OAuth2Client } from "google-auth-library";
 import { validationErrorHandler } from "../../helpers/errorHandler";
 import { prisma } from "../../helpers/prisma";
-import { LoginGoogleResponseModel } from "../../models/auth/loginGoogleModel";
+import {
+  LoginGoogleRequestModel,
+  LoginGoogleResponseModel,
+} from "../../models/auth/loginGoogleModel";
 
 export const loginGoogle = async (
-  req: Request,
+  req: LoginGoogleRequestModel,
   res: LoginGoogleResponseModel,
   next: NextFunction
 ) => {

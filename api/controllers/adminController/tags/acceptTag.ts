@@ -12,6 +12,12 @@ export const acceptTag = async (
   /* 	#swagger.tags = ['Admin-Tags']
       #swagger.security = [{"apiKeyAuth": []}]
       #swagger.description = 'Accept new tag.'
+      #swagger.parameters['obj'] = {
+        in: 'body',
+        description: 'User login.',
+        required: true,
+        schema: { $ref: "#/definitions/AcceptTagRequest" },
+      } 
   */
 
   try {

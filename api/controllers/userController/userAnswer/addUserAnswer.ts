@@ -3,7 +3,7 @@ import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
   AddUserAnswerRequestModel,
-  AddUserAnswerResponseModel
+  AddUserAnswerResponseModel,
 } from "../../../models/userAnswer/addUserAnswerModel";
 
 export const addUserAnswer = async (
@@ -77,7 +77,7 @@ export const addUserAnswer = async (
         };
       }),
     });
-    if (count === 0) validationErrorHandler(res, "QUESTION_ANSWER_NOT_ADDED")
+    if (count === 0) validationErrorHandler(res, "QUESTION_ANSWER_NOT_ADDED");
     return res.json();
   } catch (e) {
     if (

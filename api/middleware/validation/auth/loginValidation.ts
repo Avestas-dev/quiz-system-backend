@@ -14,7 +14,6 @@ export const loginValidation = async (
   next: NextFunction
 ) => {
   const { password, email } = req.body;
-
   if (!email) return validationErrorHandler(res, "EMAIL_REQUIRED");
   if (!password) return validationErrorHandler(res, "PASSWORD_REQUIRED");
 

@@ -40,5 +40,5 @@ export const addQuestionAnswer = async (
       return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
     }
   }
-  return res.json({});
+  return res.json();
 };

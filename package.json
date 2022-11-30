@@ -4,7 +4,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node ./dist/api/index.js",
-    "swagger-autogen": "node ./api/swagger.ts",
+    "swagger-autogen": "npx tsc && node dist/api/swagger.js",
     "dev": "yarn swagger-autogen && concurrently \"npx tsc --watch\" \"nodemon  -q dist/index.js\"",
     "heroku-postbuild": "npx prisma generate && npx tsc"
   },

@@ -1,3 +1,55 @@
+import {
+  AddQuestionAnswerRequestExample,
+  AddQuestionAnswerResponseExample,
+} from "./models/answer/addQuestionAnswerModel";
+import { EditQuestionAnswerRequestExample } from "./models/answer/editQuestionAnswerModel";
+import {
+  LoginGoogleRequestExample,
+  LoginGoogleResponseExample,
+} from "./models/auth/loginGoogleModel";
+import {
+  LoginRequestExample,
+  LoginResponseExample,
+} from "./models/auth/loginModel";
+import { RefreshTokenResponseExample } from "./models/auth/refreshTokenModel";
+import {
+  RegisterGoogleRequestExample,
+  RegisterGoogleResponseExample,
+} from "./models/auth/registerGoogleModel";
+import {
+  RegisterRequestExample,
+  RegisterResponseExample,
+} from "./models/auth/registerModel";
+import { ResetPasswordRequestExample } from "./models/auth/resetPasswordModel";
+import { ResetPasswordStartRequestExample } from "./models/auth/resetPasswordStartModel";
+import { ProfileResponseExample } from "./models/profileModel";
+import { AddQuestionRequestExample } from "./models/question/addQuestionModel";
+import { AddQuestionWithAnswersRequestExample } from "./models/question/addQuestionWithAnswersModel";
+import { EditQuestionRequestExample } from "./models/question/editQuestionModel";
+import { GetQuestionRequestExample } from "./models/question/getQuestionModel";
+import { GetQuestionsResponseExample } from "./models/question/getQuestionsModel";
+import { AcceptTagRequestExample } from "./models/tags/acceptTagModel";
+import { AddTagRequestExample } from "./models/tags/addTagModel";
+import { EditTagRequestExample } from "./models/tags/editTagModel";
+import { GetAllTagsForTrainingResponseExample } from "./models/tags/getAllTagsForTrainingModel";
+import { GetAllTagsResponseExample } from "./models/tags/getAllTagsModel";
+import { RejectTagRequestExample } from "./models/tags/rejectTagModel.ts";
+import { AddTrainingRequestExample } from "./models/training/addTrainingModel";
+import { EditTrainingRequestExample } from "./models/training/editTrainingModel";
+import { GetAllTrainingsResponseExample } from "./models/training/getAllTrainingsModel";
+import { GetOneTrainingResponseExample } from "./models/training/getOneTrainingModel";
+import { EndTrainingSessionRequestExample } from "./models/trainingSession/endTrainingSessionModel";
+import { GetTrainingSessionQuestionsResponseExample } from "./models/trainingSession/getTrainingSessionQuestionsModel";
+import { GetUserTrainingSessionResponseExample } from "./models/trainingSession/getUserTrainingSessionModel";
+import { GetUserTrainingSessionsResponseExample } from "./models/trainingSession/getUserTrainingSessionsModel";
+import {
+  StartTrainingSessionRequestExample,
+  StartTrainingSessionResponseExample,
+} from "./models/trainingSession/startTrainingSessionModel";
+import { BlockUserRequestExample } from "./models/user/blockUserModel";
+import { GetAllUsersResponseExample } from "./models/user/getAllUsersModel";
+import { UnlockUserRequestExample } from "./models/user/unlockUserModel";
+import { AddUserAnswerRequestExample } from "./models/userAnswer/addUserAnswerModel";
 const swaggerAutogen = require("swagger-autogen")();
 
 const doc = {
@@ -16,189 +68,48 @@ const doc = {
     },
   },
   definitions: {
-    LoginRequest: {
-      email: "kamilporeba@hotmail.com",
-      password: "Kamil123!",
-    },
-    LoginResponse: {
-      token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc",
-      refreshToken: "5f3c44c9-eac1-4ffd-a112-ae5a1fe38fed",
-      email: "kamilporeba@hotmail.com",
-    },
-    LoginGoogleRequest: {
-      tokenId: "token",
-    },
-    LoginGoogleResponse: {
-      token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc",
-      refreshToken: "5f3c44c9-eac1-4ffd-a112-ae5a1fe38fed",
-    },
-    RegisterGoogleResponse: {
-      email: "kamilporeba@hotmail.com",
-      googleSub: "googleSub",
-      id: 1,
-      password: "password",
-      passwordResetDate: "2017-07-21",
-      passwordResetToken: "resetToken",
-      refreshToken: "refreshToken",
-    },
-    RegisterGoogleRequest: {
-      tokenId: "token",
-    },
-    RegisterRequest: {
-      email: "kamilporeba@hotmail.com",
-      password: "Kamil123!",
-      passwordRepeated: "Kamil123!",
-    },
-    RegisterResponse: {
-      email: "kamilporeba@hotmail.com",
-      googleSub: "googleSub",
-      id: 1,
-      password: "password",
-      passwordResetDate: "2017-07-21",
-      passwordResetToken: "resetToken",
-      refreshToken: "refreshToken",
-    },
-    ProfileResponse: {
-      email: "kamilporeba@hotmail.com",
-      id: 1,
-    },
-    RefreshTokenResponse: {
-      token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc",
-    },
-    ResetStartRequest: {
-      email: "kamilporeba@hotmail.com",
-    },
-    ResetRequest: {
-      email: "kamilporeba@hotmail.com",
-      resetGUID: "e31ace7a-99fd-45e1-91c7-855e02d54983",
-      password: "Kamil123!",
-      passwordRepeated: "Kamil123!",
-    },
-    AddTrainingRequest: {
-      name: "Training name",
-      visibility: true,
-      tagIds: [1],
-    },
-    EditTrainingRequest: {
-      trainingId: 1,
-      name: "Training name",
-      visibility: true,
-      tagIds: [1],
-    },
-
-    GetAllTrainingsResponse: [
-      {
-        id: 1,
-        name: "Training name",
-        visibility: true,
-        userId: 4,
-      },
-    ],
-    GetOneTrainingRequest: {
-      trainingId: 1,
-    },
-    GetOneTrainingResponse: {
-      id: 1,
-      name: "Training name",
-      visibility: true,
-      userId: 4,
-    },
-    GetOneTrainingsResponse: [
-      {
-        id: 1,
-        name: "Training name",
-        visibility: true,
-        userId: 4,
-      },
-    ],
-    AddQuestionRequest: {
-      question: "Sample question",
-      trainingId: 1,
-    },
-    AddQuestionAnswerRequest: {
-      questionId: 1,
-      answer: "Sample answer",
-      isCorrect: true,
-    },
-    GetQuestionsResponse: [
-      {
-        id: 1,
-        question: "Test question",
-        trainingId: 1,
-        QuestionAnswer: [
-          {
-            id: 1,
-            questionId: 1,
-            answer: "sample answer",
-            isCorrect: true,
-          },
-        ],
-      },
-    ],
-    GetQuestionResponse: {
-      id: 1,
-      question: "Test question",
-      trainingId: 1,
-      QuestionAnswer: [
-        {
-          id: 1,
-          questionId: 1,
-          answer: "sample answer",
-          isCorrect: true,
-        },
-      ],
-    },
-    EditQuestionRequest: {
-      questionId: 1,
-      question: "Sample question",
-    },
-    EditQuestionAnswerRequest: {
-      answer: "Sample answer",
-      isCorrect: true,
-      questionAnswerId: 1,
-    },
-    AddQuestionWithAnswersRequest: {
-      question: "Sample question",
-      trainingId: 1,
-      answers: [
-        {
-          answer: "Sample answer",
-          isCorrect: true,
-        },
-        {
-          answer: "Sample answer 2",
-          isCorrect: false,
-        },
-      ],
-    },
-    StartTrainingSessionRequest: {
-      trainingId: 1,
-    },
-    EndTrainingSessionRequest: {
-      trainingId: 1,
-    },
-    AddUserAnswerRequest: {
-      trainingSessionId: 1,
-      questionId: 1,
-      questionAnswerIds: [1, 2, 3],
-    },
-    TagsResponse: [
-      {
-        id: 1,
-        name: "Tag name",
-        trainingId: 1,
-      },
-    ],
-    BlockUserRequest: {
-      userId: 1,
-      blockedTo: "2022-11-09T18:43:24.642Z",
-    },
-    UnlockUserRequest: {
-      userId: 1,
-    },
+    LoginRequest: LoginRequestExample,
+    LoginResponse: LoginResponseExample,
+    LoginGoogleRequest: LoginGoogleRequestExample,
+    LoginGoogleResponse: LoginGoogleResponseExample,
+    RegisterGoogleResponse: RegisterGoogleResponseExample,
+    RegisterGoogleRequest: RegisterGoogleRequestExample,
+    RegisterRequest: RegisterRequestExample,
+    RegisterResponse: RegisterResponseExample,
+    ProfileResponse: ProfileResponseExample,
+    RefreshTokenResponse: RefreshTokenResponseExample,
+    ResetStartRequest: ResetPasswordStartRequestExample,
+    ResetPasswordRequest: ResetPasswordRequestExample,
+    AddTrainingRequest: AddTrainingRequestExample,
+    EditTrainingRequest: EditTrainingRequestExample,
+    GetAllTrainingsResponse: GetAllTrainingsResponseExample,
+    GetOneTrainingResponse: GetOneTrainingResponseExample,
+    AddQuestionRequest: AddQuestionRequestExample,
+    AddQuestionAnswerRequest: AddQuestionAnswerRequestExample,
+    AddQuestionAnswerResponse: AddQuestionAnswerResponseExample,
+    GetQuestionsResponse: GetQuestionsResponseExample,
+    GetQuestionResponse: GetQuestionRequestExample,
+    EditQuestionRequest: EditQuestionRequestExample,
+    EditQuestionAnswerRequest: EditQuestionAnswerRequestExample,
+    AddQuestionWithAnswersRequest: AddQuestionWithAnswersRequestExample,
+    StartTrainingSessionRequest: StartTrainingSessionRequestExample,
+    StartTrainingSessionResponse: StartTrainingSessionResponseExample,
+    EndTrainingSessionRequest: EndTrainingSessionRequestExample,
+    AddUserAnswerRequest: AddUserAnswerRequestExample,
+    TagsResponse: GetAllTagsResponseExample,
+    BlockUserRequest: BlockUserRequestExample,
+    UnlockUserRequest: UnlockUserRequestExample,
+    GetTrainingSessionQuestionsResponse:
+      GetTrainingSessionQuestionsResponseExample,
+    GetUserTrainingSessionsResponse: GetUserTrainingSessionsResponseExample,
+    GetUserTrainingSessionResponse: GetUserTrainingSessionResponseExample,
+    AddTagRequest: AddTagRequestExample,
+    AddTagAdminRequest: AddTagRequestExample, // same as AddTag
+    RejectTagRequest: RejectTagRequestExample,
+    GetAllTagsForTrainingResponse: GetAllTagsForTrainingResponseExample,
+    AcceptTagRequest: AcceptTagRequestExample,
+    EditTagRequest: EditTagRequestExample,
+    GetAllUsersResponse: GetAllUsersResponseExample,
   },
 };
 

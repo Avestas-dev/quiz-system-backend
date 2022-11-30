@@ -11,7 +11,13 @@ export const addTag = async (
 ) => {
   /* 	#swagger.tags = ['Tags']
       #swagger.security = [{"apiKeyAuth": []}]
-      #swagger.description = 'Create new tag.'
+      #swagger.description = 'Create new tag with status pending, to be accepted by admin.'
+      #swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Add tag by user.',
+            required: true,
+            schema: { $ref: "#/definitions/AddTagRequest" }
+        }    
   */
 
   try {

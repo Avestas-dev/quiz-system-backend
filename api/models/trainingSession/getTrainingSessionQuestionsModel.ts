@@ -1,27 +1,46 @@
-import { Question, QuestionAnswer, User } from "@prisma/client";
+import { Question, QuestionAnswer } from "@prisma/client";
 import { Request, Response } from "express";
-
-type GetTrainingSessionQuestionsRequestBody = {};
-
-type GetTrainingSessionQuestionsLocals = {
-  user: User;
-};
-
-type GetTrainingSessionQuestionsResponseBody = {
-  questions: (Question & {
-    QuestionAnswer: QuestionAnswer[];
-  })[];
-  answeredQuestionCount: number;
-  totalQuestionCount: number;
-};
+import { extractResBody } from "../../helpers/typescriptHelpers";
+import { commonLocals } from "../commonLocals";
 
 export type GetTrainingSessionQuestionsRequestModel = Request<
   { trainingSessionId: number },
   any,
-  GetTrainingSessionQuestionsRequestBody
+  any
 >;
 
 export type GetTrainingSessionQuestionsResponseModel = Response<
-  GetTrainingSessionQuestionsResponseBody,
-  GetTrainingSessionQuestionsLocals
+  {
+    questions: (Question & {
+      questionAnswer: QuestionAnswer[];
+    })[];
+    answeredQuestionCount: number;
+    totalQuestionCount: number;
+  },
+  commonLocals
 >;
+
+const date = new Date();
+export const GetTrainingSessionQuestionsResponseExample: extractResBody<GetTrainingSessionQuestionsResponseModel> =
+  {
+    questions: [
+      {
+        questionAnswer: [],
+        id: 999999,
+        question: "User Question 1",
+        trainingId: 1000000,
+        CreatedAt: date.toISOString() as unknown as Date,
+        UpdatedAt: date.toISOString() as unknown as Date,
+      },
+      {
+        questionAnswer: [],
+        id: 34,
+        question: "Sample question",
+        trainingId: 1000000,
+        CreatedAt: date.toISOString() as unknown as Date,
+        UpdatedAt: date.toISOString() as unknown as Date,
+      },
+    ],
+    answeredQuestionCount: 0,
+    totalQuestionCount: 5,
+  };

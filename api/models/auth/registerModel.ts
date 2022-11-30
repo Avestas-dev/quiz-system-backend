@@ -1,11 +1,37 @@
+import { User } from "@prisma/client";
 import { Request, Response } from "express";
+import {
+  extractReqBody,
+  extractResBody,
+} from "../../helpers/typescriptHelpers";
 
-type RegisterRequestBody = {
-  email: string;
-  password: string;
-  passwordRepeated: string;
+export type RegisterRequestModel = Request<
+  any,
+  any,
+  {
+    email: string;
+    password: string;
+    passwordRepeated: string;
+  }
+>;
+
+export type RegisterResponseModel = Response<User, any>;
+
+export const RegisterRequestExample: extractReqBody<RegisterRequestModel> = {
+  email: "kamilporeba@hotmail.com",
+  password: "Kamil123!",
+  passwordRepeated: "Kamil123!",
 };
-
-export type RegisterRequestModel = Request<any, any, RegisterRequestBody>;
-
-export type RegisterResponseModel = Response;
+const date = new Date();
+export const RegisterResponseExample: extractResBody<RegisterResponseModel> = {
+  id: 4,
+  email: "kamilporeba1998@gmail.com",
+  password: "password",
+  refreshToken: "refreshToken",
+  passwordResetToken: "resetToken",
+  passwordResetDate: date.toISOString() as unknown as Date,
+  googleSub: "105081556580525628106",
+  isAdmin: false,
+  CreatedAt: date.toISOString() as unknown as Date,
+  UpdatedAt: date.toISOString() as unknown as Date,
+};

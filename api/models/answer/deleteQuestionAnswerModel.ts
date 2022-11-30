@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { QuestionAnswer, User } from "@prisma/client";
 import { Request, Response } from "express";
 
 type DeleteQuestionAnswerRequestBody = {
@@ -15,6 +15,7 @@ export type DeleteQuestionAnswerRequestModel = Request<
   DeleteQuestionAnswerRequestBody
 >;
 
+export type DeleteQuestionAnswerResponseBody = QuestionAnswer;
 export type DeleteQuestionAnswerResponseModel = Response<
   any,
   DeleteQuestionAnswerLocals

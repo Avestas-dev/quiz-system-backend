@@ -20,8 +20,17 @@ export const addQuestionValidation = async (
 
   const training = await prisma.training.findFirst({
     where: {
-      id: trainingId,
-      userId: res.locals.user.id,
+      OR: [
+        {
+          id: trainingId,
+          userId: res.locals.user.id,
+        },
+        {
+          user: {
+            isAdmin: true,
+          },
+        },
+      ],
     },
   });
   if (!training) return validationErrorHandler(res, "TRAINING_NOT_FOUND");

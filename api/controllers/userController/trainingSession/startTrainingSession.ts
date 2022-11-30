@@ -18,7 +18,10 @@ export const startTrainingSession = async (
             description: 'Start training session request.',
             required: true,
             schema: { $ref: "#/definitions/StartTrainingSessionRequest" }
-        }         
+        }
+        #swagger.responses[200] = {
+          schema: { $ref: '#/definitions/StartTrainingSessionResponse' }
+        }
   */
 
   const { trainingId } = req.body;

@@ -2,17 +2,20 @@ import dayjs from "dayjs";
 import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
-    GetDoneTrainingSessionResponseModel,
-    GetUserTrainingSessionRequestModel
+  GetUserTrainingSessionRequestModel,
+  GetUserTrainingSessionResponseModel,
 } from "../../../models/trainingSession/getUserTrainingSessionModel";
 
 export const getUserTrainingSession = async (
   req: GetUserTrainingSessionRequestModel,
-  res: GetDoneTrainingSessionResponseModel
+  res: GetUserTrainingSessionResponseModel
 ) => {
   /* 	#swagger.tags = ['Training Session']
         #swagger.description = 'Get single training session with all the details for it'
         #swagger.security = [{"apiKeyAuth": []}]
+        #swagger.responses[200] = {
+          schema: { $ref: '#/definitions/GetUserTrainingSessionResponse' }
+        }
   */
 
   const { trainingSessionId } = req.params;

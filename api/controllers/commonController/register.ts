@@ -34,5 +34,6 @@ export const registerUser = async (
       password: encryptedPassword,
     },
   });
+  // TODO: limit number of props send
   return res.json(user);
 };

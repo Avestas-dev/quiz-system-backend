@@ -13,6 +13,10 @@ export const getAllUsers = async (
   /* 	#swagger.tags = ['Admin-Users']
       #swagger.security = [{"apiKeyAuth": []}]
       #swagger.description = 'Get All Users.'
+      #swagger.responses[200] = {
+        description: 'User successfully logged in.',
+        schema: { $ref: "#/definitions/GetAllUsersResponse" }
+      }  
   */
 
   try {

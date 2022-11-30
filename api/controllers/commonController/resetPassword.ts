@@ -17,7 +17,7 @@ export const resetPassword = async (
         in: 'body',
         description: 'User reset.',
         required: true,
-        schema: { $ref: "#/definitions/ResetRequest" }
+        schema: { $ref: "#/definitions/ResetPasswordRequest" }
       } 
   */
 

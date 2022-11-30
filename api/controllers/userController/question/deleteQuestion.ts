@@ -13,9 +13,9 @@ export const deleteQuestion = async (
   /* 	#swagger.tags = ['Question']
         #swagger.description = 'Remove question'
         #swagger.security = [{"apiKeyAuth": []}]
-        
   */
-  const { questionId } = req.body;
+  const body = req.body;
+  const { questionId } = body;
 
   try {
     const { count } = await prisma.question.deleteMany({

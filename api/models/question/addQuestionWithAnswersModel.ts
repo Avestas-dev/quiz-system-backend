@@ -1,26 +1,34 @@
-import { User } from "@prisma/client";
 import { Request, Response } from "express";
-
-type AddQuestionWithAnswersRequestBody = {
-  question: string;
-  trainingId: number;
-  answers: {
-    answer: string;
-    isCorrect: boolean;
-  }[];
-};
-
-type AddQuestionWithAnswersLocals = {
-  user: User;
-};
+import { extractReqBody } from "../../helpers/typescriptHelpers";
+import { commonLocals } from "../commonLocals";
 
 export type AddQuestionWithAnswersRequestModel = Request<
   any,
   any,
-  AddQuestionWithAnswersRequestBody
+  {
+    question: string;
+    trainingId: number;
+    answers: {
+      answer: string;
+      isCorrect: boolean;
+    }[];
+  }
 >;
 
-export type AddQuestionWithAnswersResponseModel = Response<
-  any,
-  AddQuestionWithAnswersLocals
->;
+export type AddQuestionWithAnswersResponseModel = Response<any, commonLocals>;
+
+export const AddQuestionWithAnswersRequestExample: extractReqBody<AddQuestionWithAnswersRequestModel> =
+  {
+    question: "Sample question",
+    trainingId: 1,
+    answers: [
+      {
+        answer: "Sample answer",
+        isCorrect: true,
+      },
+      {
+        answer: "Sample answer 2",
+        isCorrect: false,
+      },
+    ],
+  };

@@ -12,6 +12,12 @@ export const editTag = async (
   /* 	#swagger.tags = ['Admin-Tags']
       #swagger.security = [{"apiKeyAuth": []}]
       #swagger.description = 'Edit tag.'
+      #swagger.parameters['obj'] = {
+        in: 'body',
+        description: 'Edit tag.',
+        required: true,
+        schema: { $ref: "#/definitions/EditTagRequest" },
+      } 
   */
 
   try {

@@ -5,10 +5,10 @@
     "description": "Project made for Internet Application classes.",
     "version": "1.0.0"
   },
-  "host": "quiz-system-backend-h.herokuapp.com",
+  "host": "localhost:8000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "securityDefinitions": {
     "apiKeyAuth": {
@@ -84,11 +84,6 @@
             "name": "refresh",
             "in": "header",
             "type": "string"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
           }
         ],
         "responses": {
@@ -143,7 +138,7 @@
             "description": "User reset.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ResetRequest"
+              "$ref": "#/definitions/ResetPasswordRequest"
             }
           }
         ],
@@ -159,15 +154,15 @@
         "tags": [
           "Auth"
         ],
-        "description": "Endpoint to sign in a specific user",
+        "description": "Endpoint to sign in a specific user using Google",
         "parameters": [
           {
             "name": "obj",
             "in": "body",
-            "description": "User login.",
+            "description": "User google login.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LoginRequest"
+              "$ref": "#/definitions/LoginGoogleRequest"
             }
           }
         ],
@@ -175,7 +170,7 @@
           "200": {
             "description": "User successfully logged in.",
             "schema": {
-              "$ref": "#/definitions/LoginResponse"
+              "$ref": "#/definitions/LoginGoogleResponse"
             }
           }
         }
@@ -229,8 +224,8 @@
           {
             "name": "onlyLiked",
             "in": "query",
+            "required": false,
             "description": "Set to true, if only liked one should be displayed",
-            "required": true,
             "type": "string"
           },
           {
@@ -391,7 +386,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StartTrainingSessionResponse"
+            }
           }
         },
         "security": [
@@ -446,7 +444,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetTrainingSessionQuestionsResponse"
+            }
           }
         },
         "security": [
@@ -463,7 +464,14 @@
         ],
         "description": "Get all training sessions done or started by user - it should be used on screen where all training session history is shown - endpoint doesn",
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/GetUserTrainingSessionsResponse"
+            },
+            "description": "OK"
+          }
+        },
         "security": [
           {
             "apiKeyAuth": []
@@ -487,7 +495,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetUserTrainingSessionResponse"
+            }
           }
         },
         "security": [
@@ -522,18 +533,15 @@
         "tags": [
           "Tags"
         ],
-        "description": "Create new tag.",
+        "description": "Create new tag with status pending, to be accepted by admin.",
         "parameters": [
           {
-            "name": "body",
+            "name": "obj",
             "in": "body",
+            "description": "Add tag by user.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/AddTagRequest"
             }
           }
         ],
@@ -567,7 +575,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/TagsResponse"
+              "$ref": "#/definitions/GetAllTagsForTrainingResponse"
             }
           }
         },
@@ -583,7 +591,7 @@
         "tags": [
           "Question"
         ],
-        "description": "Get all questions for training, with or without answers. This endpoint should be used when browsing list of all trainings.",
+        "description": "Get all questions for training, when withAnswers=true then also includes answers. This endpoint should be used when browsing list of all trainings.",
         "parameters": [
           {
             "name": "trainingId",
@@ -594,8 +602,7 @@
           {
             "name": "withAnswers",
             "in": "query",
-            "description": "If questions should include answers or no.",
-            "required": true,
+            "description": "Set to true when questions should include answers.",
             "type": "string"
           },
           {
@@ -663,18 +670,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "questionId": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
@@ -694,7 +689,7 @@
         "tags": [
           "Question"
         ],
-        "description": "Create question",
+        "description": "Create question, if user owns training, or is admin.",
         "parameters": [
           {
             "name": "obj",
@@ -924,18 +919,15 @@
         "tags": [
           "Admin-Tags"
         ],
-        "description": "Create new tag.",
+        "description": "Create new tag, that is already accepted.",
         "parameters": [
           {
-            "name": "body",
+            "name": "obj",
             "in": "body",
+            "description": "Add tag.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/AddTagAdminRequest"
             }
           }
         ],
@@ -957,18 +949,12 @@
         "description": "Edit tag.",
         "parameters": [
           {
-            "name": "body",
+            "name": "obj",
             "in": "body",
+            "description": "Edit tag.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "tagId": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/EditTagRequest"
             }
           }
         ],
@@ -992,15 +978,12 @@
         "description": "Accept new tag.",
         "parameters": [
           {
-            "name": "body",
+            "name": "obj",
             "in": "body",
+            "description": "User login.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "tagId": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/AcceptTagRequest"
             }
           }
         ],
@@ -1024,15 +1007,12 @@
         "description": "Reject tag.",
         "parameters": [
           {
-            "name": "body",
+            "name": "obj",
             "in": "body",
+            "description": "Reject tag.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "tagId": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/RejectTagRequest"
             }
           }
         ],
@@ -1057,7 +1037,10 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "User successfully logged in.",
+            "schema": {
+              "$ref": "#/definitions/GetAllUsersResponse"
+            }
           }
         },
         "security": [
@@ -1169,6 +1152,10 @@
     "LoginGoogleResponse": {
       "type": "object",
       "properties": {
+        "email": {
+          "type": "string",
+          "example": "kamilporeba@hotmail.com"
+        },
         "token": {
           "type": "string",
           "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc"
@@ -1182,33 +1169,45 @@
     "RegisterGoogleResponse": {
       "type": "object",
       "properties": {
-        "email": {
-          "type": "string",
-          "example": "kamilporeba@hotmail.com"
-        },
-        "googleSub": {
-          "type": "string",
-          "example": "googleSub"
-        },
         "id": {
           "type": "number",
-          "example": 1
+          "example": 4
+        },
+        "email": {
+          "type": "string",
+          "example": "kamilporeba1998@gmail.com"
         },
         "password": {
           "type": "string",
-          "example": "password"
+          "example": ""
         },
-        "passwordResetDate": {
+        "refreshToken": {
           "type": "string",
-          "example": "2017-07-21"
+          "example": "refreshToken"
         },
         "passwordResetToken": {
           "type": "string",
           "example": "resetToken"
         },
-        "refreshToken": {
+        "passwordResetDate": {
           "type": "string",
-          "example": "refreshToken"
+          "example": "2022-11-30T12:57:16.908Z"
+        },
+        "googleSub": {
+          "type": "string",
+          "example": "105081556580525628106"
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "example": false
+        },
+        "CreatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.908Z"
+        },
+        "UpdatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.908Z"
         }
       }
     },
@@ -1217,7 +1216,7 @@
       "properties": {
         "tokenId": {
           "type": "string",
-          "example": "token"
+          "example": "tokenId"
         }
       }
     },
@@ -1241,33 +1240,45 @@
     "RegisterResponse": {
       "type": "object",
       "properties": {
-        "email": {
-          "type": "string",
-          "example": "kamilporeba@hotmail.com"
-        },
-        "googleSub": {
-          "type": "string",
-          "example": "googleSub"
-        },
         "id": {
           "type": "number",
-          "example": 1
+          "example": 4
+        },
+        "email": {
+          "type": "string",
+          "example": "kamilporeba1998@gmail.com"
         },
         "password": {
           "type": "string",
           "example": "password"
         },
-        "passwordResetDate": {
+        "refreshToken": {
           "type": "string",
-          "example": "2017-07-21"
+          "example": "refreshToken"
         },
         "passwordResetToken": {
           "type": "string",
           "example": "resetToken"
         },
-        "refreshToken": {
+        "passwordResetDate": {
           "type": "string",
-          "example": "refreshToken"
+          "example": "2022-11-30T12:57:16.908Z"
+        },
+        "googleSub": {
+          "type": "string",
+          "example": "105081556580525628106"
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "example": false
+        },
+        "CreatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.908Z"
+        },
+        "UpdatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.908Z"
         }
       }
     },
@@ -1289,7 +1300,7 @@
       "properties": {
         "token": {
           "type": "string",
-          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE2NjYxMDQzMTIsImV4cCI6MTc1MjEwNDMxMn0.H7E3TQPh8Nc0O5JWqPyMfRNHYoTPy57kc8z-2IJd0cc"
+          "example": "token"
         }
       }
     },
@@ -1302,7 +1313,7 @@
         }
       }
     },
-    "ResetRequest": {
+    "ResetPasswordRequest": {
       "type": "object",
       "properties": {
         "email": {
@@ -1380,27 +1391,46 @@
             "type": "number",
             "example": 1
           },
+          "CreatedAt": {
+            "type": "string",
+            "example": "2022-11-30T12:57:16.920Z"
+          },
           "name": {
             "type": "string",
-            "example": "Training name"
+            "example": "test"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "example": "2022-11-30T12:57:16.920Z"
+          },
+          "userId": {
+            "type": "number",
+            "example": 1
           },
           "visibility": {
             "type": "boolean",
             "example": true
           },
-          "userId": {
-            "type": "number",
-            "example": 4
+          "likedTraining": {
+            "type": "boolean",
+            "example": true
+          },
+          "tagTraining": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tagId": {
+                  "type": "number",
+                  "example": 1
+                },
+                "tagName": {
+                  "type": "string",
+                  "example": "tagName"
+                }
+              }
+            }
           }
-        }
-      }
-    },
-    "GetOneTrainingRequest": {
-      "type": "object",
-      "properties": {
-        "trainingId": {
-          "type": "number",
-          "example": 1
         }
       }
     },
@@ -1411,40 +1441,44 @@
           "type": "number",
           "example": 1
         },
+        "CreatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.921Z"
+        },
         "name": {
           "type": "string",
-          "example": "Training name"
+          "example": "test"
+        },
+        "UpdatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.921Z"
+        },
+        "userId": {
+          "type": "number",
+          "example": 1
         },
         "visibility": {
           "type": "boolean",
           "example": true
         },
-        "userId": {
-          "type": "number",
-          "example": 4
-        }
-      }
-    },
-    "GetOneTrainingsResponse": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "example": 1
-          },
-          "name": {
-            "type": "string",
-            "example": "Training name"
-          },
-          "visibility": {
-            "type": "boolean",
-            "example": true
-          },
-          "userId": {
-            "type": "number",
-            "example": 4
+        "likedTraining": {
+          "type": "boolean",
+          "example": true
+        },
+        "tagTraining": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "tagId": {
+                "type": "number",
+                "example": 1
+              },
+              "tagName": {
+                "type": "string",
+                "example": "tagName"
+              }
+            }
           }
         }
       }
@@ -1479,6 +1513,35 @@
         }
       }
     },
+    "AddQuestionAnswerResponse": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "string",
+          "example": "answer"
+        },
+        "CreatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.904Z"
+        },
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "isCorrect": {
+          "type": "boolean",
+          "example": true
+        },
+        "questionId": {
+          "type": "number",
+          "example": 1
+        },
+        "UpdatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.904Z"
+        }
+      }
+    },
     "GetQuestionsResponse": {
       "type": "array",
       "items": {
@@ -1495,6 +1558,14 @@
           "trainingId": {
             "type": "number",
             "example": 1
+          },
+          "CreatedAt": {
+            "type": "string",
+            "example": "2022-11-30T12:57:16.914Z"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "example": "2022-11-30T12:57:16.914Z"
           },
           "QuestionAnswer": {
             "type": "array",
@@ -1516,6 +1587,14 @@
                 "isCorrect": {
                   "type": "boolean",
                   "example": true
+                },
+                "CreatedAt": {
+                  "type": "string",
+                  "example": "2022-11-30T12:57:16.914Z"
+                },
+                "UpdatedAt": {
+                  "type": "string",
+                  "example": "2022-11-30T12:57:16.914Z"
                 }
               }
             }
@@ -1538,6 +1617,14 @@
           "type": "number",
           "example": 1
         },
+        "CreatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.913Z"
+        },
+        "UpdatedAt": {
+          "type": "string",
+          "example": "2022-11-30T12:57:16.913Z"
+        },
         "QuestionAnswer": {
           "type": "array",
           "items": {
@@ -1558,6 +1645,14 @@
               "isCorrect": {
                 "type": "boolean",
                 "example": true
+              },
+              "CreatedAt": {
+                "type": "string",
+                "example": "2022-11-30T12:57:16.913Z"
+              },
+              "UpdatedAt": {
+                "type": "string",
+                "example": "2022-11-30T12:57:16.913Z"
               }
             }
           }
@@ -1632,6 +1727,15 @@
         }
       }
     },
+    "StartTrainingSessionResponse": {
+      "type": "object",
+      "properties": {
+        "trainingSessionId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
     "EndTrainingSessionRequest": {
       "type": "object",
       "properties": {
@@ -1672,15 +1776,15 @@
         "properties": {
           "id": {
             "type": "number",
-            "example": 1
+            "example": 3
           },
           "name": {
             "type": "string",
-            "example": "Tag name"
+            "example": "testTag3"
           },
-          "trainingId": {
-            "type": "number",
-            "example": 1
+          "tagStatus": {
+            "type": "string",
+            "example": "pending"
           }
         }
       }
@@ -1694,7 +1798,7 @@
         },
         "blockedTo": {
           "type": "string",
-          "example": "2022-11-09T18:43:24.642Z"
+          "example": "2022-11-30T12:57:16.924Z"
         }
       }
     },
@@ -1704,6 +1808,258 @@
         "userId": {
           "type": "number",
           "example": 1
+        }
+      }
+    },
+    "GetTrainingSessionQuestionsResponse": {
+      "type": "object",
+      "properties": {
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "questionAnswer": {
+                "type": "array",
+                "example": [],
+                "items": {}
+              },
+              "id": {
+                "type": "number",
+                "example": 34
+              },
+              "question": {
+                "type": "string",
+                "example": "Sample question"
+              },
+              "trainingId": {
+                "type": "number",
+                "example": 1000000
+              },
+              "CreatedAt": {
+                "type": "string",
+                "example": "2022-11-30T12:57:16.922Z"
+              },
+              "UpdatedAt": {
+                "type": "string",
+                "example": "2022-11-30T12:57:16.922Z"
+              }
+            }
+          }
+        },
+        "answeredQuestionCount": {
+          "type": "number",
+          "example": 0
+        },
+        "totalQuestionCount": {
+          "type": "number",
+          "example": 5
+        }
+      }
+    },
+    "GetUserTrainingSessionsResponse": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 5
+          },
+          "finished": {
+            "type": "boolean",
+            "example": true
+          },
+          "trainingId": {
+            "type": "number",
+            "example": 1000000
+          },
+          "trainingName": {
+            "type": "string",
+            "example": "Init training 1"
+          },
+          "trainingQuestions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "trainingQuestionId": {
+                  "type": "number",
+                  "example": 1000000
+                },
+                "question": {
+                  "type": "string",
+                  "example": "Init question 1"
+                },
+                "answerStatus": {
+                  "type": "string",
+                  "example": "incorrect"
+                }
+              }
+            }
+          },
+          "correctQuestionCount": {
+            "type": "number",
+            "example": 1
+          },
+          "totalQuestionCount": {
+            "type": "number",
+            "example": 3
+          }
+        }
+      }
+    },
+    "GetUserTrainingSessionResponse": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 5
+          },
+          "finished": {
+            "type": "boolean",
+            "example": true
+          },
+          "trainingId": {
+            "type": "number",
+            "example": 1000000
+          },
+          "trainingName": {
+            "type": "string",
+            "example": "Init training 1"
+          },
+          "trainingQuestions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "trainingQuestionId": {
+                  "type": "number",
+                  "example": 1000000
+                },
+                "question": {
+                  "type": "string",
+                  "example": "Init question 1"
+                },
+                "answerStatus": {
+                  "type": "string",
+                  "example": "incorrect"
+                }
+              }
+            }
+          },
+          "correctQuestionCount": {
+            "type": "number",
+            "example": 1
+          },
+          "totalQuestionCount": {
+            "type": "number",
+            "example": 3
+          }
+        }
+      }
+    },
+    "AddTagRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "tagName"
+        }
+      }
+    },
+    "AddTagAdminRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "tagName"
+        }
+      }
+    },
+    "RejectTagRequest": {
+      "type": "object",
+      "properties": {
+        "tagId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "GetAllTagsForTrainingResponse": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 3
+          },
+          "name": {
+            "type": "string",
+            "example": "testTag3"
+          },
+          "tagStatus": {
+            "type": "string",
+            "example": "pending"
+          }
+        }
+      }
+    },
+    "AcceptTagRequest": {
+      "type": "object",
+      "properties": {
+        "tagId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "EditTagRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "newTagName"
+        },
+        "tagId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "GetAllUsersResponse": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 7
+          },
+          "CreatedAt": {
+            "type": "string",
+            "example": "2022-11-30T12:57:16.925Z"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "example": "2022-11-30T12:57:16.925Z"
+          },
+          "email": {
+            "type": "string",
+            "example": "kamilporeba5@hotmail.com"
+          },
+          "passwordResetDate": {
+            "type": "string",
+            "example": "2022-11-30T12:57:16.925Z"
+          },
+          "isAdmin": {
+            "type": "boolean",
+            "example": true
+          },
+          "googleSub": {}
         }
       }
     }

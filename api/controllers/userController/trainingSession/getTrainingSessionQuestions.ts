@@ -4,7 +4,7 @@ import { validationErrorHandler } from "../../../helpers/errorHandler";
 import { prisma } from "../../../helpers/prisma";
 import {
   GetTrainingSessionQuestionsRequestModel,
-  GetTrainingSessionQuestionsResponseModel
+  GetTrainingSessionQuestionsResponseModel,
 } from "../../../models/trainingSession/getTrainingSessionQuestionsModel";
 
 export const getTrainingSessionQuestions = async (
@@ -14,6 +14,9 @@ export const getTrainingSessionQuestions = async (
   /* 	#swagger.tags = ['Training Session']
         #swagger.description = 'Get all questions for training session that were not answered, and were created after creation of training session. This endpoint should be used to get questions for training session that is started or continued (when previous was not finished) using endpoint /training-session/start'
         #swagger.security = [{"apiKeyAuth": []}]
+        #swagger.responses[200] = {
+          schema: { $ref: '#/definitions/GetTrainingSessionQuestionsResponse' }
+        }
   */
   const { trainingSessionId } = req.params;
 
@@ -55,7 +58,10 @@ export const getTrainingSessionQuestions = async (
       (e) => e.questionId
     );
 
-    const trainingQuestions = trainingSession.Training.Question;
+    const trainingQuestions = trainingSession.Training.Question.map((e) => {
+      const { QuestionAnswer, ...rest } = e;
+      return { questionAnswer: QuestionAnswer, ...rest };
+    });
 
     const trainingQuestionsFromBeforeTrainingSessionStart =
       trainingQuestions.filter((question) =>
@@ -74,7 +80,6 @@ export const getTrainingSessionQuestions = async (
         trainingQuestionsFromBeforeTrainingSessionStart.length,
     });
   } catch (e) {
-    console.log(e);
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
   }
 };

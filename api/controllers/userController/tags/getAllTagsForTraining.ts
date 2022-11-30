@@ -13,7 +13,7 @@ export const getAllTagsForTraining = async (
         #swagger.description = 'Get all available tags for training.'
         #swagger.security = [{"apiKeyAuth": []}]
           #swagger.responses[200] = {
-          schema: { $ref: '#/definitions/TagsResponse' }
+          schema: { $ref: '#/definitions/GetAllTagsForTrainingResponse' }
         }
   */
 

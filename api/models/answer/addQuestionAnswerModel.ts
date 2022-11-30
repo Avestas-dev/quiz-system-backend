@@ -1,23 +1,40 @@
-import { User } from "@prisma/client";
+import { QuestionAnswer } from "@prisma/client";
 import { Request, Response } from "express";
-
-type AddQuestionAnswerRequestBody = {
-  questionId: number;
-  answer: string;
-  isCorrect: boolean;
-};
-
-type AddQuestionAnswerLocals = {
-  user: User;
-};
+import {
+  extractReqBody,
+  extractResBody,
+} from "../../helpers/typescriptHelpers";
+import { commonLocals } from "../commonLocals";
+const date = new Date();
 
 export type AddQuestionAnswerRequestModel = Request<
   any,
   any,
-  AddQuestionAnswerRequestBody
+  {
+    questionId: number;
+    answer: string;
+    isCorrect: boolean;
+  }
 >;
 
 export type AddQuestionAnswerResponseModel = Response<
-  any,
-  AddQuestionAnswerLocals
+  QuestionAnswer,
+  commonLocals
 >;
+
+export const AddQuestionAnswerRequestExample: extractReqBody<AddQuestionAnswerRequestModel> =
+  {
+    questionId: 1,
+    answer: "Sample answer",
+    isCorrect: true,
+  };
+
+export const AddQuestionAnswerResponseExample: extractResBody<AddQuestionAnswerResponseModel> =
+  {
+    answer: "answer",
+    CreatedAt: date.toISOString() as unknown as Date,
+    id: 1,
+    isCorrect: true,
+    questionId: 1,
+    UpdatedAt: date.toISOString() as unknown as Date,
+  };
