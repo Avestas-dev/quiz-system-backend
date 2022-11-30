@@ -32,9 +32,9 @@ export const AddQuestionAnswerRequestExample: extractReqBody<AddQuestionAnswerRe
 export const AddQuestionAnswerResponseExample: extractResBody<AddQuestionAnswerResponseModel> =
   {
     answer: "answer",
-    CreatedAt: date.toISOString() as unknown as Date,
+    createdAt: date.toISOString() as unknown as Date,
     id: 1,
     isCorrect: true,
     questionId: 1,
-    UpdatedAt: date.toISOString() as unknown as Date,
+    updatedAt: date.toISOString() as unknown as Date,
   };

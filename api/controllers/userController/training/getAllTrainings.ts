@@ -9,10 +9,10 @@ export const getAllTrainings = async (
     #swagger.tags = ['Training']
     #swagger.description = 'Gets all trainings of all user that have visiblity set to true, and all trainings of logged in user.'
     #swagger.security = [{"apiKeyAuth": []}]
-     #swagger.parameters['onlyLiked'] = {
+    #swagger.parameters['onlyLiked'] = {
             in: 'query',
-            required: false,
             description: 'Set to true, if only liked one should be displayed',
+            required: false,
     }
     #swagger.parameters['search'] = {
             in: 'query',

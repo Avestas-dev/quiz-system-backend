@@ -32,7 +32,7 @@ export const getUserTrainingSessions = async (
               select: {
                 id: true,
                 question: true,
-                CreatedAt: true,
+                createdAt: true,
                 QuestionAnswer: {
                   select: {
                     id: true,
@@ -61,7 +61,7 @@ export const getUserTrainingSessions = async (
           trainingId: tSession.Training.id,
           trainingName: tSession.Training.name,
           trainingQuestions: tSession.Training.Question.filter((question) =>
-            dayjs(tSession.CreatedAt).isAfter(question.CreatedAt)
+            dayjs(tSession.createdAt).isAfter(question.createdAt)
           )
             .map((question) => {
               return {

@@ -24,8 +24,8 @@ model Question {
   training         Training         @relation(fields: [trainingId], references: [id], onDelete: Cascade)
   trainingId       Int
   QuestionAnswer   QuestionAnswer[]
-  CreatedAt        DateTime         @default(now())
-  UpdatedAt        DateTime         @default(now()) @updatedAt
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @default(now()) @updatedAt
 }
 
 model Training {
@@ -36,8 +36,8 @@ model Training {
   userId          Int
   Question        Question[]
   TrainingSession TrainingSession[]
-  CreatedAt       DateTime          @default(now())
-  UpdatedAt       DateTime          @default(now()) @updatedAt
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @default(now()) @updatedAt
   TagTraining     TagTraining[]
   LikeTraining    LikeTraining[]
 }
@@ -50,8 +50,8 @@ model TrainingSession {
   Training   Training     @relation(fields: [trainingId], references: [id], onDelete: Cascade)
   trainingId Int
   userAnswer UserAnswer[]
-  CreatedAt  DateTime     @default(now())
-  UpdatedAt  DateTime     @default(now()) @updatedAt
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @default(now()) @updatedAt
 }
 
 model QuestionAnswer {
@@ -61,8 +61,8 @@ model QuestionAnswer {
   answer     String
   isCorrect  Boolean
   UserAnswer UserAnswer[]
-  CreatedAt  DateTime     @default(now())
-  UpdatedAt  DateTime     @default(now()) @updatedAt
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @default(now()) @updatedAt
 }
 
 model UserAnswer {
@@ -73,8 +73,8 @@ model UserAnswer {
   questionId        Int
   questionAnswerId  Int
   questionAnswer    QuestionAnswer  @relation(fields: [questionAnswerId], references: [id])
-  CreatedAt         DateTime        @default(now())
-  UpdatedAt         DateTime        @default(now()) @updatedAt
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @default(now()) @updatedAt
 }
 
 model User {
@@ -88,8 +88,8 @@ model User {
   isAdmin            Boolean           @default(false)
   trainings          Training[]
   TrainingSession    TrainingSession[]
-  CreatedAt          DateTime          @default(now())
-  UpdatedAt          DateTime          @default(now()) @updatedAt
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @default(now()) @updatedAt
   LikeTraining       LikeTraining[]
   BlockedUser        BlockedUser[]
 }

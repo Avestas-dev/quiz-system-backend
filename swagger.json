@@ -5,10 +5,10 @@
     "description": "Project made for Internet Application classes.",
     "version": "1.0.0"
   },
-  "host": "localhost:8000",
+  "host": "quiz-system-backend-h.herokuapp.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "securityDefinitions": {
     "apiKeyAuth": {
@@ -224,8 +224,8 @@
           {
             "name": "onlyLiked",
             "in": "query",
-            "required": false,
             "description": "Set to true, if only liked one should be displayed",
+            "required": false,
             "type": "string"
           },
           {
@@ -1191,7 +1191,7 @@
         },
         "passwordResetDate": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.908Z"
+          "example": "2022-11-30T16:53:34.765Z"
         },
         "googleSub": {
           "type": "string",
@@ -1201,13 +1201,13 @@
           "type": "boolean",
           "example": false
         },
-        "CreatedAt": {
+        "createdAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.908Z"
+          "example": "2022-11-30T16:53:34.765Z"
         },
-        "UpdatedAt": {
+        "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.908Z"
+          "example": "2022-11-30T16:53:34.765Z"
         }
       }
     },
@@ -1262,7 +1262,7 @@
         },
         "passwordResetDate": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.908Z"
+          "example": "2022-11-30T16:53:34.766Z"
         },
         "googleSub": {
           "type": "string",
@@ -1272,13 +1272,13 @@
           "type": "boolean",
           "example": false
         },
-        "CreatedAt": {
+        "createdAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.908Z"
+          "example": "2022-11-30T16:53:34.766Z"
         },
-        "UpdatedAt": {
+        "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.908Z"
+          "example": "2022-11-30T16:53:34.766Z"
         }
       }
     },
@@ -1391,17 +1391,17 @@
             "type": "number",
             "example": 1
           },
-          "CreatedAt": {
+          "createdAt": {
             "type": "string",
-            "example": "2022-11-30T12:57:16.920Z"
+            "example": "2022-11-30T16:53:34.775Z"
           },
           "name": {
             "type": "string",
             "example": "test"
           },
-          "UpdatedAt": {
+          "updatedAt": {
             "type": "string",
-            "example": "2022-11-30T12:57:16.920Z"
+            "example": "2022-11-30T16:53:34.775Z"
           },
           "userId": {
             "type": "number",
@@ -1441,17 +1441,17 @@
           "type": "number",
           "example": 1
         },
-        "CreatedAt": {
+        "createdAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.921Z"
+          "example": "2022-11-30T16:53:34.776Z"
         },
         "name": {
           "type": "string",
           "example": "test"
         },
-        "UpdatedAt": {
+        "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.921Z"
+          "example": "2022-11-30T16:53:34.776Z"
         },
         "userId": {
           "type": "number",
@@ -1520,9 +1520,9 @@
           "type": "string",
           "example": "answer"
         },
-        "CreatedAt": {
+        "createdAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.904Z"
+          "example": "2022-11-30T16:53:34.760Z"
         },
         "id": {
           "type": "number",
@@ -1536,9 +1536,9 @@
           "type": "number",
           "example": 1
         },
-        "UpdatedAt": {
+        "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.904Z"
+          "example": "2022-11-30T16:53:34.760Z"
         }
       }
     },
@@ -1559,13 +1559,13 @@
             "type": "number",
             "example": 1
           },
-          "CreatedAt": {
+          "createdAt": {
             "type": "string",
-            "example": "2022-11-30T12:57:16.914Z"
+            "example": "2022-11-30T16:53:34.771Z"
           },
-          "UpdatedAt": {
+          "updatedAt": {
             "type": "string",
-            "example": "2022-11-30T12:57:16.914Z"
+            "example": "2022-11-30T16:53:34.771Z"
           },
           "QuestionAnswer": {
             "type": "array",
@@ -1588,13 +1588,13 @@
                   "type": "boolean",
                   "example": true
                 },
-                "CreatedAt": {
+                "createdAt": {
                   "type": "string",
-                  "example": "2022-11-30T12:57:16.914Z"
+                  "example": "2022-11-30T16:53:34.771Z"
                 },
-                "UpdatedAt": {
+                "updatedAt": {
                   "type": "string",
-                  "example": "2022-11-30T12:57:16.914Z"
+                  "example": "2022-11-30T16:53:34.771Z"
                 }
               }
             }
@@ -1617,13 +1617,13 @@
           "type": "number",
           "example": 1
         },
-        "CreatedAt": {
+        "createdAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.913Z"
+          "example": "2022-11-30T16:53:34.771Z"
         },
-        "UpdatedAt": {
+        "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.913Z"
+          "example": "2022-11-30T16:53:34.771Z"
         },
         "QuestionAnswer": {
           "type": "array",
@@ -1646,13 +1646,13 @@
                 "type": "boolean",
                 "example": true
               },
-              "CreatedAt": {
+              "createdAt": {
                 "type": "string",
-                "example": "2022-11-30T12:57:16.913Z"
+                "example": "2022-11-30T16:53:34.771Z"
               },
-              "UpdatedAt": {
+              "updatedAt": {
                 "type": "string",
-                "example": "2022-11-30T12:57:16.913Z"
+                "example": "2022-11-30T16:53:34.771Z"
               }
             }
           }
@@ -1798,7 +1798,7 @@
         },
         "blockedTo": {
           "type": "string",
-          "example": "2022-11-30T12:57:16.924Z"
+          "example": "2022-11-30T16:53:34.779Z"
         }
       }
     },
@@ -1836,13 +1836,13 @@
                 "type": "number",
                 "example": 1000000
               },
-              "CreatedAt": {
+              "createdAt": {
                 "type": "string",
-                "example": "2022-11-30T12:57:16.922Z"
+                "example": "2022-11-30T16:53:34.777Z"
               },
-              "UpdatedAt": {
+              "updatedAt": {
                 "type": "string",
-                "example": "2022-11-30T12:57:16.922Z"
+                "example": "2022-11-30T16:53:34.777Z"
               }
             }
           }
@@ -2039,13 +2039,13 @@
             "type": "number",
             "example": 7
           },
-          "CreatedAt": {
+          "createdAt": {
             "type": "string",
-            "example": "2022-11-30T12:57:16.925Z"
+            "example": "2022-11-30T16:53:34.779Z"
           },
-          "UpdatedAt": {
+          "updatedAt": {
             "type": "string",
-            "example": "2022-11-30T12:57:16.925Z"
+            "example": "2022-11-30T16:53:34.779Z"
           },
           "email": {
             "type": "string",
@@ -2053,7 +2053,7 @@
           },
           "passwordResetDate": {
             "type": "string",
-            "example": "2022-11-30T12:57:16.925Z"
+            "example": "2022-11-30T16:53:34.779Z"
           },
           "isAdmin": {
             "type": "boolean",

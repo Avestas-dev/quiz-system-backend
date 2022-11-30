@@ -10,8 +10,8 @@ export type GetAllUsersResponseModel = Response<
     Pick<
       User,
       | "id"
-      | "CreatedAt"
-      | "UpdatedAt"
+      | "createdAt"
+      | "updatedAt"
       | "email"
       | "passwordResetDate"
       | "isAdmin"
@@ -25,8 +25,8 @@ export const GetAllUsersResponseExample: extractResBody<GetAllUsersResponseModel
   [
     {
       id: 7,
-      CreatedAt: date.toISOString() as unknown as Date,
-      UpdatedAt: date.toISOString() as unknown as Date,
+      createdAt: date.toISOString() as unknown as Date,
+      updatedAt: date.toISOString() as unknown as Date,
       email: "kamilporeba5@hotmail.com",
       passwordResetDate: date.toISOString() as unknown as Date,
       isAdmin: true,

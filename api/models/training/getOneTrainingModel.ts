@@ -24,9 +24,9 @@ export type GetOneTrainingResponseModel = Response<
 export const GetOneTrainingResponseExample: extractResBody<GetOneTrainingResponseModel> =
   {
     id: 1,
-    CreatedAt: date.toISOString() as unknown as Date,
+    createdAt: date.toISOString() as unknown as Date,
     name: "test",
-    UpdatedAt: date.toISOString() as unknown as Date,
+    updatedAt: date.toISOString() as unknown as Date,
     userId: 1,
     visibility: true,
     likedTraining: true,

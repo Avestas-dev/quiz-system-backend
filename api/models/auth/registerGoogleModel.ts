@@ -28,6 +28,6 @@ export const RegisterGoogleResponseExample: extractResBody<RegisterGoogleRespons
     passwordResetDate: date.toISOString() as unknown as Date,
     googleSub: "105081556580525628106",
     isAdmin: false,
-    CreatedAt: date.toISOString() as unknown as Date,
-    UpdatedAt: date.toISOString() as unknown as Date,
+    createdAt: date.toISOString() as unknown as Date,
+    updatedAt: date.toISOString() as unknown as Date,
   };

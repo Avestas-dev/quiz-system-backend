@@ -65,7 +65,7 @@ export const getTrainingSessionQuestions = async (
 
     const trainingQuestionsFromBeforeTrainingSessionStart =
       trainingQuestions.filter((question) =>
-        dayjs(question.CreatedAt).isBefore(trainingSession.CreatedAt)
+        dayjs(question.createdAt).isBefore(trainingSession.createdAt)
       );
 
     const notAnsweredQuestions =
