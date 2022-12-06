@@ -37,18 +37,31 @@ export const getOneTraining = async (
         },
       },
       LikeTraining: true,
+      TrainingSession: {
+        select: {
+          id: true,
+          finished: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+        where: {
+          userId: res.locals.user.id,
+          finished: false,
+        },
+      },
     },
   });
 
   if (!training) return validationErrorHandler(res, "TRAINING_NOT_FOUND");
   const mappedTraining = [training].map(
-    ({ LikeTraining, TagTraining, ...al }) => ({
+    ({ TrainingSession, LikeTraining, TagTraining, ...al }) => ({
       ...al,
       tagTraining: TagTraining.map((e) => ({
         tagId: e.tagId,
         tagName: e.tag.name,
       })),
       likedTraining: !!LikeTraining.length,
+      trainingSession: TrainingSession,
     })
   );
   return res.json({

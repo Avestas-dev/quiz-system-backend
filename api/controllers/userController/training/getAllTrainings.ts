@@ -7,7 +7,7 @@ export const getAllTrainings = async (
 ) => {
   /* 	
     #swagger.tags = ['Training']
-    #swagger.description = 'Gets all trainings of all user that have visiblity set to true, and all trainings of logged in user.'
+    #swagger.description = 'Gets all trainings of all user that have visiblity set to true, and all trainings of logged in user. Also, retrieve currently active training session.'
     #swagger.security = [{"apiKeyAuth": []}]
     #swagger.parameters['onlyLiked'] = {
             in: 'query',
@@ -82,17 +82,30 @@ export const getAllTrainings = async (
         },
       },
       LikeTraining: true,
+      TrainingSession: {
+        select: {
+          id: true,
+          finished: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+        where: {
+          OR: [{ userId: res.locals.user.id }],
+          finished: false,
+        },
+      },
     },
   });
 
   const filteredTrainings = allTrainings
-    .map(({ LikeTraining, TagTraining, ...al }) => ({
+    .map(({ TrainingSession, LikeTraining, TagTraining, ...al }) => ({
       ...al,
       tagTraining: TagTraining.map((e) => ({
         tagId: e.tagId,
         tagName: e.tag.name,
       })),
       likedTraining: !!LikeTraining.length,
+      trainingSession: TrainingSession,
     }))
     .filter((e) => (onlyLiked ? e.likedTraining : true));
 

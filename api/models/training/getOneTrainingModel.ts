@@ -1,4 +1,4 @@
-import { Training } from "@prisma/client";
+import { Training, TrainingSession } from "@prisma/client";
 import { Request, Response } from "express";
 import { extractResBody } from "../../helpers/typescriptHelpers";
 import { commonLocals } from "../commonLocals";
@@ -7,6 +7,9 @@ const date = new Date();
 type GetOneTrainingResponseBody = Training & {
   likedTraining: boolean;
   tagTraining: { tagId: number; tagName: string }[];
+  trainingSession: Array<
+    Pick<TrainingSession, "id" | "createdAt" | "finished" | "updatedAt">
+  >;
 };
 
 export type GetOneTrainingRequestModel = Request<
@@ -34,6 +37,14 @@ export const GetOneTrainingResponseExample: extractResBody<GetOneTrainingRespons
       {
         tagId: 1,
         tagName: "tagName",
+      },
+    ],
+    trainingSession: [
+      {
+        id: 1,
+        createdAt: date.toISOString() as unknown as Date,
+        finished: false,
+        updatedAt: date.toISOString() as unknown as Date,
       },
     ],
   };
