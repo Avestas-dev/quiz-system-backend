@@ -26,7 +26,7 @@ export const processLogin = async (
     const refreshToken = randomUUID();
 
     // update user refresh token
-    await prisma.user.update({
+    const updatedUser = await prisma.user.update({
       data: {
         refreshToken: refreshToken,
       },
@@ -37,6 +37,7 @@ export const processLogin = async (
       token: token,
       refreshToken: refreshToken,
       email: res.locals.user.email,
+      userId: updatedUser.id,
     });
   }
 
