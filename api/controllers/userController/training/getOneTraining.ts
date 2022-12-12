@@ -31,6 +31,12 @@ export const getOneTraining = async (
       ],
     },
     include: {
+      user: {
+        select: {
+          id: true,
+          email: true,
+        },
+      },
       TagTraining: {
         include: {
           tag: true,

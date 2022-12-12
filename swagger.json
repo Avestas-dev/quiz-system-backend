@@ -1059,6 +1059,10 @@
         "email": {
           "type": "string",
           "example": "kamilporeba@hotmail.com"
+        },
+        "userId": {
+          "type": "number",
+          "example": 1
         }
       }
     },
@@ -1085,6 +1089,10 @@
         "refreshToken": {
           "type": "string",
           "example": "5f3c44c9-eac1-4ffd-a112-ae5a1fe38fed"
+        },
+        "userId": {
+          "type": "number",
+          "example": 1
         }
       }
     },
@@ -1113,7 +1121,7 @@
         },
         "passwordResetDate": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.717Z"
+          "example": "2022-12-12T13:16:34.362Z"
         },
         "googleSub": {
           "type": "string",
@@ -1125,11 +1133,11 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.717Z"
+          "example": "2022-12-12T13:16:34.362Z"
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.717Z"
+          "example": "2022-12-12T13:16:34.362Z"
         }
       }
     },
@@ -1184,7 +1192,7 @@
         },
         "passwordResetDate": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.718Z"
+          "example": "2022-12-12T13:16:34.363Z"
         },
         "googleSub": {
           "type": "string",
@@ -1196,11 +1204,11 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.718Z"
+          "example": "2022-12-12T13:16:34.363Z"
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.718Z"
+          "example": "2022-12-12T13:16:34.363Z"
         }
       }
     },
@@ -1311,7 +1319,7 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2022-11-30T17:30:20.727Z"
+            "example": "2022-12-12T13:16:34.374Z"
           },
           "name": {
             "type": "string",
@@ -1319,7 +1327,7 @@
           },
           "updatedAt": {
             "type": "string",
-            "example": "2022-11-30T17:30:20.727Z"
+            "example": "2022-12-12T13:16:34.374Z"
           },
           "userId": {
             "type": "number",
@@ -1332,6 +1340,19 @@
           "likedTraining": {
             "type": "boolean",
             "example": true
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string",
+                "example": "kamilporeba@hotmail.com"
+              },
+              "id": {
+                "type": "number",
+                "example": 1
+              }
+            }
           },
           "tagTraining": {
             "type": "array",
@@ -1360,7 +1381,7 @@
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2022-11-30T17:30:20.727Z"
+                  "example": "2022-12-12T13:16:34.374Z"
                 },
                 "finished": {
                   "type": "boolean",
@@ -1368,7 +1389,7 @@
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2022-11-30T17:30:20.727Z"
+                  "example": "2022-12-12T13:16:34.374Z"
                 }
               }
             }
@@ -1385,7 +1406,7 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.727Z"
+          "example": "2022-12-12T13:16:34.375Z"
         },
         "name": {
           "type": "string",
@@ -1393,7 +1414,7 @@
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.727Z"
+          "example": "2022-12-12T13:16:34.375Z"
         },
         "userId": {
           "type": "number",
@@ -1419,6 +1440,30 @@
               "tagName": {
                 "type": "string",
                 "example": "tagName"
+              }
+            }
+          }
+        },
+        "trainingSession": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "createdAt": {
+                "type": "string",
+                "example": "2022-12-12T13:16:34.375Z"
+              },
+              "finished": {
+                "type": "boolean",
+                "example": false
+              },
+              "updatedAt": {
+                "type": "string",
+                "example": "2022-12-12T13:16:34.375Z"
               }
             }
           }
@@ -1464,7 +1509,7 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.713Z"
+          "example": "2022-12-12T13:16:34.357Z"
         },
         "id": {
           "type": "number",
@@ -1480,7 +1525,7 @@
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.713Z"
+          "example": "2022-12-12T13:16:34.357Z"
         }
       }
     },
@@ -1503,11 +1548,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2022-11-30T17:30:20.723Z"
+            "example": "2022-12-12T13:16:34.369Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2022-11-30T17:30:20.723Z"
+            "example": "2022-12-12T13:16:34.369Z"
           },
           "QuestionAnswer": {
             "type": "array",
@@ -1532,11 +1577,11 @@
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2022-11-30T17:30:20.723Z"
+                  "example": "2022-12-12T13:16:34.369Z"
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2022-11-30T17:30:20.723Z"
+                  "example": "2022-12-12T13:16:34.369Z"
                 }
               }
             }
@@ -1561,11 +1606,11 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.722Z"
+          "example": "2022-12-12T13:16:34.368Z"
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.722Z"
+          "example": "2022-12-12T13:16:34.368Z"
         },
         "QuestionAnswer": {
           "type": "array",
@@ -1590,11 +1635,11 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2022-11-30T17:30:20.722Z"
+                "example": "2022-12-12T13:16:34.368Z"
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2022-11-30T17:30:20.722Z"
+                "example": "2022-12-12T13:16:34.368Z"
               }
             }
           }
@@ -1736,7 +1781,7 @@
         },
         "blockedTo": {
           "type": "string",
-          "example": "2022-11-30T17:30:20.730Z"
+          "example": "2022-12-12T13:16:34.379Z"
         }
       }
     },
@@ -1776,11 +1821,11 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2022-11-30T17:30:20.728Z"
+                "example": "2022-12-12T13:16:34.377Z"
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2022-11-30T17:30:20.728Z"
+                "example": "2022-12-12T13:16:34.377Z"
               }
             }
           }
@@ -1979,11 +2024,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2022-11-30T17:30:20.730Z"
+            "example": "2022-12-12T13:16:34.379Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2022-11-30T17:30:20.730Z"
+            "example": "2022-12-12T13:16:34.379Z"
           },
           "email": {
             "type": "string",
@@ -1991,7 +2036,7 @@
           },
           "passwordResetDate": {
             "type": "string",
-            "example": "2022-11-30T17:30:20.730Z"
+            "example": "2022-12-12T13:16:34.379Z"
           },
           "isAdmin": {
             "type": "boolean",

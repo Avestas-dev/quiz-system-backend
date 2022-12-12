@@ -13,6 +13,7 @@ declare global {
       SENDGRID_API_KEY: string;
       GOOGLE_CLIENT_ID: string;
       API_URL: string;
+      SCHEMA: string
     }
   }
 }

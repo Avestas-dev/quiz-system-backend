@@ -1,4 +1,4 @@
-import { Training, TrainingSession } from "@prisma/client";
+import { Training, TrainingSession, User } from "@prisma/client";
 import { Request, Response } from "express";
 import { extractResBody } from "../../helpers/typescriptHelpers";
 import { commonLocals } from "../commonLocals";
@@ -6,6 +6,7 @@ const date = new Date();
 
 type GetOneTrainingResponseBody = Training & {
   likedTraining: boolean;
+  user: Pick<User, "id" | "email">;
   tagTraining: { tagId: number; tagName: string }[];
   trainingSession: Array<
     Pick<TrainingSession, "id" | "createdAt" | "finished" | "updatedAt">
@@ -33,6 +34,10 @@ export const GetOneTrainingResponseExample: extractResBody<GetOneTrainingRespons
     userId: 1,
     visibility: true,
     likedTraining: true,
+    user: {
+      email: "kamilporeba@hotmail.com",
+      id: 1,
+    },
     tagTraining: [
       {
         tagId: 1,
