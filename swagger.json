@@ -5,11 +5,9 @@
     "description": "Project made for Internet Application classes.",
     "version": "1.0.0"
   },
-  "host": "localhost:8000",
+  "host": "quiz-system-backend-h.herokuapp.com",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["https"],
   "securityDefinitions": {
     "apiKeyAuth": {
       "type": "apiKey",
@@ -21,9 +19,7 @@
   "paths": {
     "/login": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "description": "Endpoint to sign in a specific user",
         "parameters": [
           {
@@ -48,9 +44,7 @@
     },
     "/register": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "description": "Endpoint to register user.",
         "parameters": [
           {
@@ -75,9 +69,7 @@
     },
     "/refresh": {
       "get": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "description": "Get new token using refresh token.",
         "parameters": [
           {
@@ -103,9 +95,7 @@
     },
     "/reset-start": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "description": "Endpoint to start reset password procedure",
         "parameters": [
           {
@@ -127,9 +117,7 @@
     },
     "/reset": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "description": "Endpoint to start reset password procedure.",
         "parameters": [
           {
@@ -151,9 +139,7 @@
     },
     "/login-google": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "description": "Endpoint to sign in a specific user using Google",
         "parameters": [
           {
@@ -178,9 +164,7 @@
     },
     "/register-google": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "description": "Endpoint to sign up a specific user using Google",
         "parameters": [
           {
@@ -216,9 +200,7 @@
     },
     "/training/all": {
       "get": {
-        "tags": [
-          "Training"
-        ],
+        "tags": ["Training"],
         "description": "Gets all trainings of all user that have visiblity set to true, and all trainings of logged in user. Also, retrieve currently active training session.",
         "parameters": [
           {
@@ -260,9 +242,7 @@
     },
     "/training/{trainingId}": {
       "get": {
-        "tags": [
-          "Training"
-        ],
+        "tags": ["Training"],
         "description": "Gets one training.",
         "parameters": [
           {
@@ -287,9 +267,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "Training"
-        ],
+        "tags": ["Training"],
         "description": "Delete training.",
         "parameters": [
           {
@@ -313,9 +291,7 @@
     },
     "/training": {
       "post": {
-        "tags": [
-          "Training"
-        ],
+        "tags": ["Training"],
         "description": "Create training",
         "parameters": [
           {
@@ -340,9 +316,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Training"
-        ],
+        "tags": ["Training"],
         "description": "Edit training",
         "parameters": [
           {
@@ -369,9 +343,7 @@
     },
     "/training-session/start": {
       "post": {
-        "tags": [
-          "Training Session"
-        ],
+        "tags": ["Training Session"],
         "description": "Start training session. It makes new training session with finished status set to false. If training session with given id already exists, then response is always success - before creating new training session, it is required to use /training-session/end endpoint.",
         "parameters": [
           {
@@ -401,9 +373,7 @@
     },
     "/training-session/end": {
       "post": {
-        "tags": [
-          "Training Session"
-        ],
+        "tags": ["Training Session"],
         "description": "Ends training session, setting its finished status to true. ",
         "parameters": [
           {
@@ -430,9 +400,7 @@
     },
     "/training-session/{trainingSessionId}/questions": {
       "get": {
-        "tags": [
-          "Training Session"
-        ],
+        "tags": ["Training Session"],
         "description": "Get all questions for training session that were not answered, and were created after creation of training session. This endpoint should be used to get questions for training session that is started or continued (when previous was not finished) using endpoint /training-session/start",
         "parameters": [
           {
@@ -459,9 +427,7 @@
     },
     "/training-session/all": {
       "get": {
-        "tags": [
-          "Training Session"
-        ],
+        "tags": ["Training Session"],
         "description": "Get all training sessions done or started by user - it should be used on screen where all training session history is shown - endpoint doesn",
         "parameters": [],
         "responses": {
@@ -481,9 +447,7 @@
     },
     "/training-session/{trainingSessionId}": {
       "get": {
-        "tags": [
-          "Training Session"
-        ],
+        "tags": ["Training Session"],
         "description": "Get single training session with all the details for it",
         "parameters": [
           {
@@ -510,9 +474,7 @@
     },
     "/tag": {
       "get": {
-        "tags": [
-          "Tags"
-        ],
+        "tags": ["Tags"],
         "description": "Get all available tags for training.",
         "parameters": [],
         "responses": {
@@ -530,9 +492,7 @@
         ]
       },
       "post": {
-        "tags": [
-          "Tags"
-        ],
+        "tags": ["Tags"],
         "description": "Create new tag with status pending, to be accepted by admin.",
         "parameters": [
           {
@@ -559,9 +519,7 @@
     },
     "/tag/{trainingId}": {
       "get": {
-        "tags": [
-          "Tags"
-        ],
+        "tags": ["Tags"],
         "description": "Get all available tags for training.",
         "parameters": [
           {
@@ -588,9 +546,7 @@
     },
     "/question/all/{trainingId}": {
       "get": {
-        "tags": [
-          "Question"
-        ],
+        "tags": ["Question"],
         "description": "Get all questions for training, when withAnswers=true then also includes answers. This endpoint should be used when browsing list of all trainings.",
         "parameters": [
           {
@@ -633,9 +589,7 @@
     },
     "/question/{questionId}": {
       "get": {
-        "tags": [
-          "Question"
-        ],
+        "tags": ["Question"],
         "description": "Get one question details, with all answers.",
         "parameters": [
           {
@@ -660,9 +614,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "Question"
-        ],
+        "tags": ["Question"],
         "description": "Remove question",
         "parameters": [
           {
@@ -686,9 +638,7 @@
     },
     "/question": {
       "post": {
-        "tags": [
-          "Question"
-        ],
+        "tags": ["Question"],
         "description": "Create question, if user owns training, or is admin.",
         "parameters": [
           {
@@ -713,9 +663,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Question"
-        ],
+        "tags": ["Question"],
         "description": "Edit question.",
         "parameters": [
           {
@@ -742,9 +690,7 @@
     },
     "/question/with-answers": {
       "post": {
-        "tags": [
-          "Question"
-        ],
+        "tags": ["Question"],
         "description": "Create question with answers",
         "parameters": [
           {
@@ -771,9 +717,7 @@
     },
     "/user-answer": {
       "post": {
-        "tags": [
-          "User Answer"
-        ],
+        "tags": ["User Answer"],
         "description": "Add answer to question. This endpoint should be used when responding to question, answers should be an array.",
         "parameters": [
           {
@@ -800,9 +744,7 @@
     },
     "/question-answer/{questionAnswerId}": {
       "delete": {
-        "tags": [
-          "Answer"
-        ],
+        "tags": ["Answer"],
         "description": "Remove question answer",
         "parameters": [
           {
@@ -838,9 +780,7 @@
     },
     "/question-answer": {
       "post": {
-        "tags": [
-          "Answer"
-        ],
+        "tags": ["Answer"],
         "description": "Add answer for question",
         "parameters": [
           {
@@ -865,9 +805,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Answer"
-        ],
+        "tags": ["Answer"],
         "description": "Edit question answer.",
         "parameters": [
           {
@@ -894,9 +832,7 @@
     },
     "/profile": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "description": "Get user profile from token",
         "parameters": [],
         "responses": {
@@ -916,9 +852,7 @@
     },
     "/admin/tag": {
       "post": {
-        "tags": [
-          "Admin-Tags"
-        ],
+        "tags": ["Admin-Tags"],
         "description": "Create new tag, that is already accepted.",
         "parameters": [
           {
@@ -943,9 +877,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Admin-Tags"
-        ],
+        "tags": ["Admin-Tags"],
         "description": "Edit tag.",
         "parameters": [
           {
@@ -972,9 +904,7 @@
     },
     "/admin/tag/accept": {
       "put": {
-        "tags": [
-          "Admin-Tags"
-        ],
+        "tags": ["Admin-Tags"],
         "description": "Accept new tag.",
         "parameters": [
           {
@@ -1001,9 +931,7 @@
     },
     "/admin/tag/reject": {
       "put": {
-        "tags": [
-          "Admin-Tags"
-        ],
+        "tags": ["Admin-Tags"],
         "description": "Reject tag.",
         "parameters": [
           {
@@ -1030,9 +958,7 @@
     },
     "/admin/user/all": {
       "get": {
-        "tags": [
-          "Admin-Users"
-        ],
+        "tags": ["Admin-Users"],
         "description": "Get All Users.",
         "parameters": [],
         "responses": {
@@ -1052,9 +978,7 @@
     },
     "/admin/user/block": {
       "post": {
-        "tags": [
-          "Admin-Users"
-        ],
+        "tags": ["Admin-Users"],
         "description": "Block selected user for given time.",
         "parameters": [
           {
@@ -1081,9 +1005,7 @@
     },
     "/admin/user/unlock": {
       "post": {
-        "tags": [
-          "Admin-Users"
-        ],
+        "tags": ["Admin-Users"],
         "description": "Unlock given user.",
         "parameters": [
           {
@@ -1363,9 +1285,7 @@
         },
         "tagIds": {
           "type": "array",
-          "example": [
-            1
-          ],
+          "example": [1],
           "items": {
             "type": "number"
           }
@@ -1389,9 +1309,7 @@
         },
         "tagIds": {
           "type": "array",
-          "example": [
-            1
-          ],
+          "example": [1],
           "items": {
             "type": "number"
           }
@@ -1848,11 +1766,7 @@
         },
         "questionAnswerIds": {
           "type": "array",
-          "example": [
-            1,
-            2,
-            3
-          ],
+          "example": [1, 2, 3],
           "items": {
             "type": "number"
           }
