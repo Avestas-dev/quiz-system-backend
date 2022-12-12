@@ -38,6 +38,7 @@ export const processLogin = async (
       refreshToken: refreshToken,
       email: res.locals.user.email,
       userId: updatedUser.id,
+      isAdmin: updatedUser.isAdmin,
     });
   }
 

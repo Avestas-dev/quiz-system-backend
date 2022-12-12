@@ -16,6 +16,7 @@ export type LoginResponseModel = Response<
     token: string;
     refreshToken: string;
     userId: number;
+    isAdmin: boolean;
   },
   any
 >;
@@ -31,4 +32,5 @@ export const LoginResponseExample: extractResBody<LoginResponseModel> = {
   refreshToken: "5f3c44c9-eac1-4ffd-a112-ae5a1fe38fed",
   email: "kamilporeba@hotmail.com",
   userId: 1,
+  isAdmin: false,
 };
