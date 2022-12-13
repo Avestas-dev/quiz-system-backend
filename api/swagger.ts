@@ -57,8 +57,8 @@ const doc = {
     title: "Quiz System Api",
     description: "Project made for Internet Application classes.",
   },
-  host: "localhost:8000",
-  schemes: ["http"],
+  host: "quiz-system-backend-h.herokuapp.com",
+  schemes: ["https"],
   securityDefinitions: {
     apiKeyAuth: {
       type: "apiKey",
