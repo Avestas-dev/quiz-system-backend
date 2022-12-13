@@ -21,25 +21,23 @@ export type GetUserTrainingSessionResponseModel = Response<
       question: string;
       answerStatus: "correct" | "incorrect" | "not_answered";
     }>;
-  }[],
+  },
   commonLocals
 >;
 
 export const GetUserTrainingSessionResponseExample: extractResBody<GetUserTrainingSessionResponseModel> =
-  [
-    {
-      id: 5,
-      finished: true,
-      trainingId: 1000000,
-      trainingName: "Init training 1",
-      trainingQuestions: [
-        {
-          trainingQuestionId: 1000000,
-          question: "Init question 1",
-          answerStatus: "incorrect",
-        },
-      ],
-      correctQuestionCount: 1,
-      totalQuestionCount: 3,
-    },
-  ];
+  {
+    id: 5,
+    finished: true,
+    trainingId: 1000000,
+    trainingName: "Init training 1",
+    trainingQuestions: [
+      {
+        trainingQuestionId: 1000000,
+        question: "Init question 1",
+        answerStatus: "incorrect",
+      },
+    ],
+    correctQuestionCount: 1,
+    totalQuestionCount: 3,
+  };

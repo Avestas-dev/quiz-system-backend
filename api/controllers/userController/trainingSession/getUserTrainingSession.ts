@@ -21,7 +21,7 @@ export const getUserTrainingSession = async (
   const { trainingSessionId } = req.params;
 
   try {
-    const trainingSessions = await prisma.trainingSession.findMany({
+    const tSession = await prisma.trainingSession.findFirst({
       where: {
         userId: res.locals.user.id,
         id: Number(trainingSessionId),
@@ -56,59 +56,58 @@ export const getUserTrainingSession = async (
         },
       },
     });
+    if (!tSession)
+      return validationErrorHandler(res, "TRAINING_SESSION_NOT_FOUND");
 
-    const result = trainingSessions
-      .map((tSession) => {
-        return {
-          id: tSession.id,
-          finished: tSession.finished,
-          trainingId: tSession.Training.id,
-          trainingName: tSession.Training.name,
-          trainingQuestions: tSession.Training.Question.filter((question) =>
-            dayjs(tSession.createdAt).isAfter(question.createdAt)
-          )
-            .map((question) => {
-              return {
-                trainingQuestionId: question.id,
-                question: question.question,
-                answers: question.QuestionAnswer,
-                correctAnswers: question.QuestionAnswer.filter(
-                  (qa) => qa.isCorrect
-                ).map((questionAnswer) => questionAnswer.id),
-                userAnswers: tSession.userAnswer
-                  .filter((userAnswer) => userAnswer.questionId === question.id)
-                  .map((userAnswer) => userAnswer.questionAnswerId),
-              };
-            })
-            .map((trainingQuestion) => {
-              return {
-                ...trainingQuestion,
-                trainingQuestionId: trainingQuestion.trainingQuestionId,
-                question: trainingQuestion.question,
-                answerStatus: (trainingQuestion.userAnswers?.length === 0
-                  ? "not_answered"
-                  : trainingQuestion.correctAnswers.every(
-                      (e) =>
-                        !!trainingQuestion.userAnswers.find((el) => el === e)
-                    ) &&
-                    trainingQuestion.userAnswers.length ===
-                      trainingQuestion.correctAnswers.length
-                  ? "correct"
-                  : "incorrect") as "not_answered" | "correct" | "incorrect",
-              };
-            }),
-        };
-      })
-      .map((e) => ({
-        ...e,
-        correctQuestionCount: e.trainingQuestions.filter(
-          (tq) => tq.answerStatus === "correct"
-        ).length,
-        totalQuestionCount: e.trainingQuestions.length,
-      }));
-    res.json(result);
+    const result = {
+      id: tSession.id,
+      finished: tSession.finished,
+      trainingId: tSession.Training.id,
+      trainingName: tSession.Training.name,
+      trainingQuestions: tSession.Training.Question.filter((question) =>
+        dayjs(tSession.createdAt).isAfter(question.createdAt)
+      )
+        .map((question) => {
+          return {
+            trainingQuestionId: question.id,
+            question: question.question,
+            answers: question.QuestionAnswer,
+            correctAnswers: question.QuestionAnswer.filter(
+              (qa) => qa.isCorrect
+            ).map((questionAnswer) => questionAnswer.id),
+            userAnswers: tSession.userAnswer
+              .filter((userAnswer) => userAnswer.questionId === question.id)
+              .map((userAnswer) => userAnswer.questionAnswerId),
+          };
+        })
+        .map((trainingQuestion) => {
+          return {
+            ...trainingQuestion,
+            trainingQuestionId: trainingQuestion.trainingQuestionId,
+            question: trainingQuestion.question,
+            answerStatus: (trainingQuestion.userAnswers?.length === 0
+              ? "not_answered"
+              : trainingQuestion.correctAnswers.every(
+                  (e) => !!trainingQuestion.userAnswers.find((el) => el === e)
+                ) &&
+                trainingQuestion.userAnswers.length ===
+                  trainingQuestion.correctAnswers.length
+              ? "correct"
+              : "incorrect") as "not_answered" | "correct" | "incorrect",
+          };
+        }),
+    };
+
+    const resultWithCorrectQuestionCount = {
+      ...result,
+      correctQuestionCount: result.trainingQuestions.filter(
+        (tq) => tq.answerStatus === "correct"
+      ).length,
+      totalQuestionCount: result.trainingQuestions.length,
+    };
+
+    res.json(resultWithCorrectQuestionCount);
   } catch (e) {
-    console.log(e);
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
   }
 };
