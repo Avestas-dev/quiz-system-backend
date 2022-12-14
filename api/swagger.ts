@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import {
   AddQuestionAnswerRequestExample,
   AddQuestionAnswerResponseExample,
@@ -51,14 +52,15 @@ import { GetAllUsersResponseExample } from "./models/user/getAllUsersModel";
 import { UnlockUserRequestExample } from "./models/user/unlockUserModel";
 import { AddUserAnswerRequestExample } from "./models/userAnswer/addUserAnswerModel";
 const swaggerAutogen = require("swagger-autogen")();
+dotenv.config();
 
 const doc = {
   info: {
     title: "Quiz System Api",
     description: "Project made for Internet Application classes.",
   },
-  host: "quiz-system-backend-h.herokuapp.com",
-  schemes: ["https"],
+  host: process.env.API_URL || "quiz-system-backend-h.herokuapp.com",
+  schemes: [process.env.SCHEMA || "https"],
   securityDefinitions: {
     apiKeyAuth: {
       type: "apiKey",

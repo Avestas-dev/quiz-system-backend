@@ -41,6 +41,7 @@ export const getAllTrainings = async (
               TagTraining: {
                 some: {
                   tag: {
+                    tagStatus: 'accepted',
                     name: {
                       in: tags,
                     },

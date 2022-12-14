@@ -38,6 +38,11 @@ export const getOneTraining = async (
         },
       },
       TagTraining: {
+        where: {
+          tag: {
+            tagStatus: "accepted",
+          },
+        },
         include: {
           tag: true,
         },
