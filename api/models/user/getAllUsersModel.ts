@@ -16,7 +16,7 @@ export type GetAllUsersResponseModel = Response<
       | "passwordResetDate"
       | "isAdmin"
       | "googleSub"
-    >
+    > & { blockedDate?: Date }
   >,
   commonLocals
 >;
@@ -31,5 +31,6 @@ export const GetAllUsersResponseExample: extractResBody<GetAllUsersResponseModel
       passwordResetDate: date.toISOString() as unknown as Date,
       isAdmin: true,
       googleSub: null,
+      blockedDate: date.toISOString() as unknown as Date,
     },
   ];

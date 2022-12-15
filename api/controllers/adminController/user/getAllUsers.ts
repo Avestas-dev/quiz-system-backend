@@ -29,9 +29,14 @@ export const getAllUsers = async (
         passwordResetDate: true,
         isAdmin: true,
         googleSub: true,
+        BlockedUser: true,
       },
     });
-    return res.json(users);
+    const newUsers = users.map(({ BlockedUser, ...user }) => ({
+      ...user,
+      blockedDate: BlockedUser?.[0]?.blockedTo || undefined,
+    }));
+    return res.json(newUsers);
   } catch (e) {
     return validationErrorHandler(res, "INTERNAL_SERVER_ERROR");
   }
