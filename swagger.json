@@ -765,6 +765,33 @@
             "apiKeyAuth": []
           }
         ]
+      },
+      "put": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Edit question with all answers.",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Edit question with all answers request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditQuestionWithAnswersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
     "/user-answer": {
@@ -1225,7 +1252,7 @@
         },
         "passwordResetDate": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.111Z"
+          "example": "2022-12-18T20:26:53.025Z"
         },
         "googleSub": {
           "type": "string",
@@ -1237,11 +1264,11 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.111Z"
+          "example": "2022-12-18T20:26:53.025Z"
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.111Z"
+          "example": "2022-12-18T20:26:53.025Z"
         }
       }
     },
@@ -1296,7 +1323,7 @@
         },
         "passwordResetDate": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.112Z"
+          "example": "2022-12-18T20:26:53.026Z"
         },
         "googleSub": {
           "type": "string",
@@ -1308,11 +1335,11 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.112Z"
+          "example": "2022-12-18T20:26:53.026Z"
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.112Z"
+          "example": "2022-12-18T20:26:53.026Z"
         }
       }
     },
@@ -1427,7 +1454,7 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2022-12-15T00:14:50.120Z"
+            "example": "2022-12-18T20:26:53.034Z"
           },
           "name": {
             "type": "string",
@@ -1435,7 +1462,7 @@
           },
           "updatedAt": {
             "type": "string",
-            "example": "2022-12-15T00:14:50.120Z"
+            "example": "2022-12-18T20:26:53.034Z"
           },
           "userId": {
             "type": "number",
@@ -1489,7 +1516,7 @@
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2022-12-15T00:14:50.120Z"
+                  "example": "2022-12-18T20:26:53.034Z"
                 },
                 "finished": {
                   "type": "boolean",
@@ -1497,7 +1524,7 @@
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2022-12-15T00:14:50.120Z"
+                  "example": "2022-12-18T20:26:53.034Z"
                 }
               }
             }
@@ -1514,7 +1541,7 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.121Z"
+          "example": "2022-12-18T20:26:53.035Z"
         },
         "name": {
           "type": "string",
@@ -1522,7 +1549,7 @@
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.121Z"
+          "example": "2022-12-18T20:26:53.035Z"
         },
         "userId": {
           "type": "number",
@@ -1576,7 +1603,7 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2022-12-15T00:14:50.121Z"
+                "example": "2022-12-18T20:26:53.035Z"
               },
               "finished": {
                 "type": "boolean",
@@ -1584,7 +1611,7 @@
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2022-12-15T00:14:50.121Z"
+                "example": "2022-12-18T20:26:53.035Z"
               }
             }
           }
@@ -1630,7 +1657,7 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.107Z"
+          "example": "2022-12-18T20:26:53.021Z"
         },
         "id": {
           "type": "number",
@@ -1646,7 +1673,7 @@
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.107Z"
+          "example": "2022-12-18T20:26:53.021Z"
         }
       }
     },
@@ -1669,11 +1696,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2022-12-15T00:14:50.116Z"
+            "example": "2022-12-18T20:26:53.030Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2022-12-15T00:14:50.116Z"
+            "example": "2022-12-18T20:26:53.030Z"
           },
           "QuestionAnswer": {
             "type": "array",
@@ -1698,11 +1725,11 @@
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2022-12-15T00:14:50.116Z"
+                  "example": "2022-12-18T20:26:53.030Z"
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2022-12-15T00:14:50.116Z"
+                  "example": "2022-12-18T20:26:53.030Z"
                 }
               }
             }
@@ -1727,11 +1754,11 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.115Z"
+          "example": "2022-12-18T20:26:53.030Z"
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.115Z"
+          "example": "2022-12-18T20:26:53.030Z"
         },
         "QuestionAnswer": {
           "type": "array",
@@ -1756,11 +1783,11 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2022-12-15T00:14:50.115Z"
+                "example": "2022-12-18T20:26:53.030Z"
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2022-12-15T00:14:50.115Z"
+                "example": "2022-12-18T20:26:53.030Z"
               }
             }
           }
@@ -1906,7 +1933,7 @@
         },
         "blockedTo": {
           "type": "string",
-          "example": "2022-12-15T00:14:50.123Z"
+          "example": "2022-12-18T20:26:53.037Z"
         }
       }
     },
@@ -1946,11 +1973,11 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2022-12-15T00:14:50.122Z"
+                "example": "2022-12-18T20:26:53.035Z"
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2022-12-15T00:14:50.122Z"
+                "example": "2022-12-18T20:26:53.035Z"
               }
             }
           }
@@ -2146,11 +2173,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2022-12-15T00:14:50.124Z"
+            "example": "2022-12-18T20:26:53.038Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2022-12-15T00:14:50.124Z"
+            "example": "2022-12-18T20:26:53.038Z"
           },
           "email": {
             "type": "string",
@@ -2158,7 +2185,7 @@
           },
           "passwordResetDate": {
             "type": "string",
-            "example": "2022-12-15T00:14:50.124Z"
+            "example": "2022-12-18T20:26:53.038Z"
           },
           "isAdmin": {
             "type": "boolean",
@@ -2167,7 +2194,40 @@
           "googleSub": {},
           "blockedDate": {
             "type": "string",
-            "example": "2022-12-15T00:14:50.124Z"
+            "example": "2022-12-18T20:26:53.038Z"
+          }
+        }
+      }
+    },
+    "EditQuestionWithAnswersRequest": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string",
+          "example": "Sample question"
+        },
+        "questionId": {
+          "type": "number",
+          "example": 1
+        },
+        "answers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "answer": {
+                "type": "string",
+                "example": "Sample answer 2"
+              },
+              "isCorrect": {
+                "type": "boolean",
+                "example": false
+              },
+              "answerId": {
+                "type": "number",
+                "example": 1
+              }
+            }
           }
         }
       }

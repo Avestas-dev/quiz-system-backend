@@ -27,6 +27,7 @@ import { ProfileResponseExample } from "./models/profileModel";
 import { AddQuestionRequestExample } from "./models/question/addQuestionModel";
 import { AddQuestionWithAnswersRequestExample } from "./models/question/addQuestionWithAnswersModel";
 import { EditQuestionRequestExample } from "./models/question/editQuestionModel";
+import { EditQuestionWithAnswersRequestExample } from "./models/question/editQuestionWithAnswersModel";
 import { GetQuestionRequestExample } from "./models/question/getQuestionModel";
 import { GetQuestionsResponseExample } from "./models/question/getQuestionsModel";
 import { AcceptTagRequestExample } from "./models/tags/acceptTagModel";
@@ -112,6 +113,7 @@ const doc = {
     AcceptTagRequest: AcceptTagRequestExample,
     EditTagRequest: EditTagRequestExample,
     GetAllUsersResponse: GetAllUsersResponseExample,
+    EditQuestionWithAnswersRequest: EditQuestionWithAnswersRequestExample,
   },
 };
 

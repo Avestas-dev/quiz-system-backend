@@ -7,6 +7,7 @@ import { addQuestion } from "../controllers/userController/question/addQuestion"
 import { addQuestionWithAnswers } from "../controllers/userController/question/addQuestionWithAnswers";
 import { deleteQuestion } from "../controllers/userController/question/deleteQuestion";
 import { editQuestion } from "../controllers/userController/question/editQuestion";
+import { editQuestionWithAnswers } from "../controllers/userController/question/editQuestionWithAnswers";
 import { getQuestion } from "../controllers/userController/question/getQuestion";
 import { getQuestions } from "../controllers/userController/question/getQuestions";
 import { addTag } from "../controllers/userController/tags/addTag";
@@ -27,6 +28,7 @@ import { checkBlockedUser } from "../middleware/checkBlockedUser";
 import { addQuestionAnswerValidation } from "../middleware/validation/answer/addQuestionAnswerValidation";
 import { addQuestionWithAnswersValidation } from "../middleware/validation/answer/addQuestionWithAnswersValidation";
 import { editQuestionAnswerValidation } from "../middleware/validation/answer/editQuestionAnswerValidation";
+import { editQuestionWithAnswersValidation } from "../middleware/validation/answer/editQuestionWithAnswersValidation";
 import { addQuestionValidation } from "../middleware/validation/question/addQuestionValidation";
 import { editQuestionValidation } from "../middleware/validation/question/editQuestionValidation";
 import { addTagValidation } from "../middleware/validation/tags/addTagValidation";
@@ -82,6 +84,11 @@ userRouter.post(
   "/question/with-answers",
   addQuestionWithAnswersValidation,
   addQuestionWithAnswers
+);
+userRouter.put(
+  "/question/with-answers",
+  editQuestionWithAnswersValidation,
+  editQuestionWithAnswers
 );
 userRouter.put("/question", editQuestionValidation, editQuestion);
 
