@@ -28,9 +28,9 @@ export const blockUser = async (
         id: Number(userId),
       },
     });
-    // if (user?.isAdmin) {
-    //   return validationErrorHandler(res, "CANNOT_BLOCK_ADMIN");
-    // }
+    if (user?.isAdmin) {
+      return validationErrorHandler(res, "CANNOT_BLOCK_ADMIN");
+    }
 
     const blockedEntry = await prisma.blockedUser.create({
       data: {
