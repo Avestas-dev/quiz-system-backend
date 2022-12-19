@@ -14,7 +14,7 @@ export const getAllUsers = async (
       #swagger.security = [{"apiKeyAuth": []}]
       #swagger.description = 'Get All Users.'
       #swagger.responses[200] = {
-        description: 'User successfully logged in.',
+        description: 'Users downloaded successfully.',
         schema: { $ref: "#/definitions/GetAllUsersResponse" }
       }  
   */

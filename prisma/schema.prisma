@@ -92,6 +92,7 @@ model User {
   updatedAt          DateTime          @default(now()) @updatedAt
   LikeTraining       LikeTraining[]
   BlockedUser        BlockedUser[]
+  Logs               Logs[]
 }
 
 model BlockedUser {
@@ -122,4 +123,19 @@ model LikeTraining {
   trainingId Int
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     Int
+}
+
+model Logs {
+  id        Int      @id @default(autoincrement())
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int?
+  url       String
+  body      String
+  query     String
+  params    String
+  response  String
+  status    Int
+  headers   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
