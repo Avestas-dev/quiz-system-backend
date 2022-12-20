@@ -2,6 +2,7 @@ import express from "express";
 import { addQuestionAnswer } from "../controllers/userController/answer/addQuestionAnswer";
 import { deleteQuestionAnswer } from "../controllers/userController/answer/deleteQuestionAnswer";
 import { editQuestionAnswer } from "../controllers/userController/answer/editQuestionAnswer";
+import { changeLikeStatus } from "../controllers/userController/like/changeLikeStatus";
 import { profile } from "../controllers/userController/profile";
 import { addQuestion } from "../controllers/userController/question/addQuestion";
 import { addQuestionWithAnswers } from "../controllers/userController/question/addQuestionWithAnswers";
@@ -72,8 +73,10 @@ userRouter.get("/training-session/:trainingSessionId", getUserTrainingSession);
 // TAGS
 userRouter.get("/tag", getAllTags);
 userRouter.get("/tag/:trainingId", getAllTagsForTraining);
-// LIKES
 userRouter.post("/tag", addTagValidation, addTag);
+
+// LIKES
+userRouter.post("/like-switch", changeLikeStatus);
 
 // QUESTIONS
 userRouter.get("/question/all/:trainingId", getQuestions);

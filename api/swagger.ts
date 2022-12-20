@@ -23,6 +23,7 @@ import {
 } from "./models/auth/registerModel";
 import { ResetPasswordRequestExample } from "./models/auth/resetPasswordModel";
 import { ResetPasswordStartRequestExample } from "./models/auth/resetPasswordStartModel";
+import { ChangeLikeResponseExample } from "./models/like/changeLikeStatus";
 import { GetAllLogsResponseExample } from "./models/logs/getAllLogsModel";
 import { ProfileResponseExample } from "./models/profileModel";
 import { AddQuestionRequestExample } from "./models/question/addQuestionModel";
@@ -116,6 +117,7 @@ const doc = {
     GetAllUsersResponse: GetAllUsersResponseExample,
     EditQuestionWithAnswersRequest: EditQuestionWithAnswersRequestExample,
     GetAllLogsResponse: GetAllLogsResponseExample,
+    ChangeLikeResponse: ChangeLikeResponseExample,
   },
 };
 

@@ -584,6 +584,28 @@
         ]
       }
     },
+    "/like-switch": {
+      "post": {
+        "tags": [
+          "Likes"
+        ],
+        "description": "Training - like if not liked, dislike if liked.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "User successfully logged in.",
+            "schema": {
+              "$ref": "#/definitions/ChangeLikeResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/question/all/{trainingId}": {
       "get": {
         "tags": [
@@ -1297,7 +1319,7 @@
         },
         "passwordResetDate": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.446Z"
+          "example": "2022-12-20T20:57:49.530Z"
         },
         "googleSub": {
           "type": "string",
@@ -1309,11 +1331,11 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.446Z"
+          "example": "2022-12-20T20:57:49.530Z"
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.446Z"
+          "example": "2022-12-20T20:57:49.530Z"
         }
       }
     },
@@ -1368,7 +1390,7 @@
         },
         "passwordResetDate": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.447Z"
+          "example": "2022-12-20T20:57:49.531Z"
         },
         "googleSub": {
           "type": "string",
@@ -1380,11 +1402,11 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.447Z"
+          "example": "2022-12-20T20:57:49.531Z"
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.447Z"
+          "example": "2022-12-20T20:57:49.531Z"
         }
       }
     },
@@ -1503,7 +1525,7 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2022-12-18T23:24:37.457Z"
+            "example": "2022-12-20T20:57:49.542Z"
           },
           "name": {
             "type": "string",
@@ -1511,7 +1533,7 @@
           },
           "updatedAt": {
             "type": "string",
-            "example": "2022-12-18T23:24:37.457Z"
+            "example": "2022-12-20T20:57:49.542Z"
           },
           "userId": {
             "type": "number",
@@ -1565,7 +1587,7 @@
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2022-12-18T23:24:37.457Z"
+                  "example": "2022-12-20T20:57:49.542Z"
                 },
                 "finished": {
                   "type": "boolean",
@@ -1573,7 +1595,7 @@
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2022-12-18T23:24:37.457Z"
+                  "example": "2022-12-20T20:57:49.542Z"
                 }
               }
             }
@@ -1590,7 +1612,7 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.458Z"
+          "example": "2022-12-20T20:57:49.542Z"
         },
         "name": {
           "type": "string",
@@ -1598,7 +1620,7 @@
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.458Z"
+          "example": "2022-12-20T20:57:49.542Z"
         },
         "userId": {
           "type": "number",
@@ -1652,7 +1674,7 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2022-12-18T23:24:37.458Z"
+                "example": "2022-12-20T20:57:49.542Z"
               },
               "finished": {
                 "type": "boolean",
@@ -1660,7 +1682,7 @@
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2022-12-18T23:24:37.458Z"
+                "example": "2022-12-20T20:57:49.542Z"
               }
             }
           }
@@ -1706,7 +1728,7 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.441Z"
+          "example": "2022-12-20T20:57:49.527Z"
         },
         "id": {
           "type": "number",
@@ -1722,7 +1744,7 @@
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.441Z"
+          "example": "2022-12-20T20:57:49.527Z"
         }
       }
     },
@@ -1745,11 +1767,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2022-12-18T23:24:37.453Z"
+            "example": "2022-12-20T20:57:49.538Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2022-12-18T23:24:37.453Z"
+            "example": "2022-12-20T20:57:49.538Z"
           },
           "QuestionAnswer": {
             "type": "array",
@@ -1774,11 +1796,11 @@
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2022-12-18T23:24:37.453Z"
+                  "example": "2022-12-20T20:57:49.538Z"
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2022-12-18T23:24:37.453Z"
+                  "example": "2022-12-20T20:57:49.538Z"
                 }
               }
             }
@@ -1803,11 +1825,11 @@
         },
         "createdAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.452Z"
+          "example": "2022-12-20T20:57:49.537Z"
         },
         "updatedAt": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.452Z"
+          "example": "2022-12-20T20:57:49.537Z"
         },
         "QuestionAnswer": {
           "type": "array",
@@ -1832,11 +1854,11 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2022-12-18T23:24:37.452Z"
+                "example": "2022-12-20T20:57:49.537Z"
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2022-12-18T23:24:37.452Z"
+                "example": "2022-12-20T20:57:49.537Z"
               }
             }
           }
@@ -1982,7 +2004,7 @@
         },
         "blockedTo": {
           "type": "string",
-          "example": "2022-12-18T23:24:37.460Z"
+          "example": "2022-12-20T20:57:49.545Z"
         }
       }
     },
@@ -2022,11 +2044,11 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2022-12-18T23:24:37.459Z"
+                "example": "2022-12-20T20:57:49.543Z"
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2022-12-18T23:24:37.459Z"
+                "example": "2022-12-20T20:57:49.543Z"
               }
             }
           }
@@ -2222,11 +2244,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2022-12-18T23:24:37.461Z"
+            "example": "2022-12-20T20:57:49.545Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2022-12-18T23:24:37.461Z"
+            "example": "2022-12-20T20:57:49.545Z"
           },
           "email": {
             "type": "string",
@@ -2234,7 +2256,7 @@
           },
           "passwordResetDate": {
             "type": "string",
-            "example": "2022-12-18T23:24:37.461Z"
+            "example": "2022-12-20T20:57:49.545Z"
           },
           "isAdmin": {
             "type": "boolean",
@@ -2243,7 +2265,7 @@
           "googleSub": {},
           "blockedDate": {
             "type": "string",
-            "example": "2022-12-18T23:24:37.461Z"
+            "example": "2022-12-20T20:57:49.545Z"
           }
         }
       }
@@ -2282,54 +2304,80 @@
       }
     },
     "GetAllLogsResponse": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "body": {
-            "type": "string",
-            "example": "string"
-          },
-          "createdAt": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
             "type": "object",
-            "properties": {}
-          },
-          "headers": {
-            "type": "string",
-            "example": "string"
-          },
-          "id": {
-            "type": "number",
-            "example": 1
-          },
-          "params": {
-            "type": "string",
-            "example": "string"
-          },
-          "query": {
-            "type": "string",
-            "example": "string"
-          },
-          "response": {
-            "type": "string",
-            "example": "string"
-          },
-          "status": {
-            "type": "number",
-            "example": 500
-          },
-          "updatedAt": {
-            "type": "object",
-            "properties": {}
-          },
-          "url": {
-            "type": "string",
-            "example": "/training"
-          },
-          "userId": {
-            "type": "number",
-            "example": 1
+            "properties": {
+              "body": {
+                "type": "string",
+                "example": "string"
+              },
+              "createdAt": {
+                "type": "object",
+                "properties": {}
+              },
+              "headers": {
+                "type": "string",
+                "example": "string"
+              },
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "params": {
+                "type": "string",
+                "example": "string"
+              },
+              "query": {
+                "type": "string",
+                "example": "string"
+              },
+              "response": {
+                "type": "string",
+                "example": "string"
+              },
+              "status": {
+                "type": "number",
+                "example": 500
+              },
+              "updatedAt": {
+                "type": "object",
+                "properties": {}
+              },
+              "url": {
+                "type": "string",
+                "example": "/training"
+              },
+              "userId": {
+                "type": "number",
+                "example": 1
+              }
+            }
           }
+        },
+        "pageNumber": {
+          "type": "number",
+          "example": 1
+        },
+        "pageSize": {
+          "type": "number",
+          "example": 10
+        },
+        "totalPages": {
+          "type": "number",
+          "example": 7
+        }
+      }
+    },
+    "ChangeLikeResponse": {
+      "type": "object",
+      "properties": {
+        "liked": {
+          "type": "boolean",
+          "example": true
         }
       }
     }

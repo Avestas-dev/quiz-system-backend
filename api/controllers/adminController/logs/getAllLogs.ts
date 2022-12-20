@@ -41,6 +41,7 @@ export const getAllLogs = async (
     const logs = await prisma.logs.findMany({
       skip: (pageNumber - 1) * pageSize,
       take: pageSize,
+      orderBy: { createdAt: "desc" },
     });
 
     return res.json({

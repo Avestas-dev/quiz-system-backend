@@ -12,6 +12,10 @@ export const changeLikeStatus = async (
   /* 	#swagger.tags = ['Likes']
       #swagger.security = [{"apiKeyAuth": []}]
       #swagger.description = 'Training - like if not liked, dislike if liked.'
+      #swagger.responses[200] = {
+        description: 'User successfully logged in.',
+        schema: { $ref: "#/definitions/ChangeLikeResponse" }
+      } 
   */
 
   try {
