@@ -76,7 +76,7 @@ userRouter.get("/tag/:trainingId", getAllTagsForTraining);
 userRouter.post("/tag", addTagValidation, addTag);
 
 // LIKES
-userRouter.post("/like-switch", changeLikeStatus);
+userRouter.post("/like-switch/:trainingId", changeLikeStatus);
 
 // QUESTIONS
 userRouter.get("/question/all/:trainingId", getQuestions);
