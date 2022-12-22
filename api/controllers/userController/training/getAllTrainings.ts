@@ -33,6 +33,7 @@ export const getAllTrainings = async (
   const onlyLiked = req.query?.onlyLiked === "true";
   const searchParam = (req.query?.search as string) || "";
   const tags = req?.query?.tags ? (req.query.tags as string)?.split(",") : [];
+
   const allTrainings = await prisma.training.findMany({
     where: {
       AND: [
@@ -41,7 +42,7 @@ export const getAllTrainings = async (
               TagTraining: {
                 some: {
                   tag: {
-                    tagStatus: 'accepted',
+                    tagStatus: "accepted",
                     name: {
                       in: tags,
                     },
@@ -88,6 +89,9 @@ export const getAllTrainings = async (
           tag: true,
         },
       },
+      _count: {
+        select: { Question: true },
+      },
       LikeTraining: true,
       TrainingSession: {
         select: {
@@ -105,7 +109,7 @@ export const getAllTrainings = async (
   });
 
   const filteredTrainings = allTrainings
-    .map(({ TrainingSession, LikeTraining, TagTraining, ...al }) => ({
+    .map(({ TrainingSession, LikeTraining, TagTraining, _count, ...al }) => ({
       ...al,
       tagTraining: TagTraining.map((e) => ({
         tagId: e.tagId,
@@ -113,6 +117,7 @@ export const getAllTrainings = async (
       })),
       likedTraining: !!LikeTraining.length,
       trainingSession: TrainingSession,
+      questionCount: _count.Question,
     }))
     .filter((e) => (onlyLiked ? e.likedTraining : true));
 

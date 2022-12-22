@@ -6,6 +6,7 @@ const date = new Date();
 
 type GetOneTrainingResponseBody = Training & {
   likedTraining: boolean;
+  questionCount: number;
   user: Pick<User, "id" | "email">;
   tagTraining: { tagId: number; tagName: string }[];
   trainingSession: Array<
@@ -34,6 +35,7 @@ export const GetOneTrainingResponseExample: extractResBody<GetOneTrainingRespons
     userId: 1,
     visibility: true,
     likedTraining: true,
+    questionCount: 10,
     user: {
       email: "kamilporeba@hotmail.com",
       id: 1,

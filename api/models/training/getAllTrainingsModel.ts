@@ -9,7 +9,8 @@ export type GetAllTrainingsRequestModel = Request<any, any, any>;
 export type GetAllTrainingsResponseModel = Response<
   (Training & {
     likedTraining: boolean;
-    user: Pick<User, 'id' | "email">
+    questionCount: number;
+    user: Pick<User, "id" | "email">;
     tagTraining: { tagId: number; tagName: string }[];
     trainingSession: Array<
       Pick<TrainingSession, "id" | "createdAt" | "finished" | "updatedAt">
@@ -27,6 +28,7 @@ export const GetAllTrainingsResponseExample: extractResBody<GetAllTrainingsRespo
       userId: 1,
       visibility: true,
       likedTraining: true,
+      questionCount: 10,
       user: {
         email: "kamilporeba@hotmail.com",
         id: 1,

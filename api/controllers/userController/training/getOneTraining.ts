@@ -31,6 +31,9 @@ export const getOneTraining = async (
       ],
     },
     include: {
+      _count: {
+        select: { Question: true },
+      },
       user: {
         select: {
           id: true,
@@ -65,7 +68,7 @@ export const getOneTraining = async (
 
   if (!training) return validationErrorHandler(res, "TRAINING_NOT_FOUND");
   const mappedTraining = [training].map(
-    ({ TrainingSession, LikeTraining, TagTraining, ...al }) => ({
+    ({ TrainingSession, LikeTraining, TagTraining, _count, ...al }) => ({
       ...al,
       tagTraining: TagTraining.map((e) => ({
         tagId: e.tagId,
@@ -73,6 +76,7 @@ export const getOneTraining = async (
       })),
       likedTraining: !!LikeTraining.length,
       trainingSession: TrainingSession,
+      questionCount: _count.Question,
     })
   );
   return res.json({
